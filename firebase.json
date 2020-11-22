@@ -1,0 +1,28 @@
+{
+  "hosting": [
+    {
+      "target": "production",
+      "public": "out",
+      "cleanUrls": true,
+      "ignore": [
+        "firebase.json",
+        "db/*",
+        "components/*",
+        "pages/*",
+        "**/node_modules/**"
+      ]
+    },
+    {
+      "target": "staging",
+      "public": "out",
+      "cleanUrls": true,
+      "ignore": [
+        "firebase.json",
+        "db/*",
+        "components/*",
+        "pages/*",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}

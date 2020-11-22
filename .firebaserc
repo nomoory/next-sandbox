@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "edmicbio"
+  },
+  "targets": {
+    "edmicbio": {
+      "hosting": {
+        "staging": [
+          "edmicbio-staging"
+        ],
+        "production": [
+          "edmicbio"
+        ]
+      }
+    }
+  }
+}
