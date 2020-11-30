@@ -1,34 +1,127 @@
-import Head from "next/head";
-import styles from "./layout.module.css";
+import Link from "next/link";
 import { Layout } from "antd";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import { margin_mobile, margin_desktop, mediaQueries } from "styles";
+import Head from "components/Head";
+import Footer from "components/Footer";
 
-const { Header, Content, Footer } = Layout;
-
-export const siteTitle = "EDmicBio";
+const { Content } = Layout;
 
 export default function NextLayout({ children, home }) {
+  const router = useRouter();
+  const navigationItems = [
+    {
+      id: "edmicbio",
+      title: "EDmicBio",
+      link: "/edmicbio",
+    },
+    {
+      id: "technology",
+      title: "Technology",
+      link: "/technology",
+    },
+    {
+      id: "product",
+      title: "Product",
+      link: "/product",
+    },
+    {
+      id: "contact-us",
+      title: "Contact us",
+      link: "/contact-us",
+    },
+  ];
+
   return (
-    <Layout style={{ display: "flex", minHeight: "100%" }}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <Header className={styles.header}>{home ? <></> : <></>}</Header>
-      <Layout>
-        <Content style={{ flex: 1 }}>{children}</Content>
+    <>
+      <Layout style={{ display: "flex", minHeight: "100%" }}>
+        <Head />
+        <Header>
+          <Link href="/">
+            <Logo />
+          </Link>
+          <NavigationContainer>
+            {navigationItems.map((item) => (
+              <NavigationItem
+                key={item.id}
+                href={item.link}
+                active={router.pathname.includes(item.link)}
+              >
+                {item.title}
+              </NavigationItem>
+            ))}
+          </NavigationContainer>
+        </Header>
+        <Content style={{ flex: 1 }}>
+          <ContentContainer>{children}</ContentContainer>
+        </Content>
+        <Footer />
       </Layout>
-      <Footer>footer</Footer>
-    </Layout>
+    </>
   );
 }
+
+const HEADER_HEIGHT_MOBILE = 56;
+const HEADER_HEIGHT = 70;
+
+const Header = styled.header`
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding: 0 ${margin_mobile}px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  height: ${HEADER_HEIGHT_MOBILE}px;
+
+  ${mediaQueries("sm")} {
+    padding: 0 ${margin_desktop}px;
+    height: ${HEADER_HEIGHT}px;
+  }
+`;
+
+const Logo = styled.div`
+  width: 124px;
+  height: 28px;
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/images/landing/logo-m.png");
+
+  ${mediaQueries("sm")} {
+    width: 163px;
+    height: 32px;
+    background-image: url("/images/landing/logo.png");
+  }
+`;
+
+const NavigationContainer = styled.nav`
+  flex-direction: row;
+  align-items: center;
+  display: none;
+  ${mediaQueries("sm")} {
+    display: flex;
+    overflow: scroll;
+  }
+`;
+
+const NavigationItem = styled.a`
+  margin-left: 60px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0em;
+  ${(props) => (props.active ? "color: #C63F34" : "")}
+`;
+
+const ContentContainer = styled.div`
+  padding-top: ${HEADER_HEIGHT_MOBILE}px;
+
+  ${mediaQueries("sm")} {
+    padding-top: ${HEADER_HEIGHT}px;
+  }
+`;

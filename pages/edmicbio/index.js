@@ -1,12 +1,10 @@
-import Layout from "../components/layout";
-import utilStyles from "../styles/utils.module.css";
-import { getSortedPostsData } from "../lib/posts";
-import Link from "next/link";
+import Layout from "components/layout";
+import utilStyles from "styles/utils.module.css";
 import { inject, observer } from "mobx-react";
 
-const Home = ({ allPostsData, templateStore }) => {
+const Home = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout>
       <section className={utilStyles.headingMd}>
         <p>[Your Self Introduction]</p>
         <p>
@@ -30,14 +28,6 @@ const Home = ({ allPostsData, templateStore }) => {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-            </li>
-          ))}
         </ul>
       </section>
     </Layout>
@@ -47,10 +37,8 @@ const Home = ({ allPostsData, templateStore }) => {
 export default inject("templateStore")(observer(Home));
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData,
     },
   };
 }

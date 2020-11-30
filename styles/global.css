@@ -10,15 +10,20 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1C1D23;
 }
 
 a {
-  color: #0070f3;
+  color: #1C1D23;
   text-decoration: none;
 }
-
 a:hover {
-  text-decoration: underline;
+  color: #C63F34;
+  text-decoration: none;  
 }
 
 img {
