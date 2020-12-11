@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { Col, Row } from "antd";
 import {
   side_padding_desktop,
   side_padding_mobile,
   mediaQueriesBiggerThan,
+  gutter,
 } from "styles";
 
 const VideoContainer = styled.div`
@@ -16,6 +18,8 @@ const VideoContainer = styled.div`
 
   ${mediaQueriesBiggerThan("sm")} {
     padding: 0 ${side_padding_desktop}px;
+    padding-top: 68px;
+    padding-bottom: 133px;
   }
 `;
 
@@ -29,12 +33,19 @@ const Video = styled.video`
 
 export default () => (
   <VideoContainer>
-    <Video width="100%" autoPlay loop muted playsInline>
-      <source
-        src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/videoplayback.mp4?alt=media&token=70b6c4b2-a2e7-4e0f-9a72-27b03e3468a4"
-        type="video/mp4"
-      />
-      Your browser does not support the video tag.
-    </Video>
+    <Row style={{ width: "100%" }} gutter={gutter}>
+      <Col
+        xs={{ span: 24, offset: 0 }}
+        sm={{ span: 16, offset: 4 }}
+      >
+        <Video width="100%" autoPlay loop muted playsInline>
+          <source
+            src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/videoplayback.mp4?alt=media&token=70b6c4b2-a2e7-4e0f-9a72-27b03e3468a4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </Video>
+      </Col>
+    </Row>
   </VideoContainer>
 );

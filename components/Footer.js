@@ -5,7 +5,8 @@ import {
   side_padding_desktop,
   side_padding_mobile,
   mediaQueriesBiggerThan,
-} from "../styles";
+  gutter,
+} from "styles";
 import FacebookIcon from "components/icons/FacebookIcon";
 import YoutubeIcon from "components/icons/YoutubeIcon";
 import InstagramIcon from "components/icons/InstagramIcon";
@@ -30,9 +31,19 @@ const snsLinks = [
 const { Footer } = Layout;
 
 export default () => (
-  <Footer style={{ padding: 0, backgroundColor: "white" }}>
+  <Footer
+    style={{
+      backgroundColor: "white",
+      boxShadow: "0px -1px 0px rgba(118, 118, 118, 0.25)",
+      padding: "24px 0px 32px 0",
+      zIndex: 11, // higher than ant design Anchor
+    }}
+  >
     <FooterContainer>
-      <Row>
+      <Row
+        style={{ width: "100%", marginLeft: 0, marginRight: 0 }}
+        gutter={gutter}
+      >
         <Col span={24} md={{ span: 12 }}>
           <Link href="/">
             <Logo />
@@ -51,7 +62,9 @@ export default () => (
             <FollowUsTitle>Follow us</FollowUsTitle>
             <FollowUsIcons>
               {snsLinks.map(({ IconComponent, link }) => (
-                <FollowUsIcon href={link}>{<IconComponent />}</FollowUsIcon>
+                <FollowUsIcon key={link} href={link}>
+                  {<IconComponent />}
+                </FollowUsIcon>
               ))}
             </FollowUsIcons>
           </FollowUsContainer>
@@ -97,33 +110,32 @@ const ContactContent = styled.div`
 `;
 
 const FooterContainer = styled.div`
-  margin: 0 ${side_padding_mobile}px;
+  width: 100%;
+  padding: 0 ${side_padding_mobile}px;
   background: #ffffff;
-  box-shadow: 0px -1px 0px rgba(118, 118, 118, 0.25);
-  border-radius: 2px;
-  padding: 23px 0px 32px 0px;
+  display: flex;
+  /* box-shadow: 0px -1px 0px rgba(118, 118, 118, 0.25); */
+  /* border-radius: 2px; */
+
   ${mediaQueriesBiggerThan("sm")} {
-    margin: 0 ${side_padding_desktop}px;
+    padding: 0 ${side_padding_desktop}px;
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.img.attrs(() => ({
+  src: "/images/common/logo.png",
+}))`
   width: 124px;
-  height: 28px;
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/images/landing/logo-m.png");
 
   ${mediaQueriesBiggerThan("sm")} {
     width: 163px;
-    height: 32px;
-    background-image: url("/images/landing/logo.png");
   }
 `;
-
 const Copyright = styled.div`
   margin-top: 24px;
   ${caption2Bold}

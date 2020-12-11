@@ -1,14 +1,15 @@
 import Body from "components/typography/Body";
 import styled from "styled-components";
-import { GRAY10, RED40 } from "styles/colors";
+import { Col, Row } from "antd";
+import { GRAY10 } from "styles/colors";
 import {
   side_padding_mobile,
   side_padding_desktop,
   mediaQueriesBiggerThan,
+  gutter,
 } from "styles";
 import Divider from "components/Divider";
 import Button from "components/Button";
-import { ArrowRightOutlined } from "@ant-design/icons";
 import ButtonArrowIcon from "components/icons/ButtonArrowIcon";
 const ComponentContainer = styled.div`
   width: 100%;
@@ -22,6 +23,8 @@ const ComponentContainer = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
     padding-left: ${side_padding_desktop}px;
     padding-right: ${side_padding_desktop}px;
+    padding-bottom: 100px;
+    padding-top: 100px;
   }
 `;
 
@@ -57,31 +60,37 @@ const ListFooter = styled.div`
 
 export default () => (
   <ComponentContainer>
-    <ListContainer>
-      <ListHeader>
-        <Body bold>News</Body>
-        <Divider />
-      </ListHeader>
-      <ListBody></ListBody>
-      <ListFooter>
-        <Button type="primary">
-          More
-          <ButtonArrowIcon style={{ marginLeft: 8 }} />
-        </Button>
-      </ListFooter>
-    </ListContainer>
-    <ListContainer>
-      <ListHeader>
-        <Body bold>Announcements</Body>
-        <Divider />
-      </ListHeader>
-      <ListBody></ListBody>
-      <ListFooter>
-        <Button>
-          More
-          <ButtonArrowIcon style={{ marginLeft: 8 }} />
-        </Button>
-      </ListFooter>
-    </ListContainer>
+    <Row style={{ width: "100%" }} gutter={[32, gutter]}>
+      <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10, offset: 2 }}>
+        <ListContainer>
+          <ListHeader>
+            <Body bold>News</Body>
+            <Divider />
+          </ListHeader>
+          <ListBody></ListBody>
+          <ListFooter>
+            <Button type="primary">
+              More
+              <ButtonArrowIcon style={{ marginLeft: 8 }} />
+            </Button>
+          </ListFooter>
+        </ListContainer>
+      </Col>
+      <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10 }}>
+        <ListContainer>
+          <ListHeader>
+            <Body bold>Announcements</Body>
+            <Divider />
+          </ListHeader>
+          <ListBody></ListBody>
+          <ListFooter>
+            <Button>
+              More
+              <ButtonArrowIcon style={{ marginLeft: 8 }} />
+            </Button>
+          </ListFooter>
+        </ListContainer>
+      </Col>
+    </Row>
   </ComponentContainer>
 );

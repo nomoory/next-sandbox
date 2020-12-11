@@ -1,16 +1,11 @@
 import { Button } from "antd";
 import styled from "styled-components";
-import {
-  side_padding_mobile,
-  side_padding_desktop,
-  mediaQueriesBiggerThan,
-} from "styles";
 import { RED40, RED70, GRAY80, GRAY90 } from "styles/colors";
 
 const ButtonContainer = styled.div`
   button {
     border-radius: 2px;
-    padding: 14px 24px;
+    padding: 12px 24px;
     height: fit-content;
     border: none;
     display: flex;
@@ -96,20 +91,6 @@ const ButtonContainer = styled.div`
         }
       }
     }
-  }
-
-`;
-
-const ComponentContainer = styled.div`
-  width: 100%;
-  padding: 0 ${side_padding_mobile}px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-
-  ${mediaQueriesBiggerThan("sm")} {
-    padding: 0 ${side_padding_desktop}px;
   }
 `;
 

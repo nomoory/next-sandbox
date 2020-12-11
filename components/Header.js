@@ -14,7 +14,7 @@ import HambergerIcon from "components/icons/HambergerIcon";
 
 const HeaderContainer = styled.header`
   position: fixed;
-  z-index: 1;
+  z-index: 12; // higher than ant design Anchor and footer
   width: 100%;
   padding: 0 ${side_padding_mobile}px;
   display: flex;
@@ -30,20 +30,18 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.img.attrs(() => ({
+  src: "/images/common/logo.png"
+}))`
   width: 124px;
-  height: 28px;
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/images/landing/logo-m.png");
 
   ${mediaQueriesBiggerThan("sm")} {
     width: 163px;
-    height: 32px;
-    background-image: url("/images/landing/logo.png");
   }
 `;
 
@@ -67,6 +65,7 @@ const NavigationItem = styled.a`
 
 const MobileDrawerIconContainer = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
+    display: none;
   }
 `;
 

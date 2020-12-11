@@ -3,41 +3,21 @@ import Layout from "components/layout";
 import { inject, observer } from "mobx-react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
-const SUBJECTS = [
-  "vision",
-  "organ-on-a-chip",
-  "medical-device",
-  "team",
-  "history",
-  "news",
-  "announcement",
-  "careers",
-];
+import { getSubCategoryIdsByCategoryid } from "components/navigation";
 
 const EDmicBio = ({ templateStore }) => {
   const router = useRouter();
 
   useEffect(() => {
-    for (let subject of SUBJECTS) {
-      router.prefetch(`edmicbio/${subject}`);
+    const subCategoryIds = getSubCategoryIdsByCategoryid("edmicbio");
+    for (let subCategoryId of subCategoryIds) {
+      router.prefetch(`edmicbio/${subCategoryId}`);
     }
-    router.push(`/edmicbio/${SUBJECTS[0]}`);
+    router.push(`/edmicbio/${subCategoryIds[0]}`);
   }, []);
 
-  return (
-    <Layout EDmicBio>
-      <PageContainer></PageContainer>
-    </Layout>
-  );
+  return <></>;
 };
-
-const PageContainer = styled.section`
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 export default inject("templateStore")(observer(EDmicBio));
 
