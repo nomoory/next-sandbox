@@ -1,8 +1,30 @@
 import { Col, Layout, Row } from "antd";
 import Link from "next/link";
 import styled from "styled-components";
-import { side_padding_desktop, side_padding_mobile, mediaQueriesBiggerThan } from "../styles";
+import {
+  side_padding_desktop,
+  side_padding_mobile,
+  mediaQueriesBiggerThan,
+} from "../styles";
 import { GRAY90 } from "../styles/colors";
+import FacebookIcon from "components/icons/FacebookIcon";
+import YoutubeIcon from "components/icons/YoutubeIcon";
+import InstagramIcon from "components/icons/InstagramIcon";
+
+const snsLinks = [
+  {
+    IconComponent: FacebookIcon,
+    url: "",
+  },
+  {
+    IconComponent: YoutubeIcon,
+    url: "",
+  },
+  {
+    IconComponent: InstagramIcon,
+    url: "",
+  },
+];
 
 const { Footer } = Layout;
 
@@ -18,14 +40,16 @@ export default () => (
             Investigate your drug with 3D biomimicry 3D organ-on-a-chip
           </Copyright>
           <RightsReserved>
-            © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |  
-            <br/>
+            © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |
+            <br />
             Powered by EDmicBio Inc.
           </RightsReserved>
           <FollowUsContainer>
             <FollowUsTitle>Follow us</FollowUsTitle>
             <FollowUsIcons>
-              <FollowUsIcon></FollowUsIcon>
+              {snsLinks.map(({ IconComponent, link }) => (
+                <FollowUsIcon href={link}>{<IconComponent />}</FollowUsIcon>
+              ))}
             </FollowUsIcons>
           </FollowUsContainer>
         </Col>
@@ -42,8 +66,10 @@ export default () => (
             <Contact>
               <ContactTitle>Location</ContactTitle>
               <ContactContent>
-                Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu, Seoul, Republic of Korea
-R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business Incubator)
+                Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu,
+                Seoul, Republic of Korea R&D center: 26, Kyungheedae-ro,
+                Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business
+                Incubator)
               </ContactContent>
             </Contact>
           </Contacts>
@@ -53,10 +79,8 @@ R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (Ky
   </Footer>
 );
 
-const Contacts = styled.div`
-`;
-const Contact = styled.div`
-`;
+const Contacts = styled.div``;
+const Contact = styled.div``;
 const ContactTitle = styled.div`
   font-weight: 600;
   font-size: 16px;
@@ -124,8 +148,19 @@ const FollowUsTitle = styled.div`
 `;
 const FollowUsIcons = styled.div`
   height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background: #c8493f;
   border-radius: 10px;
   margin-top: 7px;
+  padding: 5px 9px 7px 9px;
+  width: fit-content;
 `;
-const FollowUsIcon = styled.div``;
+const FollowUsIcon = styled.a`
+  height: 32px;
+  width: 32px;
+  &:not(:first-child) {
+    margin-left: 32px;
+  }
+`;

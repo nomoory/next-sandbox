@@ -8,6 +8,9 @@ import {
   header_height_mobile,
   header_height_desktop,
 } from "styles";
+import { useState } from "react";
+import MobileDrawer from "components/MobileDrawer";
+import HambergerIcon from "components/icons/HambergerIcon";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -44,7 +47,7 @@ const Logo = styled.div`
   }
 `;
 
-const NavigationContainer = styled.nav`
+const DesktopNavigationContainer = styled.nav`
   flex-direction: row;
   align-items: center;
   display: none;
@@ -61,8 +64,21 @@ const NavigationItem = styled.a`
   letter-spacing: 0em;
   ${(props) => (props.active ? "color: #C63F34" : "")}
 `;
+
+const MobileDrawerIconContainer = styled.div`
+  ${mediaQueriesBiggerThan("sm")} {
+  }
+`;
+
+const DrawerButton = styled.button`
+  width: 32px;
+  height: 32px;
+  ${mediaQueriesBiggerThan("sm")} {
+  }
+`;
 export default () => {
   const router = useRouter();
+  const [mobileDrawalVisible, setMobileDrawalVisible] = useState(false);
   const navigationItems = [
     {
       id: "edmicbio",
@@ -87,21 +103,36 @@ export default () => {
   ];
 
   return (
-    <HeaderContainer>
-      <Link href="/">
-        <Logo />
-      </Link>
-      <NavigationContainer>
-        {navigationItems.map((item) => (
-          <NavigationItem
-            key={item.id}
-            href={item.link}
-            active={router.pathname.includes(item.link)}
+    <>
+      <HeaderContainer>
+        <Link href="/">
+          <Logo />
+        </Link>
+        <DesktopNavigationContainer>
+          {navigationItems.map((item) => (
+            <NavigationItem
+              key={item.id}
+              href={item.link}
+              active={router.pathname.includes(item.link)}
+            >
+              {item.title}
+            </NavigationItem>
+          ))}
+        </DesktopNavigationContainer>
+        <MobileDrawerIconContainer>
+          <DrawerButton 
+            onClick={() => {
+              setMobileDrawalVisible(true);
+            }}
           >
-            {item.title}
-          </NavigationItem>
-        ))}
-      </NavigationContainer>
-    </HeaderContainer>
+            <HambergerIcon />
+          </DrawerButton>
+        </MobileDrawerIconContainer>
+      </HeaderContainer>
+      <MobileDrawer
+        visible={mobileDrawalVisible}
+        closeDrawer={() => { setMobileDrawalVisible(false); }}
+      />
+    </>
   );
 };
