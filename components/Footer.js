@@ -1,17 +1,82 @@
 import { Col, Layout, Row } from "antd";
 import Link from "next/link";
 import styled from "styled-components";
-import { margin_desktop, margin_mobile, mediaQueries } from "../styles";
+import { side_padding_desktop, side_padding_mobile, mediaQueriesBiggerThan } from "../styles";
+import { GRAY90 } from "../styles/colors";
+
 const { Footer } = Layout;
 
+export default () => (
+  <Footer style={{ padding: 0, backgroundColor: "white" }}>
+    <FooterContainer>
+      <Row>
+        <Col span={24} md={{ span: 12 }}>
+          <Link href="/">
+            <Logo />
+          </Link>
+          <Copyright>
+            Investigate your drug with 3D biomimicry 3D organ-on-a-chip
+          </Copyright>
+          <RightsReserved>
+            © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |  
+            <br/>
+            Powered by EDmicBio Inc.
+          </RightsReserved>
+          <FollowUsContainer>
+            <FollowUsTitle>Follow us</FollowUsTitle>
+            <FollowUsIcons>
+              <FollowUsIcon></FollowUsIcon>
+            </FollowUsIcons>
+          </FollowUsContainer>
+        </Col>
+        <Col span={24} md={{ span: 12 }}>
+          <Contacts>
+            <Contact>
+              <ContactTitle>Tel</ContactTitle>
+              <ContactContent>02-1234-5678</ContactContent>
+            </Contact>
+            <Contact>
+              <ContactTitle>Email</ContactTitle>
+              <ContactContent>edmicbio@edmicbio.com</ContactContent>
+            </Contact>
+            <Contact>
+              <ContactTitle>Location</ContactTitle>
+              <ContactContent>
+                Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu, Seoul, Republic of Korea
+R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business Incubator)
+              </ContactContent>
+            </Contact>
+          </Contacts>
+        </Col>
+      </Row>
+    </FooterContainer>
+  </Footer>
+);
+
+const Contacts = styled.div`
+`;
+const Contact = styled.div`
+`;
+const ContactTitle = styled.div`
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 154.9%;
+`;
+const ContactContent = styled.div`
+  font-size: 12px;
+  line-height: 15px;
+  color: #454857;
+  opacity: 0.7;
+`;
+
 const FooterContainer = styled.div`
-  margin: 0 ${margin_mobile}px;
+  margin: 0 ${side_padding_mobile}px;
   background: #ffffff;
   box-shadow: 0px -1px 0px rgba(118, 118, 118, 0.25);
   border-radius: 2px;
   padding: 23px 0px 32px 0px;
-  ${mediaQueries("sm")} {
-    margin: 0 ${margin_desktop}px;
+  ${mediaQueriesBiggerThan("sm")} {
+    margin: 0 ${side_padding_desktop}px;
   }
 `;
 
@@ -25,7 +90,7 @@ const Logo = styled.div`
   background-size: cover;
   background-image: url("/images/landing/logo-m.png");
 
-  ${mediaQueries("sm")} {
+  ${mediaQueriesBiggerThan("sm")} {
     width: 163px;
     height: 32px;
     background-image: url("/images/landing/logo.png");
@@ -37,7 +102,7 @@ const Copyright = styled.div`
   font-weight: 600;
   line-height: 25px;
   letter-spacing: 0em;
-  color: #1c1d23;
+  color: ${GRAY90};
 `;
 
 const RightsReserved = styled.div`
@@ -64,32 +129,3 @@ const FollowUsIcons = styled.div`
   margin-top: 7px;
 `;
 const FollowUsIcon = styled.div``;
-
-export default () => (
-  <Footer style={{ padding: 0, backgroundColor: "white" }}>
-    <FooterContainer>
-      <Row>
-        <Col span={12}>
-          <Link href="/">
-            <Logo />
-          </Link>
-          <Copyright>
-            Investigate your drug with 3D biomimicry 3D organ-on-a-chip
-          </Copyright>
-          <RightsReserved>
-            © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |  
-            <br/>
-            Powered by EDmicBio Inc.
-          </RightsReserved>
-          <FollowUsContainer>
-            <FollowUsTitle>Follow us</FollowUsTitle>
-            <FollowUsIcons>
-              <FollowUsIcon></FollowUsIcon>
-            </FollowUsIcons>
-          </FollowUsContainer>
-        </Col>
-        <Col span={12}>2</Col>
-      </Row>
-    </FooterContainer>
-  </Footer>
-);

@@ -1,0 +1,19 @@
+export const RED10 = "#FC9F97";
+export const RED20 = "#EE6559";
+export const RED30 = "#DC5247";
+export const RED40 = "#C63F34";
+export const RED50 = "#AF3A30";
+export const RED60 = "#993129";
+export const RED70 = "#802821";
+export const RED80 = "#6D221B";
+export const RED90 = "#4C1814";
+
+export const GRAY10 = "#F7F7F7";
+export const GRAY20 = "#D8D8DA";
+export const GRAY30 = "#A2A4B0";
+export const GRAY40 = "#80828F";
+export const GRAY50 = "#6B6D7C";
+export const GRAY60 = "#525462";
+export const GRAY70 = "#454857";
+export const GRAY80 = "#393B47";
+export const GRAY90 = "#1C1D23";
