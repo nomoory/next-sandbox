@@ -1,5 +1,6 @@
-export default ({ width = 32, height = 32, color = "black" }) => (
+export default ({ width = 32, height = 32, color = "black", style = {} }) => (
   <svg
+    style={style}
     width={width}
     height={height}
     viewBox={`0 0 ${width} ${height}`}

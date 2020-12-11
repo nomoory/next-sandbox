@@ -2,14 +2,17 @@ import styled from 'styled-components'
 import Layout from "components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import { inject, observer } from "mobx-react";
-import BrandVideo from "components/BrandVideo";
+import BrandVideo from "./components/BrandVideo";
+import Slogan from "./components/Slogan";
+import NewsAndAnnouncement from "./components/NewsAndAnnouncement";
 
 const Home = ({ allPostsData, templateStore }) => {
   return (
     <Layout home>
       <PageContainer>
         <BrandVideo />
-
+        <Slogan />
+        <NewsAndAnnouncement />
       </PageContainer>
     </Layout>
   );

@@ -13,6 +13,7 @@
     "deploy:production": "next build & next export & firebase deploy --only hosting:production"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "antd": "^4.8.5",
     "date-fns": "^2.11.1",
     "firebase": "^8.1.1",

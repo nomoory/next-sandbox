@@ -1,12 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export const bodyRegular = css`
+font-family: Montserrat;
+font-size: 16px;
+font-style: normal;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+  color: #000000;
+  font-weight: 400;
+`;
+
+export const bodyBold = css`
+  ${bodyRegular}
+  font-weight: 600;
+`;
 
 export default styled.div`
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  line-height: 28px;
-  letter-spacing: 0em;
-  text-align: left;
-  ${props.bold ? "font-weight: 600;" : "font-weight: 400;"}
-  color: #000000;
+  ${(props) => (props.bold ? bodyBold : bodyRegular)}
 `;

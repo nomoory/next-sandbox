@@ -1,13 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export default styled.div`
+export const caption1Regular = css`
   font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
-  line-height: 17px;
+  line-height: 24.5px
   letter-spacing: 0em;
   text-align: left;
-
-  ${props.bold ? "font-weight: 600;" : "font-weight: 400;"}
   color: #000000;
+  font-weight: 400;
+`;
+
+export const caption1Bold = css`
+  ${caption1Regular}
+  font-weight: 600;
+`;
+
+export default styled.div`
+  ${(props) => (props.bold ? caption1Bold : caption1Regular)}
 `;

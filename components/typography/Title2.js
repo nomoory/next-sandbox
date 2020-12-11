@@ -1,12 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export default styled.div`
+export const titleRegular = css`
   font-family: Montserrat;
   font-size: 24px;
   font-style: normal;
   line-height: 29px;
   letter-spacing: 0em;
   text-align: left;
-  ${props.bold ? "font-weight: 600;" : "font-weight: 400;"}
   color: #000000;
+  font-weight: 400;
+`;
+
+export const titleBold = css`
+  ${titleRegular}
+  font-weight: 600;
+`;
+
+export default styled.div`
+  ${(props) => (props.bold ? titleBold : titleRegular)}
 `;

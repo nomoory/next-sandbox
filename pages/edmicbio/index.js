@@ -1,44 +1,48 @@
+import styled from "styled-components";
 import Layout from "components/layout";
-import utilStyles from "styles/utils.module.css";
 import { inject, observer } from "mobx-react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const Home = ({ templateStore }) => {
+const SUBJECTS = [
+  "vision",
+  "organ-on-a-chip",
+  "medical-device",
+  "team",
+  "history",
+  "news",
+  "announcement",
+  "careers",
+];
+
+const EDmicBio = ({ templateStore }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    for (let subject of SUBJECTS) {
+      router.prefetch(`edmicbio/${subject}`);
+    }
+    router.push(`/edmicbio/${SUBJECTS[0]}`);
+  }, []);
+
   return (
-    <Layout>
-      <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{" "}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-        
-        <div>isLoading: {templateStore.isLoading ? "yes" : "no"}</div>
-        <div>{templateStore.dataArray.map((data) => data.toString())}</div>
-        <div>{templateStore.data?.time}</div>
-        <button
-          onClick={(e) => {
-            templateStore.loadArray();
-            templateStore.setData({ time: Date.now() });
-            console.log({ templateStore: templateStore.dataArray });
-          }}
-        >
-          test
-        </button>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-        </ul>
-      </section>
+    <Layout EDmicBio>
+      <PageContainer></PageContainer>
     </Layout>
   );
 };
 
-export default inject("templateStore")(observer(Home));
+const PageContainer = styled.section`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export default inject("templateStore")(observer(EDmicBio));
 
 export async function getStaticProps() {
   return {
-    props: {
-    },
+    props: {},
   };
 }

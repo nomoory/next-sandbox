@@ -6,10 +6,11 @@ import {
   side_padding_mobile,
   mediaQueriesBiggerThan,
 } from "../styles";
-import { GRAY90 } from "../styles/colors";
 import FacebookIcon from "components/icons/FacebookIcon";
 import YoutubeIcon from "components/icons/YoutubeIcon";
 import InstagramIcon from "components/icons/InstagramIcon";
+import Caption2, { caption2Bold } from "components/typography/Caption2";
+import { bodyBold } from "components/typography/Body";
 
 const snsLinks = [
   {
@@ -40,9 +41,11 @@ export default () => (
             Investigate your drug with 3D biomimicry 3D organ-on-a-chip
           </Copyright>
           <RightsReserved>
-            © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |
-            <br />
-            Powered by EDmicBio Inc.
+            <Caption2>
+              © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |
+              <br />
+              Powered by EDmicBio Inc.
+            </Caption2>
           </RightsReserved>
           <FollowUsContainer>
             <FollowUsTitle>Follow us</FollowUsTitle>
@@ -123,17 +126,14 @@ const Logo = styled.div`
 
 const Copyright = styled.div`
   margin-top: 24px;
-  font-weight: 600;
-  line-height: 25px;
-  letter-spacing: 0em;
-  color: ${GRAY90};
+  ${caption2Bold}
+
+  ${mediaQueriesBiggerThan("sm")} {
+    ${bodyBold}
+  }
 `;
 
 const RightsReserved = styled.div`
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0em;
-  color: #80828f;
   margin-top: 16px;
 `;
 
