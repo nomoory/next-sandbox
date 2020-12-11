@@ -8,6 +8,13 @@ const translations = {
   "announcement": "Announcement",
   "careers": "Careers",
   "vision": "Vision",
+
+  "technology": "Technology",
+  "3d-bioprinting": "3D Bioprinting",
+  "bioink": "Bioink",
+  "collaborations": "Collaborations",
+  "microfluidics": "Microfluidics",
+  "publications-and-patents": "Publications & Patents",
 };
 
 export const t = (key) => {

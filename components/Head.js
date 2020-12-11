@@ -1,7 +1,7 @@
 import Head from "next/head";
 export const siteTitle = "EDmicBio";
 
-export default () => (
+const CustomHead = () => (
   <Head>
     <link rel="icon" href="/favicon.ico" />
     <meta
@@ -18,3 +18,5 @@ export default () => (
     <meta name="twitter:card" content="summary_large_image" />
   </Head>
 );
+
+export default CustomHead;

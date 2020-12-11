@@ -19,8 +19,7 @@ const ComponentContainer = styled.div`
   }
 `;
 
-
-export default () => (
+const ComponentTemplate = () => (
   <ComponentContainer>
     <Headline>
       Slogan
@@ -28,3 +27,5 @@ export default () => (
 
   </ComponentContainer>
 )
+
+export default ComponentTemplate;

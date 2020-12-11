@@ -58,7 +58,7 @@ const ListFooter = styled.div`
   width: 100%;
 `;
 
-export default () => (
+const NewsAndAnnouncement = () => (
   <ComponentContainer>
     <Row style={{ width: "100%" }} gutter={[32, gutter]}>
       <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10, offset: 2 }}>
@@ -94,3 +94,5 @@ export default () => (
     </Row>
   </ComponentContainer>
 );
+
+export default NewsAndAnnouncement;

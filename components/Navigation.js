@@ -59,21 +59,17 @@ export const getSubCategoryIdsByCategoryid = (categoryId) => {
       ];
     case "technology":
       return [
-        "vision",
-        "organ-on-a-chip",
-        "medical-device",
-        "team",
-        "history",
-        "news",
-        "announcement",
-        "careers",
+        "3d-bioprinting",
+        "bioink",
+        "collaborations",
+        "microfluidics",
+        "publications-and-patents",
       ];
     default:
       break;
   }
 };
-
-export default () => {
+const Navigation = () => {
   const router = useRouter();
   const { pathname } = router;
   const pathes = pathname.split("/");
@@ -110,3 +106,5 @@ export default () => {
     </NavigationContainer>
   );
 };
+
+export default Navigation;

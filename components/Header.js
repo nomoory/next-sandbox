@@ -31,7 +31,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.img.attrs(() => ({
-  src: "/images/common/logo.png"
+  src: "/images/common/logo.png",
 }))`
   width: 124px;
   color: ${({ theme }) => theme.colors.primary};
@@ -75,7 +75,7 @@ const DrawerButton = styled.button`
   ${mediaQueriesBiggerThan("sm")} {
   }
 `;
-export default () => {
+const Header = () => {
   const router = useRouter();
   const [mobileDrawalVisible, setMobileDrawalVisible] = useState(false);
   const navigationItems = [
@@ -119,7 +119,7 @@ export default () => {
           ))}
         </DesktopNavigationContainer>
         <MobileDrawerIconContainer>
-          <DrawerButton 
+          <DrawerButton
             onClick={() => {
               setMobileDrawalVisible(true);
             }}
@@ -130,8 +130,12 @@ export default () => {
       </HeaderContainer>
       <MobileDrawer
         visible={mobileDrawalVisible}
-        closeDrawer={() => { setMobileDrawalVisible(false); }}
+        closeDrawer={() => {
+          setMobileDrawalVisible(false);
+        }}
       />
     </>
   );
 };
+
+export default Header;

@@ -16,21 +16,20 @@ import { bodyBold } from "components/typography/Body";
 const snsLinks = [
   {
     IconComponent: FacebookIcon,
-    url: "",
+    link: "facebook",
   },
   {
     IconComponent: YoutubeIcon,
-    url: "",
+    link: "youtube",
   },
   {
     IconComponent: InstagramIcon,
-    url: "",
+    link: "insta",
   },
 ];
 
 const { Footer } = Layout;
-
-export default () => (
+const CustomFooter = () => (
   <Footer
     style={{
       backgroundColor: "white",
@@ -176,3 +175,5 @@ const FollowUsIcon = styled.a`
     margin-left: 32px;
   }
 `;
+
+export default CustomFooter;

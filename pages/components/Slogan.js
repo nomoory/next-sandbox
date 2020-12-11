@@ -46,14 +46,14 @@ const SloganContent = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  ${mediaQueriesBiggerThan("sm")} {  
+  ${mediaQueriesBiggerThan("sm")} {
     padding-left: 24px;
     align-items: flex-start;
     text-align: start;
   }
 `;
 
-export default () => (
+const Slogan = () => (
   <ComponentContainer>
     <Row style={{ width: "100%" }} gutter={gutter}>
       <Col span={24}>
@@ -70,7 +70,7 @@ export default () => (
           <Body bold style={{ marginTop: 25 }}>
             EDmicBio Inc.
           </Body>
-          <Caption1 style={{ marginTop: 24, color: GRAY40}}>
+          <Caption1 style={{ marginTop: 24, color: GRAY40 }}>
             We develop 3D Organ-on-a-chip and medical devices that mimic the
             tissues and organs of the human body using in house developed
             technologies to improve the quality of the human life
@@ -80,3 +80,5 @@ export default () => (
     </Row>
   </ComponentContainer>
 );
+
+export default Slogan;

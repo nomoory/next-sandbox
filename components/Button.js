@@ -48,7 +48,7 @@ const ButtonContainer = styled.div`
       }
       &:hover {
         border-color: ${GRAY90};
-        background-color: #F7F7F7 !important;
+        background-color: #f7f7f7 !important;
         span {
           opacity: 100%;
           color: ${GRAY90};
@@ -79,7 +79,7 @@ const ButtonContainer = styled.div`
       }
       &:hover {
         border-color: ${RED70};
-        background-color: #FFF2F1 !important;
+        background-color: #fff2f1 !important;
         span {
           opacity: 100%;
           color: ${RED70};
@@ -93,11 +93,12 @@ const ButtonContainer = styled.div`
     }
   }
 `;
-
-export default (props) => (
+const CustomButton = (props) => (
   <ButtonContainer>
     <Button {...props} icon={props.icon}>
       {props.children}
     </Button>
   </ButtonContainer>
 );
+
+export default CustomButton;

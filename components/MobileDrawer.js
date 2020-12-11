@@ -7,7 +7,7 @@ const DrawerContainer = styled.div`
   flex-direction: column;
 
 `;
-export default ({ visible, closeDrawer }) => {
+const MobileDrawer = ({ visible, closeDrawer }) => {
   return (
     <Drawer
       title="Basic Drawer"
@@ -25,3 +25,5 @@ export default ({ visible, closeDrawer }) => {
     </Drawer>
   );
 };
+
+export default MobileDrawer;

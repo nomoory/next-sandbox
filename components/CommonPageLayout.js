@@ -9,7 +9,7 @@ const PageContainer = styled.section`
   align-items: center;
 `;
 
-export default ({ children }) => (
+const CommonPageLayout = ({ children }) => (
   <PageContainer>
     <Row style={{ width: "100%" }}>
       <Col xs={null} sm={{ span: 4 }}>
@@ -25,3 +25,5 @@ export default ({ children }) => (
     </Row>
   </PageContainer>
 );
+
+export default CommonPageLayout;
