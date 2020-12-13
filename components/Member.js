@@ -41,6 +41,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: rgba(6, 6, 6, 0.6);
+  transition: all 0.3s;
   &:hover {
     opacity: 1;
   }
