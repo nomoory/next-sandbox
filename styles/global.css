@@ -40,3 +40,7 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer;
 	outline: inherit;
 }
+
+p, span {
+  margin: 0;
+}

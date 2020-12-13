@@ -6,8 +6,8 @@ export const caption1Regular = css`
   font-style: normal;
   line-height: 24.5px
   letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
+  text-align: inherit;
+  color: inherit;
   font-weight: 400;
 `;
 
@@ -16,6 +16,6 @@ export const caption1Bold = css`
   font-weight: 600;
 `;
 
-export default styled.div`
+export default styled.span`
   ${(props) => (props.bold ? caption1Bold : caption1Regular)}
 `;
