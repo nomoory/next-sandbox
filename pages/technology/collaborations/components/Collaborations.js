@@ -66,7 +66,7 @@ const Collaborations = () => {
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
-            <Headline bold>Medical Device</Headline>
+            <Headline bold>Collaboration</Headline>
             <Divider />
             <DescriptionContainer>
               Collaboration과 관련한 EDmicBio 간단한 코멘트

@@ -12,6 +12,25 @@ import {
   gutter_vertical,
 } from "styles";
 import { GRAY50, RED40, GRAY20 } from "styles/colors";
+import PrintingVideo from "./PrintingVideo";
+
+const VIDEOS = [
+  // {
+  //   type: "video/avi",
+  //   src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/stent_printing.avi?alt=media&token=ef91b6b2-4c0a-4530-906d-1a2f9fecd9a5",
+  //   title: "스텐트 프린팅",
+  // },
+  {
+    type: "video/mp4",
+    src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/blood_vessel_model_printing.mp4?alt=media&token=c779746e-5f57-40b6-bc4b-f0af2722efa2",
+    title: "혈관 모델 프린팅",
+  },
+  // {
+  //   type: "video/avi",
+  //   src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/scaffold_printing.avi?alt=media&token=bc579d89-31f6-4d4b-989b-1aa8422d2d3d",
+  //   title: "Scaffold 프린팅",
+  // },
+];
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -53,6 +72,10 @@ const TextContainer = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
     margin-top: 0;
     margin-bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 `;
 
@@ -99,67 +122,74 @@ const SecondTextContainer = styled(TextContainer)`
   }
 `;
 
-const MedicalDevice = () => {
+const ThreeDimensionalBioprinting = () => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
-            <Headline bold>Medical Device</Headline>
+            <Headline bold>3D Bioprinting</Headline>
             <Divider />
             <DescriptionContainer>
               <Body>
-                (주) 에드믹바이오는 3D 바이오프린팅 기술을 기반으로{" "}
+                (주) 에드믹바이오의 3D 바이오프린팅 기술은 장비설계 및 제작,
+                조직/장기 프린팅, <BrOnDesktop />
+                3D 장기칩 및 조직/장기 구현을 모두 아우르는 기술입니다
                 <BrOnDesktop />
-                의료기기를 개발합니다.
               </Body>
             </DescriptionContainer>
           </Header>
         </Col>
-        <Col xs={24}>
-          <RedBoxContainer>
-            <RedBox>
-              <Body bold>스탠드</Body>
-            </RedBox>
-          </RedBoxContainer>
-        </Col>
-        <Col style={{ marginTop: 50 }}>
+        <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <FirstImage src="/images/edmicbio/medical_device_1_m.png" />
+              <FirstImage src="/images/technology/3Dbioprinting_m1.png" />
             </Col>
             <Col xs={24} sm={12}>
               <TextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  스텐트는 동맥경화로 인하여 막힌 혈관을 뚫어준 뒤 재협착을
-                  방지하기 위해 삽입해주는 의료기기입니다. 보통 스텐트는
-                  금속으로 많이 제작되는데, 삽입된 이후 평생토록 몸속에 남아서
-                  혈관이 다시 막히는 문제가 발생합니다. <br />
-                  (주) 에드믹바이오는 체내에서 녹는 물질을 이용하여 스텐트를
-                  개발함으로써 이러한 문제를 해결합니다.
+                  (주) 에드믹바이오는원하는 형태의 3D 장기칩과 조직/장기를
+                  제작하기 위한 3D 바이오프린팅 시스템을 설계 및 제작할 수
+                  있습니다.
                 </Caption1>
               </TextContainer>
             </Col>
           </Row>
         </Col>
-        <Col style={{ marginTop: 50 }}>
+        <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/edmicbio/medical_device_2_m.png" />
+              <SecondImage src="/images/technology/3Dbioprinting_m2.png" />
             </Col>
             <Col xs={24} sm={12}>
               <SecondTextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  다리혈관 스텐트를 메인으로 하여 다른 도관형 조직에도 적용할 수
-                  있는 스텐트를 개발하고 있습니다.
+                  (주) 에드믹바이오 자체적으로 개발된 3D 바이오프린팅 시스템을
+                  기반으로 3D 형태의 조직/장기를 제작하거나, 3D 장기칩을 개발할
+                  수 있습니다.
+                  <br />
+                  또한, 다양한 형태로 조직/장기 및 의료기기를 제작하는 노하우는
+                  향후 ~한 결과를 도출할 수 있도록 해주는 원동력이 됩니다.
                 </Caption1>
               </SecondTextContainer>
             </Col>
           </Row>
+        </Col>
+        <Col xs={24}>
+          <RedBoxContainer>
+            <RedBox>
+              <Body bold>VIDEO</Body>
+            </RedBox>
+          </RedBoxContainer>
+        </Col>
+        <Col xs={12} sm={8}>
+          {VIDEOS.map(({ title, src, type }) => (
+            <PrintingVideo title={title} src={src} type={type} />
+          ))}
         </Col>
       </Row>
     </ComponentContainer>
   );
 };
 
-export default MedicalDevice;
+export default ThreeDimensionalBioprinting;

@@ -86,7 +86,7 @@ const Vision = () => {
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
-            <Headline bold>Medical Device</Headline>
+            <Headline bold>Bioink</Headline>
             <Divider />
             <DescriptionContainer>
               <Body>

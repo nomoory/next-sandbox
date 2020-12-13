@@ -48,39 +48,39 @@ const MEMBERS = [
     name: "하동헌",
     position: "CEO",
     positionSub: "(Chief Executive Officer)",
-    photo: "/images/edmicbio/team/하동헌.png",
+    photo: "/images/edmicbio/team/hdh.png",
   },
   {
     name: "이형석",
     position: "CTO",
     positionSub: "(Chief Technology Officer)",
-    photo: "/images/edmicbio/team/이형석.png",
+    photo: "/images/edmicbio/team/lhs.png",
   },
   {
     name: "조동우",
     position: "기술고문",
-    photo: "/images/edmicbio/team/조동우.png",
+    photo: "/images/edmicbio/team/jdw.png",
   },
   {
     name: "장진아",
     position: "기술고문",
-    photo: "/images/edmicbio/team/장진아.png",
+    photo: "/images/edmicbio/team/jja.png",
   },
   {
     name: "이한철",
     position: "기술고문",
-    photo: "/images/edmicbio/team/이한철.png",
+    photo: "/images/edmicbio/team/lhc.png",
   },
   {
     name: "박태준",
     position: "CFO",
     positionSub: "(Chief Financial Officer)",
-    photo: "/images/edmicbio/team/박태준.png",
+    photo: "/images/edmicbio/team/btj.png",
   },
   {
     name: "이승록",
     position: "연구원",
-    photo: "/images/edmicbio/team/이승록.png",
+    photo: "/images/edmicbio/team/lsl.png",
   },
 ];
 
@@ -90,7 +90,7 @@ const Team = () => {
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
-            <Headline bold>Medical Device</Headline>
+            <Headline bold>Team</Headline>
             <Divider />
           </Header>
         </Col>

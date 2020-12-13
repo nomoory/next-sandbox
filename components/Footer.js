@@ -53,8 +53,7 @@ const CustomFooter = () => (
           <RightsReserved>
             <Caption2>
               © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |
-              <br />
-              Powered by EDmicBio Inc.
+              <span style={{wordBreak: "keep-all"}}>Powered by EDmicBio Inc.</span>
             </Caption2>
           </RightsReserved>
           <FollowUsContainer>
