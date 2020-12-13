@@ -6,9 +6,10 @@ export const titleRegular = css`
   font-style: normal;
   line-height: 29px;
   letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
   font-weight: 400;
+  text-align: inherit;
+  color: inherit;
+  word-break: keep-all;
 `;
 
 export const titleBold = css`
@@ -16,6 +17,6 @@ export const titleBold = css`
   font-weight: 600;
 `;
 
-export default styled.div`
+export default styled.span`
   ${(props) => (props.bold ? titleBold : titleRegular)}
 `;

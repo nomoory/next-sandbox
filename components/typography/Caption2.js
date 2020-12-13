@@ -6,9 +6,10 @@ export const caption2Regular = css`
   font-style: normal;
   line-height: 15px;
   letter-spacing: 0em;
+  font-weight: 400;
   text-align: inherit;
   color: inherit;
-  font-weight: 400;
+  word-break: keep-all;
 `;
 
 export const caption2Bold = css`

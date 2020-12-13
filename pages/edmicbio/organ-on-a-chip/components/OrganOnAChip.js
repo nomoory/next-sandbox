@@ -9,6 +9,7 @@ import {
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
+  gutter_vertical,
 } from "styles";
 import { GRAY50, RED30, RED40 } from "styles/colors";
 
@@ -98,7 +99,7 @@ const RedBox = styled.div`
 const Vision = () => {
   return (
     <ComponentContainer>
-      <Row style={{ width: "100%" }} gutter={gutter}>
+      <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
             <Headline bold>Organ-on-a-chip</Headline>

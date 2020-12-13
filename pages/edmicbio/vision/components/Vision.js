@@ -10,6 +10,7 @@ import {
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
+  gutter_vertical,
 } from "styles";
 
 const ComponentContainer = styled.div`
@@ -51,10 +52,10 @@ const DescriptionKr = styled.div`
 `;
 
 const Vision = () => {
-  
+
   return (
     <ComponentContainer>
-      <Row style={{ width: "100%" }} gutter={gutter}>
+      <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col sm={24} md={24}>
           <VisionHeader>
             <Headline bold>VISION</Headline>

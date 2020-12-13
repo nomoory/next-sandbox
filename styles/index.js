@@ -1,17 +1,24 @@
 export const horizontal_gutter_desktop = 30;
-export const vertical_gutter_desktop = 72;
+export const vertical_gutter_desktop = 30;
 export const gutters_desktop = [
   horizontal_gutter_desktop,
   vertical_gutter_desktop,
 ];
 export const horizontal_gutter_mobile = 30;
-export const vertical_gutter_mobile = 72;
+export const vertical_gutter_mobile = 24;
 export const gutters = [horizontal_gutter_mobile, vertical_gutter_mobile];
 export const gutter = {
   xs: horizontal_gutter_mobile,
   sm: horizontal_gutter_desktop,
   md: horizontal_gutter_desktop,
   lg: horizontal_gutter_desktop,
+};
+
+export const gutter_vertical = {
+  xs: vertical_gutter_mobile,
+  sm: vertical_gutter_desktop,
+  md: vertical_gutter_desktop,
+  lg: vertical_gutter_desktop,
 };
 
 export const side_padding_mobile = 20 - horizontal_gutter_mobile / 2;

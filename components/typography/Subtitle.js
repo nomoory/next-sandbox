@@ -6,8 +6,10 @@ export const subtitleRegular = css`
   font-weight: normal;
   font-size: 18px;
   line-height: 31.5px;
-  color: #000000;
   font-weight: 400;
+  text-align: inherit;
+  color: inherit;
+  word-break: keep-all;
 `;
 
 export const subtitleBold = css`
@@ -15,6 +17,6 @@ export const subtitleBold = css`
   font-weight: 600;
 `;
 
-export default styled.div`
+export default styled.span`
   ${(props) => (props.bold ? subtitleBold : subtitleRegular)}
 `;

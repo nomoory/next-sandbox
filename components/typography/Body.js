@@ -7,7 +7,9 @@ export const bodyRegular = css`
   line-height: 28px;
   letter-spacing: 0em;
   font-weight: 400;
+  text-align: inherit;
   color: inherit;
+  word-break: keep-all;
 `;
 
 export const bodyBold = css`

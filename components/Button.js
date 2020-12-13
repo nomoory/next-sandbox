@@ -93,6 +93,7 @@ const ButtonContainer = styled.div`
     }
   }
 `;
+
 const CustomButton = (props) => (
   <ButtonContainer>
     <Button {...props} icon={props.icon}>
