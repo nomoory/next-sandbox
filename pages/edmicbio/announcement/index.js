@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const AnnouncementPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <Announcement />
       </CommonPageLayout>

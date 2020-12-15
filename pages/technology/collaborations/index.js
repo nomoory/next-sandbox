@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const CollaborationsPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <Collaborations />
       </CommonPageLayout>

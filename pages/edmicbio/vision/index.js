@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const VisionPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout>
       <CommonPageLayout>
         <Vision />
       </CommonPageLayout>

@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const OrganOnAChipPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <OrganOnAChip />
       </CommonPageLayout>

@@ -21,8 +21,11 @@ export const gutter_vertical = {
   lg: vertical_gutter_desktop,
 };
 
-export const side_padding_mobile = 20 - horizontal_gutter_mobile / 2;
-export const side_padding_desktop = 40 - horizontal_gutter_desktop / 2;
+export const original_side_padding_mobile = 20;
+export const original_side_padding_desktop = 40;
+// adjusted for ant design gutter
+export const side_padding_mobile = original_side_padding_mobile - horizontal_gutter_mobile / 2;
+export const side_padding_desktop = original_side_padding_desktop - horizontal_gutter_desktop / 2;
 export const header_height_mobile = 56;
 export const header_height_desktop = 70;
 

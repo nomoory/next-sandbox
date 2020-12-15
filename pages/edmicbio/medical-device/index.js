@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const MedicalDevicePage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <MedicalDevice />
       </CommonPageLayout>

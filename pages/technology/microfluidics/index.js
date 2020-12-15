@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const MicrofluidicsPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <Microfluidics />
       </CommonPageLayout>

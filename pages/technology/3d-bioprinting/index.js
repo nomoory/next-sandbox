@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const ThreeDimensionalBioprintingPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <ThreeDimensionalBioprinting />
       </CommonPageLayout>

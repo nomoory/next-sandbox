@@ -5,7 +5,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { header_height_mobile } from "styles";
 import ArrowRightIcon from "components/icons/ArrowRightIcon";
-
+import { getSubCategoryIdsByCategoryid } from "components/Navigation";
 const DrawerContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,25 +40,34 @@ const BUTTONS = [
   },
 ];
 
-const MobileDrawer = ({ visible, closeDrawer }) => {
+const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
   const router = useRouter();
   const pathname = router.pathname;
   const mainPath = pathname.split("/")[1];
+  const buttons = getSubCategoryIdsByCategoryid(mainPath).map((key) => ({
+    name: key
+      .split("")
+      .map((char, j) => (j === 0 ? char.toLocaleUpperCase() : char))
+      .join("")
+      .split("-")
+      .join(" "),
+    href: `/${mainPath}/${key}`,
+  }));
   return (
     <Drawer
-      placement="right"
+      placement="top"
       closable={false}
       onClose={closeDrawer}
       visible={visible}
       bodyStyle={{ padding: 0 }}
+      zIndex={10}
+      height={(2 + buttons.length) * header_height_mobile}
     >
       <DrawerContainer>
-        <BoxContainer>
-          <CloseDrawerButton onClick={closeDrawer}>
-            <ArrowRightIcon width={32} height={32} />
-          </CloseDrawerButton>
-        </BoxContainer>
-        {BUTTONS.map(({ name, href }) => (
+        <BoxContainer></BoxContainer>
+        <BoxContainer></BoxContainer>
+
+        {buttons.map(({ name, href }) => (
           <Link key={href} href={href}>
             <BoxContainer>
               <Body bold={`/${mainPath}` === href}>{name}</Body>
@@ -70,4 +79,4 @@ const MobileDrawer = ({ visible, closeDrawer }) => {
   );
 };
 
-export default MobileDrawer;
+export default MobileDrawerFromTop;

@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const TeamPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <Team />
       </CommonPageLayout>

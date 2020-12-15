@@ -5,7 +5,7 @@ import CommonPageLayout from "components/CommonPageLayout";
 
 const BioinkPage = ({ templateStore }) => {
   return (
-    <Layout home>
+    <Layout >
       <CommonPageLayout>
         <Bioink />
       </CommonPageLayout>

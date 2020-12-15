@@ -91,7 +91,7 @@ const MONTHES = [
   "December",
 ];
 
-const AnnouncementItem = ({ id, title, content, updatedAt, createdAt }) => {
+const AnnouncementItem = ({ id, title = "", content = "", updatedAt, createdAt }) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
   const updatedTime = new Date(updatedAt);

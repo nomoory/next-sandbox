@@ -1,33 +1,29 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { Fragment } from "react";
 import {
-  side_padding_mobile,
-  side_padding_desktop,
+  original_side_padding_mobile,
+  original_side_padding_desktop,
   mediaQueriesBiggerThan,
   header_height_mobile,
   header_height_desktop,
 } from "styles";
 import { useState } from "react";
 import MobileDrawer from "components/MobileDrawer";
+import MobileDrawerFromTop from "components/MobileDrawerFromTop";
 import HambergerIcon from "components/icons/HambergerIcon";
+import Caption2 from "./typography/Caption2";
+import Caption1 from "./typography/Caption1";
+import ArrowRightGrayIcon from "components/icons/ArrowRightGrayIcon";
+import ArrowBottomIcon from "components/icons/ArrowBottomIcon";
+import { RED40 } from "@/styles/colors";
 
 const HeaderContainer = styled.header`
   position: fixed;
   z-index: 12; // higher than ant design Anchor and footer
   width: 100%;
-  padding: 0 ${side_padding_mobile}px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   background-color: white;
-  height: ${header_height_mobile}px;
-
-  ${mediaQueriesBiggerThan("sm")} {
-    padding: 0 ${side_padding_desktop}px;
-    height: ${header_height_desktop}px;
-  }
 `;
 
 const Logo = styled.img.attrs(() => ({
@@ -75,9 +71,51 @@ const DrawerButton = styled.button`
   ${mediaQueriesBiggerThan("sm")} {
   }
 `;
-const Header = () => {
+const Upper = styled.div`
+  padding-left: ${original_side_padding_mobile}px;
+  padding-right: ${original_side_padding_mobile}px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: ${header_height_mobile}px;
+  box-shadow: 0px 1px 0px #f4f4f4;
+  ${mediaQueriesBiggerThan("sm")} {
+    padding-left: ${original_side_padding_desktop}px;
+    padding-right: ${original_side_padding_desktop}px;
+    height: ${header_height_desktop}px;
+  }
+`;
+
+const Bottom = styled.div`
+  padding-left: ${original_side_padding_mobile}px;
+  padding-right: ${original_side_padding_mobile}px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: ${header_height_mobile}px;
+  box-shadow: 0px 1px 0px #f4f4f4;
+  ${mediaQueriesBiggerThan("sm")} {
+    display: none;
+  }
+`;
+const Breadcrumb = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const DropDownButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const Header = ({ home }) => {
   const router = useRouter();
   const [mobileDrawalVisible, setMobileDrawalVisible] = useState(false);
+  const [mobileTopDrawalVisible, setMobileTopDrawalVisible] = useState(false);
   const navigationItems = [
     {
       id: "edmicbio",
@@ -104,34 +142,92 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <Link href="/">
-          <Logo />
-        </Link>
-        <DesktopNavigationContainer>
-          {navigationItems.map((item) => (
-            <NavigationItem
-              key={item.id}
-              href={item.link}
-              active={router.pathname.includes(item.link)}
+        <Upper>
+          <Link href="/">
+            <Logo />
+          </Link>
+          <DesktopNavigationContainer>
+            {navigationItems.map((item) => (
+              <NavigationItem
+                key={item.id}
+                href={item.link}
+                active={router.pathname.includes(item.link)}
+              >
+                {item.title}
+              </NavigationItem>
+            ))}
+          </DesktopNavigationContainer>
+          <MobileDrawerIconContainer>
+            <DrawerButton
+              onClick={() => {
+                setMobileDrawalVisible(true);
+              }}
             >
-              {item.title}
-            </NavigationItem>
-          ))}
-        </DesktopNavigationContainer>
-        <MobileDrawerIconContainer>
-          <DrawerButton
-            onClick={() => {
-              setMobileDrawalVisible(true);
-            }}
-          >
-            <HambergerIcon />
-          </DrawerButton>
-        </MobileDrawerIconContainer>
+              <HambergerIcon />
+            </DrawerButton>
+          </MobileDrawerIconContainer>
+        </Upper>
+
+        {!home && (
+          <Bottom>
+            <Breadcrumb>
+              {router.pathname.split("/").map((key, index) => {
+                if (index === 0) return null;
+                return (
+                  <Fragment key={key}>
+                    {index !== 1 && <ArrowRightGrayIcon key={`icon_${key}`} />}
+                    <Caption2 key={`text_${key}`}>
+                      {key
+                        .split("")
+                        .map((char, j) =>
+                          j === 0 ? char.toLocaleUpperCase() : char
+                        )
+                        .join("")
+                        .split("-")
+                        .join(" ")
+                      }
+                    </Caption2>
+                  </Fragment>
+                );
+              })}
+            </Breadcrumb>
+            <DropDownButton
+              onClick={() => {
+                setMobileTopDrawalVisible(!mobileTopDrawalVisible);
+              }}
+            >
+              <Caption1 bold style={{ color: RED40 }}>
+                {router.pathname
+                  .split("/")[2]
+                  .split("")
+                  .map((char, j) => (j === 0 ? char.toLocaleUpperCase() : char))
+                  .join("")
+                  .split("-")
+                  .join(" ")
+                }
+              </Caption1>
+              <ArrowBottomIcon
+                style={{
+                  transform: `rotate(${
+                    mobileTopDrawalVisible ? "180deg" : "0deg"
+                  })`,
+                  transition: "all 0.5s",
+                }}
+              />
+            </DropDownButton>
+          </Bottom>
+        )}
       </HeaderContainer>
       <MobileDrawer
         visible={mobileDrawalVisible}
         closeDrawer={() => {
           setMobileDrawalVisible(false);
+        }}
+      />
+      <MobileDrawerFromTop
+        visible={mobileTopDrawalVisible}
+        closeDrawer={() => {
+          setMobileTopDrawalVisible(false);
         }}
       />
     </>

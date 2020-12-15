@@ -66,6 +66,7 @@ export const getSubCategoryIdsByCategoryid = (categoryId) => {
         "publications-and-patents",
       ];
     default:
+      return [];
       break;
   }
 };
