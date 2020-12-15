@@ -21,7 +21,7 @@ import { RED40 } from "@/styles/colors";
 
 const HeaderContainer = styled.header`
   position: fixed;
-  z-index: 12; // higher than ant design Anchor and footer
+  z-index: 13; // higher than ant design Anchor and footer
   width: 100%;
   background-color: white;
 `;
@@ -138,6 +138,8 @@ const Header = ({ home }) => {
       link: "/contact-us",
     },
   ];
+  const pathname = router.pathname || "";
+  const subCategory = pathname.split("/")[2];
 
   return (
     <>
@@ -151,7 +153,7 @@ const Header = ({ home }) => {
               <NavigationItem
                 key={item.id}
                 href={item.link}
-                active={router.pathname.includes(item.link)}
+                active={pathname.includes(item.link)}
               >
                 {item.title}
               </NavigationItem>
@@ -171,7 +173,8 @@ const Header = ({ home }) => {
         {!home && (
           <Bottom>
             <Breadcrumb>
-              {router.pathname.split("/").map((key, index) => {
+              {pathname.split("/").map((key, index) => {
+                if (!key) return null;
                 if (index === 0) return null;
                 return (
                   <Fragment key={key}>
@@ -184,8 +187,7 @@ const Header = ({ home }) => {
                         )
                         .join("")
                         .split("-")
-                        .join(" ")
-                      }
+                        .join(" ")}
                     </Caption2>
                   </Fragment>
                 );
@@ -197,14 +199,15 @@ const Header = ({ home }) => {
               }}
             >
               <Caption1 bold style={{ color: RED40 }}>
-                {router.pathname
-                  .split("/")[2]
-                  .split("")
-                  .map((char, j) => (j === 0 ? char.toLocaleUpperCase() : char))
-                  .join("")
-                  .split("-")
-                  .join(" ")
-                }
+                {subCategory &&
+                  subCategory
+                    .split("")
+                    .map((char, j) =>
+                      j === 0 ? char.toLocaleUpperCase() : char
+                    )
+                    .join("")
+                    .split("-")
+                    .join(" ")}
               </Caption1>
               <ArrowBottomIcon
                 style={{

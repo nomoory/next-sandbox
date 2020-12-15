@@ -60,7 +60,7 @@ const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
       onClose={closeDrawer}
       visible={visible}
       bodyStyle={{ padding: 0 }}
-      zIndex={10}
+      zIndex={12}
       height={(2 + buttons.length) * header_height_mobile}
     >
       <DrawerContainer>
