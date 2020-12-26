@@ -19,39 +19,19 @@ const BoxContainer = styled.div`
   height: ${header_height_mobile}px;
   box-shadow: 0px 1px 0px #f4f4f4;
 `;
-const CloseDrawerButton = styled.button``;
-
-const BUTTONS = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "EDmicBio",
-    href: "/edmicbio",
-  },
-  {
-    name: "Technology",
-    href: "/technology",
-  },
-  {
-    name: "Contact Us",
-    href: "/contact-us",
-  },
-];
 
 const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
   const router = useRouter();
   const pathname = router.pathname;
-  const mainPath = pathname.split("/")[1];
-  const buttons = getSubCategoryIdsByCategoryid(mainPath).map((key) => ({
+  const [nothing, mainPath, subPath] = pathname.split("/");
+  const buttons = getSubCategoryIdsByCategoryid(mainPath).map(key => ({
     name: key
       .split("")
       .map((char, j) => (j === 0 ? char.toLocaleUpperCase() : char))
       .join("")
       .split("-")
       .join(" "),
-    href: `/${mainPath}/${key}`,
+    href: `/${mainPath}/${key}`
   }));
   return (
     <Drawer
@@ -70,7 +50,7 @@ const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
         {buttons.map(({ name, href }) => (
           <Link key={href} href={href}>
             <BoxContainer>
-              <Body bold={`/${mainPath}` === href}>{name}</Body>
+              <Body bold={subPath && href.includes(`/${subPath}`)}>{name}</Body>
             </BoxContainer>
           </Link>
         ))}
