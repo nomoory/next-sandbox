@@ -5,7 +5,7 @@ import {
   side_padding_desktop,
   side_padding_mobile,
   mediaQueriesBiggerThan,
-  gutter,
+  gutter
 } from "styles";
 import FacebookIcon from "components/icons/FacebookIcon";
 import YoutubeIcon from "components/icons/YoutubeIcon";
@@ -16,16 +16,16 @@ import { bodyBold } from "components/typography/Body";
 const snsLinks = [
   {
     IconComponent: FacebookIcon,
-    link: "facebook",
+    link: "facebook"
   },
   {
     IconComponent: YoutubeIcon,
-    link: "youtube",
+    link: "youtube"
   },
   {
     IconComponent: InstagramIcon,
-    link: "insta",
-  },
+    link: "insta"
+  }
 ];
 
 const { Footer } = Layout;
@@ -35,7 +35,7 @@ const CustomFooter = () => (
       backgroundColor: "white",
       boxShadow: "0px -1px 0px rgba(118, 118, 118, 0.25)",
       padding: "24px 0px 32px 0",
-      zIndex: 11, // higher than ant design Anchor
+      zIndex: 11 // higher than ant design Anchor
     }}
   >
     <FooterContainer>
@@ -52,8 +52,10 @@ const CustomFooter = () => (
           </Copyright>
           <RightsReserved>
             <Caption2>
-              © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |
-              <span style={{wordBreak: "keep-all"}}>Powered by EDmicBio Inc.</span>
+              © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |{" "}
+              <Caption2 style={{ wordBreak: "keep-all" }}>
+                Powered by EDmicBio Inc.
+              </Caption2>
             </Caption2>
           </RightsReserved>
           <FollowUsContainer>
@@ -121,7 +123,7 @@ const FooterContainer = styled.div`
 `;
 
 const Logo = styled.img.attrs(() => ({
-  src: "/images/common/logo.png",
+  src: "/images/common/logo.png"
 }))`
   width: 124px;
   color: ${({ theme }) => theme.colors.primary};

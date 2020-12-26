@@ -7,7 +7,7 @@ import Link from "next/link";
 import {
   header_height_desktop,
   mediaQueriesBiggerThan,
-  side_padding_desktop,
+  side_padding_desktop
 } from "styles";
 import { GRAY60, GRAY40, RED40 } from "styles/colors";
 import { t } from "utils/translation/i18n";
@@ -44,7 +44,7 @@ const Divider = styled.div`
   margin-top: 24px;
 `;
 
-export const getSubCategoryIdsByCategoryid = (categoryId) => {
+export const getSubCategoryIdsByCategoryid = categoryId => {
   switch (categoryId) {
     case "edmicbio":
       return [
@@ -55,15 +55,15 @@ export const getSubCategoryIdsByCategoryid = (categoryId) => {
         "history",
         "news",
         "announcement",
-        "careers",
+        "careers"
       ];
     case "technology":
       return [
         "3d-bioprinting",
         "bioink",
-        "collaborations",
         "microfluidics",
-        "publications-and-patents",
+        "collaborations",
+        "publications-and-patents"
       ];
     default:
       return [];
@@ -85,14 +85,14 @@ const Navigation = () => {
           <Title2 bold>{t(mainCategoryId)}</Title2>
           <Divider />
           <Links>
-            {subCategoryIds.map((id) => {
+            {subCategoryIds.map(id => {
               return (
                 <LinkContainer key={id}>
                   <Link href={`/${mainCategoryId}/${id}`}>
                     <Caption1
                       bold={selectedSubCategoryId === id}
                       style={{
-                        color: selectedSubCategoryId === id ? RED40 : GRAY40,
+                        color: selectedSubCategoryId === id ? RED40 : GRAY40
                       }}
                     >
                       {t(id)}

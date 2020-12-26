@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 import Layout from "components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import { inject, observer } from "mobx-react";
@@ -25,14 +25,13 @@ const PageContainer = styled.section`
   align-items: center;
 `;
 
-
 export default inject("templateStore")(observer(Home));
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData,
-    },
+      allPostsData
+    }
   };
 }

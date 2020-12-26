@@ -4,10 +4,11 @@ import {
   side_padding_desktop,
   side_padding_mobile,
   mediaQueriesBiggerThan,
-  gutter,
+  gutter
 } from "styles";
 
 const VideoContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,9 +32,23 @@ const Video = styled.video`
   }
 `;
 
+const BackgroundImage = styled.div`
+  display: none;
+  ${mediaQueriesBiggerThan("sm")} {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 63%;
+    background-image: url("/images/landing/bg_2.png");
+    background-size: cover;
+  }
+`;
+
 const BrandVideo = () => (
   <VideoContainer>
     <Row style={{ width: "100%" }} gutter={gutter}>
+      <BackgroundImage />
       <Col xs={{ span: 24, offset: 0 }} sm={{ span: 16, offset: 4 }}>
         <Video width="100%" autoPlay loop muted playsInline>
           <source
