@@ -36,7 +36,6 @@ export const getTimeText = (jsTime = null, type = 0) => {
     case 1:
       return `${year}.${monthIndex + 1}.${date}`;
       break;
-
     default:
       return `${month} ${date},${year}`;
       break;

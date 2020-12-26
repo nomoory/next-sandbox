@@ -63,6 +63,9 @@ const ContentContainer = styled.div``;
 const AnnouncementDetail = ({ id, announcementStore }) => {
   useEffect(() => {
     announcementStore.loadById(id);
+    return () => {
+      announcementStore.initData();
+    };
   }, []);
   const { title, content, updatedAt, createdAt } = announcementStore.data || {};
   const { month, date, year } = getTimeComponent(updatedAt);
