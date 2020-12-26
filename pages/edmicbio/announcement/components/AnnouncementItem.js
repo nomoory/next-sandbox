@@ -3,16 +3,10 @@ import Caption2 from "components/typography/Caption2";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { Col, Row } from "antd";
-import {
-  side_padding_mobile,
-  side_padding_desktop,
-  mediaQueriesBiggerThan,
-  gutter,
-  gutter_vertical,
-} from "styles";
+import { mediaQueriesBiggerThan } from "styles";
 import { GRAY20, GRAY30, GRAY60, GRAY90 } from "styles/colors";
 import ArrowRightIcon from "components/icons/ArrowRightIcon";
+import { getTimeText } from "utils";
 
 const AnnouncementItemContainer = styled.div`
   display: flex;
@@ -72,8 +66,8 @@ const ANNOUNCEMENTS = [
     
     With this announcement, Minifab joins Emulate’s growing collaborative community, which is working together to develop and validate the Human Emulation System for use in a wide range of industries that relate to human health, including disease research, drug discovery and development, regulatory sciences, and, ultimately, precision medicine applications for patients. The collaborative agreement allows for Minifab’s team of experts to work closely alongside Emulate biologists, designers, and engineers, and apply their expertise in manufacturing transfer and high-volume manufacturing automation for scaling and commercializing Emulate products.`,
     updatedAt: Date.now(),
-    createdAt: 1607905158766,
-  },
+    createdAt: 1607905158766
+  }
 ];
 
 const MONTHES = [
@@ -88,16 +82,18 @@ const MONTHES = [
   "September",
   "October",
   "November",
-  "December",
+  "December"
 ];
 
-const AnnouncementItem = ({ id, title = "", content = "", updatedAt, createdAt }) => {
+const AnnouncementItem = ({
+  id,
+  title = "",
+  content = "",
+  updatedAt,
+  createdAt
+}) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
-  const updatedTime = new Date(updatedAt);
-  const monthIndex = updatedTime.getMonth();
-  const date = updatedTime.getDate();
-  const year = updatedTime.getFullYear();
   return (
     <AnnouncementItemContainer
       key={title}
@@ -119,10 +115,10 @@ const AnnouncementItem = ({ id, title = "", content = "", updatedAt, createdAt }
               color: GRAY30,
               textOverflow: "ellipsis",
               overflow: "hidden",
-              whiteSpace: "nowrap",
+              whiteSpace: "nowrap"
             }}
           >
-            {`${MONTHES[monthIndex]} ${date},${year}`}
+            {getTimeText(updatedAt)}
           </Caption2>
         </UpdatedAt>
         <Title>
