@@ -7,6 +7,7 @@ import NewsStore from "./NewsStore";
 import AnnouncementStore from "./AnnouncementStore";
 import PublicationStore from "./PublicationStore";
 import PatentStore from "./PatentStore";
+import CareerStore from "./CareerStore";
 
 const isServer = typeof window === "undefined";
 enableStaticRendering(isServer);
@@ -20,6 +21,7 @@ export class RootStore {
   newsStore;
   PublicationStore;
   PatentStore;
+  CareerStore;
 
   constructor(initialData = {}) {
     this.templateStore = new TemplateStore(initialData.templateStore);
@@ -29,6 +31,7 @@ export class RootStore {
     this.newsStore = new NewsStore(initialData.newsStore);
     this.publicationStore = new PublicationStore(initialData.publicationStore);
     this.patentStore = new PatentStore(initialData.patentStore);
+    this.careerStore = new CareerStore(initialData.careerStore);
   }
 }
 

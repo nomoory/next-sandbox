@@ -30,12 +30,12 @@ const ComponentContainer = styled.div`
   }
 `;
 
-const AnnouncementItem = styled.div`
+const CareerItem = styled.div`
   width: 100%;
   padding-top: 29px;
   padding-bottom: 27px;
 `;
-const AnnouncementHeader = styled.div`
+const CareerHeader = styled.div`
   width: 100%;
   border-bottom: 1px solid ${GRAY20};
 `;
@@ -60,14 +60,14 @@ const Content = styled.pre`
 `;
 const ContentContainer = styled.div``;
 
-const AnnouncementDetail = ({ id, announcementStore }) => {
+const CareerDetail = ({ id, careerStore }) => {
   useEffect(() => {
-    announcementStore.loadById(id);
+    careerStore.loadById(id);
     return () => {
-      announcementStore.initData();
+      careerStore.initData();
     };
   }, []);
-  const { title, content, updatedAt, createdAt } = announcementStore.data || {};
+  const { title, content, updatedAt, createdAt } = careerStore.data || {};
   const { month, date, year } = getTimeComponent(updatedAt);
 
   console.log({ content });
@@ -75,8 +75,8 @@ const AnnouncementDetail = ({ id, announcementStore }) => {
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col span={24}>
-          <AnnouncementItem>
-            <AnnouncementHeader>
+          <CareerItem>
+            <CareerHeader>
               <Title>
                 <Headline bold style={{ color: GRAY90 }}>
                   {title}
@@ -97,7 +97,7 @@ const AnnouncementDetail = ({ id, announcementStore }) => {
                   </Caption2>
                 </UpdatedAt>
               )}
-            </AnnouncementHeader>
+            </CareerHeader>
             <ContentContainer>
               <Content>
                 {content &&
@@ -109,11 +109,11 @@ const AnnouncementDetail = ({ id, announcementStore }) => {
                   ))}
               </Content>
             </ContentContainer>
-          </AnnouncementItem>
+          </CareerItem>
         </Col>
       </Row>
     </ComponentContainer>
   );
 };
 
-export default inject("announcementStore")(observer(AnnouncementDetail));
+export default inject("careerStore")(observer(CareerDetail));

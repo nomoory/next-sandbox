@@ -8,7 +8,7 @@ import { GRAY20, GRAY30, GRAY60, GRAY90 } from "styles/colors";
 import ArrowRightIcon from "components/icons/ArrowRightIcon";
 import { getTimeText } from "utils";
 
-const AnnouncementItemContainer = styled.div`
+const CareerItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -22,7 +22,7 @@ const AnnouncementItemContainer = styled.div`
     padding-bottom: 27px;
   }
 `;
-const AnnouncementInfoContainer = styled.div`
+const CareerInfoContainer = styled.div`
   width: 100%;
   flex: 4;
 `;
@@ -55,17 +55,11 @@ const HoverButton = styled.div`
   justify-content: center;
 `;
 
-const AnnouncementItem = ({
-  id,
-  title = "",
-  content = "",
-  updatedAt,
-  createdAt
-}) => {
+const CareerItem = ({ id, title = "", content = "", updatedAt, createdAt }) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
   return (
-    <AnnouncementItemContainer
+    <CareerItemContainer
       key={title}
       onMouseEnter={() => {
         setHovered(true);
@@ -74,10 +68,10 @@ const AnnouncementItem = ({
         setHovered(false);
       }}
       onClick={() => {
-        router.push(`/edmicbio/announcement/${id}`);
+        router.push(`/edmicbio/careers/${id}`);
       }}
     >
-      <AnnouncementInfoContainer>
+      <CareerInfoContainer>
         <UpdatedAt>
           <Caption2
             bold
@@ -103,14 +97,14 @@ const AnnouncementItem = ({
             {content.length > 200 ? "..." : ""}
           </Caption2>
         </Content>
-      </AnnouncementInfoContainer>
+      </CareerInfoContainer>
       <HoverButtonContainer>
         <HoverButton>
           <ArrowRightIcon color={hovered ? GRAY90 : GRAY20} />
         </HoverButton>
       </HoverButtonContainer>
-    </AnnouncementItemContainer>
+    </CareerItemContainer>
   );
 };
 
-export default AnnouncementItem;
+export default CareerItem;

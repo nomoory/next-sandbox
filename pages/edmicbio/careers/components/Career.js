@@ -9,7 +9,8 @@ import {
   gutter,
   gutter_vertical
 } from "styles";
-import AnnouncementList from "./AnnouncementList";
+import { GRAY20 } from "styles/colors";
+import CareerList from "./CareerList";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -38,22 +39,22 @@ const Header = styled.div`
   }
 `;
 
-const Announcement = () => {
+const Career = () => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
         <Col xs={24}>
           <Header>
-            <Headline bold>Announcement</Headline>
+            <Headline bold>Career</Headline>
             <Divider />
           </Header>
         </Col>
         <Col xs={24}>
-          <AnnouncementList />
+          <CareerList />
         </Col>
       </Row>
     </ComponentContainer>
   );
 };
 
-export default Announcement;
+export default Career;
