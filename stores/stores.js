@@ -5,6 +5,8 @@ import { useMemo } from "react";
 import TemplateStore from "./TemplateStore";
 import NewsStore from "./NewsStore";
 import AnnouncementStore from "./AnnouncementStore";
+import PublicationStore from "./PublicationStore";
+import PatentStore from "./PatentStore";
 
 const isServer = typeof window === "undefined";
 enableStaticRendering(isServer);
@@ -16,13 +18,17 @@ export class RootStore {
   templateStore;
   announcementStore;
   newsStore;
+  PublicationStore;
+  PatentStore;
 
   constructor(initialData = {}) {
     this.templateStore = new TemplateStore(initialData.templateStore);
-    this.newsStore = new NewsStore(initialData.newsStore);
     this.announcementStore = new AnnouncementStore(
       initialData.announcementStore
     );
+    this.newsStore = new NewsStore(initialData.newsStore);
+    this.publicationStore = new PublicationStore(initialData.publicationStore);
+    this.patentStore = new PatentStore(initialData.patentStore);
   }
 }
 
