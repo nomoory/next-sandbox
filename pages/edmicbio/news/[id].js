@@ -2,10 +2,10 @@ import Layout from "components/layout";
 import { useRouter } from "next/router";
 import AnnouncementDetail from "./components/AnnouncementDetail";
 import CommonPageLayout from "components/CommonPageLayout";
-import { TARGET_COLLECTION } from "stores/AnnouncementStore";
+import { TARGET_COLLECTION } from "stores/NewsStore";
 import db from "db";
 
-const AnnouncementDetailPage = () => {
+const NewsDetailPage = () => {
   const router = useRouter();
   const id = router.query.id;
   return (
@@ -17,7 +17,7 @@ const AnnouncementDetailPage = () => {
   );
 };
 
-export default AnnouncementDetailPage;
+export default NewsDetailPage;
 
 export async function getStaticProps() {
   return {

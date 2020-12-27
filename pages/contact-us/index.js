@@ -1,6 +1,7 @@
 import Layout from "components/layout";
 import { inject, observer } from "mobx-react";
 import styled from "styled-components";
+import ContactUs from "./components/ContactUs";
 
 const PageContainer = styled.div`
   background-color: white;
@@ -12,18 +13,20 @@ const PageContainer = styled.div`
   min-height: 200px;
 `;
 
-const ContactUs = ({ templateStore }) => {
+const ContactUsPage = ({ templateStore }) => {
   return (
     <Layout contactUs>
-      <PageContainer>Contact Us</PageContainer>
+      <PageContainer>
+        <ContactUs />
+      </PageContainer>
     </Layout>
   );
 };
 
-export default inject("templateStore")(observer(ContactUs));
+export default inject("templateStore")(observer(ContactUsPage));
 
 export async function getStaticProps() {
   return {
-    props: {},
+    props: {}
   };
 }

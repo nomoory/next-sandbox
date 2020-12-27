@@ -7,7 +7,7 @@ import {
   original_side_padding_desktop,
   mediaQueriesBiggerThan,
   header_height_mobile,
-  header_height_desktop,
+  header_height_desktop
 } from "styles";
 import { useState } from "react";
 import MobileDrawer from "components/MobileDrawer";
@@ -27,7 +27,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.img.attrs(() => ({
-  src: "/images/common/logo.png",
+  src: "/images/common/logo.png"
 }))`
   width: 124px;
   color: ${({ theme }) => theme.colors.primary};
@@ -56,7 +56,7 @@ const NavigationItem = styled.a`
   font-weight: 600;
   line-height: 25px;
   letter-spacing: 0em;
-  ${(props) => (props.active ? "color: #C63F34" : "")}
+  ${props => (props.active ? "color: #C63F34" : "")}
 `;
 
 const MobileDrawerIconContainer = styled.div`
@@ -120,23 +120,23 @@ const Header = ({ home }) => {
     {
       id: "edmicbio",
       title: "EDmicBio",
-      link: "/edmicbio",
+      link: "/edmicbio"
     },
     {
       id: "technology",
       title: "Technology",
-      link: "/technology",
+      link: "/technology"
     },
     {
       id: "product",
       title: "Product",
-      link: "/product",
+      link: "/product"
     },
     {
       id: "contact-us",
       title: "Contact us",
-      link: "/contact-us",
-    },
+      link: "/contact-us"
+    }
   ];
   const pathname = router.pathname || "";
   const subCategory = pathname.split("/")[2];
@@ -149,7 +149,7 @@ const Header = ({ home }) => {
             <Logo />
           </Link>
           <DesktopNavigationContainer>
-            {navigationItems.map((item) => (
+            {navigationItems.map(item => (
               <NavigationItem
                 key={item.id}
                 href={item.link}
@@ -193,31 +193,33 @@ const Header = ({ home }) => {
                 );
               })}
             </Breadcrumb>
-            <DropDownButton
-              onClick={() => {
-                setMobileTopDrawalVisible(!mobileTopDrawalVisible);
-              }}
-            >
-              <Caption1 bold style={{ color: RED40 }}>
-                {subCategory &&
-                  subCategory
-                    .split("")
-                    .map((char, j) =>
-                      j === 0 ? char.toLocaleUpperCase() : char
-                    )
-                    .join("")
-                    .split("-")
-                    .join(" ")}
-              </Caption1>
-              <ArrowBottomIcon
-                style={{
-                  transform: `rotate(${
-                    mobileTopDrawalVisible ? "180deg" : "0deg"
-                  })`,
-                  transition: "all 0.5s",
+            {pathname.includes("contact-us") ? null : (
+              <DropDownButton
+                onClick={() => {
+                  setMobileTopDrawalVisible(!mobileTopDrawalVisible);
                 }}
-              />
-            </DropDownButton>
+              >
+                <Caption1 bold style={{ color: RED40 }}>
+                  {subCategory &&
+                    subCategory
+                      .split("")
+                      .map((char, j) =>
+                        j === 0 ? char.toLocaleUpperCase() : char
+                      )
+                      .join("")
+                      .split("-")
+                      .join(" ")}
+                </Caption1>
+                <ArrowBottomIcon
+                  style={{
+                    transform: `rotate(${
+                      mobileTopDrawalVisible ? "180deg" : "0deg"
+                    })`,
+                    transition: "all 0.5s"
+                  }}
+                />
+              </DropDownButton>
+            )}
           </Bottom>
         )}
       </HeaderContainer>

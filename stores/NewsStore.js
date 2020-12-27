@@ -2,7 +2,7 @@ import { observable, action, computed, makeObservable } from "mobx";
 
 import db from "../db";
 
-export const TARGET_COLLECTION = "announcements";
+export const TARGET_COLLECTION = "news";
 export const INITIAL_DATA = {
   isLoading: false,
   data: {},
@@ -10,7 +10,7 @@ export const INITIAL_DATA = {
 };
 export const DATA_COUNT_IN_A_PAGE = 5;
 
-class AnnouncementStore {
+class NewsStore {
   @observable isLoading = INITIAL_DATA.isLoading;
   @observable data = INITIAL_DATA.data;
   @observable dataArray = INITIAL_DATA.dataArray;
@@ -197,4 +197,4 @@ class AnnouncementStore {
   }
 }
 
-export default AnnouncementStore;
+export default NewsStore;

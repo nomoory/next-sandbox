@@ -51,7 +51,9 @@ const ListHeader = styled.div`
   padding: 24px 24px 20px 24px;
   width: 100%;
 `;
-const ListBody = styled.div``;
+const ListBody = styled.div`
+  width: 100%;
+`;
 const ListFooter = styled.div`
   display: flex;
   flex-direction: row;
@@ -67,15 +69,15 @@ export const ListItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: ${side_padding_mobile}px;
-  padding-right: ${side_padding_mobile}px;
+  padding-left: ${24}px;
+  padding-right: ${24}px;
   padding-top: 12px;
   padding-bottom: 8px;
   min-height: 87px;
   cursor: pointer;
   ${mediaQueriesBiggerThan("sm")} {
-    padding-left: ${side_padding_desktop}px;
-    padding-right: ${side_padding_desktop}px;
+    padding-left: ${24}px;
+    padding-right: ${24}px;
   }
 `;
 export const ListItemTitle = styled.div``;
@@ -105,23 +107,45 @@ const ListItem = ({ title, updatedAt, even, onClick }) => {
   );
 };
 
-const NewsAndAnnouncement = ({ announcementStore }) => {
+const NewsAndAnnouncement = ({ announcementStore, newsStore }) => {
   useEffect(() => {
     announcementStore.loadAll();
+    newsStore.loadAll();
   }, []);
   const router = useRouter();
   return (
     <ComponentContainer>
-      <Row style={{ width: "100%" }} gutter={[32]}>
+      <Row style={{ width: "100%" }} gutter={[32, 32]}>
         <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10, offset: 2 }}>
           <ListContainer>
             <ListHeader>
               <Body bold>News</Body>
               <Divider />
             </ListHeader>
-            <ListBody></ListBody>
+            <ListBody>
+              {newsStore.dataArray
+                .slice(0, 3)
+                .map(({ id, title, updatedAt }, index) => {
+                  return (
+                    <ListItem
+                      key={id}
+                      title={title}
+                      updatedAt={updatedAt}
+                      even={index % 2 == 1}
+                      onClick={() => {
+                        router.push(`/edmicbio/news`);
+                      }}
+                    />
+                  );
+                })}
+            </ListBody>
             <ListFooter>
-              <Button type="primary">
+              <Button
+                type="primary"
+                onClick={() => {
+                  router.push(`/edmicbio/news`);
+                }}
+              >
                 More
                 <ButtonArrowIcon style={{ marginLeft: 8 }} />
               </Button>
@@ -135,8 +159,9 @@ const NewsAndAnnouncement = ({ announcementStore }) => {
               <Divider />
             </ListHeader>
             <ListBody>
-              {announcementStore.dataArray.map(
-                ({ id, title, updatedAt }, index) => {
+              {announcementStore.dataArray
+                .slice(0, 3)
+                .map(({ id, title, updatedAt }, index) => {
                   return (
                     <ListItem
                       key={id}
@@ -148,8 +173,7 @@ const NewsAndAnnouncement = ({ announcementStore }) => {
                       }}
                     />
                   );
-                }
-              )}
+                })}
             </ListBody>
             <ListFooter>
               <Button
@@ -168,4 +192,7 @@ const NewsAndAnnouncement = ({ announcementStore }) => {
   );
 };
 
-export default inject("announcementStore")(observer(NewsAndAnnouncement));
+export default inject(
+  "announcementStore",
+  "newsStore"
+)(observer(NewsAndAnnouncement));
