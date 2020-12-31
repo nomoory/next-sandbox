@@ -12,14 +12,14 @@ yarn run export
 
 [Staging-Deploy]
 
-$ firebase deploy --only hosting:staging
+$ npm run deploy:staging
 
 Project Console: https://console.firebase.google.com/project/edmicbio/overview
 Hosting URL: https://edmicbio-staging.web.app
 
 [Production-Deploy]
 
-$ firebase deploy --only hosting:production 
+$ npm run deploy:production
 
 Project Console: https://console.firebase.google.com/project/noom-kr-refund-survey/overview
 Hosting URL: https://edmicbio.web.app
