@@ -15,21 +15,24 @@ import { GRAY50, RED40, GRAY20 } from "styles/colors";
 import PrintingVideo from "./PrintingVideo";
 
 const VIDEOS = [
-  // {
-  //   type: "video/avi",
-  //   src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/stent_printing.avi?alt=media&token=ef91b6b2-4c0a-4530-906d-1a2f9fecd9a5",
-  //   title: "스텐트 프린팅",
-  // },
   {
     type: "video/mp4",
-    src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/blood_vessel_model_printing.mp4?alt=media&token=c779746e-5f57-40b6-bc4b-f0af2722efa2",
+    src:
+      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/stent_printing.mp4?alt=media&token=9392cff9-deef-45ac-a90a-099e753e5f0e",
+    title: "스텐트 프린팅",
+  },
+  {
+    type: "video/mp4",
+    src:
+      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/blood_vessel_model_printing.mp4?alt=media&token=c779746e-5f57-40b6-bc4b-f0af2722efa2",
     title: "혈관 모델 프린팅",
   },
-  // {
-  //   type: "video/avi",
-  //   src: "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/scaffold_printing.avi?alt=media&token=bc579d89-31f6-4d4b-989b-1aa8422d2d3d",
-  //   title: "Scaffold 프린팅",
-  // },
+  {
+    type: "video/mp4",
+    src:
+      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/scaffold_printing.mp4?alt=media&token=3ea6f1ed-083d-49eb-8143-af2061b637d1",
+    title: "Scaffold 프린팅",
+  },
 ];
 
 const ComponentContainer = styled.div`
@@ -182,11 +185,11 @@ const ThreeDimensionalBioprinting = () => {
             </RedBox>
           </RedBoxContainer>
         </Col>
-        <Col xs={12} sm={8}>
-          {VIDEOS.map(({ title, src, type }) => (
+        {VIDEOS.map(({ title, src, type }) => (
+          <Col xs={24} sm={8}>
             <PrintingVideo key={src} title={title} src={src} type={type} />
-          ))}
-        </Col>
+          </Col>
+        ))}
       </Row>
     </ComponentContainer>
   );

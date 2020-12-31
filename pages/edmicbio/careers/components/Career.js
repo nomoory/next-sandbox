@@ -1,5 +1,6 @@
 import Headline from "components/typography/Headline";
 import Divider from "components/Divider";
+import Body from "components/typography/Body";
 import styled from "styled-components";
 import { Col, Row } from "antd";
 import {
@@ -7,7 +8,7 @@ import {
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
-  gutter_vertical
+  gutter_vertical,
 } from "styles";
 import { GRAY20 } from "styles/colors";
 import CareerList from "./CareerList";
@@ -39,6 +40,16 @@ const Header = styled.div`
   }
 `;
 
+
+const DescriptionContainer = styled.div`
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid ${GRAY20};
+  text-align: center;
+`;
+
+
 const Career = () => {
   return (
     <ComponentContainer>
@@ -47,6 +58,11 @@ const Career = () => {
           <Header>
             <Headline bold>Career</Headline>
             <Divider />
+            <DescriptionContainer>
+              <Body>
+                구직 관련 소개 내용
+              </Body>
+            </DescriptionContainer>
           </Header>
         </Col>
         <Col xs={24}>

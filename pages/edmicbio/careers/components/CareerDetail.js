@@ -1,5 +1,6 @@
 import { useEffect, Fragment } from "react";
 import Headline from "components/typography/Headline";
+import { useRouter } from "next/router";
 import { inject, observer } from "mobx-react";
 import Caption2, { caption2Regular } from "components/typography/Caption2";
 import styled from "styled-components";
@@ -9,8 +10,10 @@ import {
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
-  gutter_vertical
+  gutter_vertical,
 } from "styles";
+import Button from "components/Button";
+import ButtonArrowIcon from "components/icons/ButtonArrowIcon";
 import { GRAY20, GRAY30, GRAY60, GRAY90 } from "styles/colors";
 import { getTimeComponent } from "utils";
 const ComponentContainer = styled.div`
@@ -60,6 +63,17 @@ const Content = styled.pre`
 `;
 const ContentContainer = styled.div``;
 
+const ContentFooter = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding: 24px ${side_padding_mobile}px;
+  ${mediaQueriesBiggerThan("sm")} {
+    padding: 24px ${side_padding_desktop}px;
+  }
+`;
+
 const CareerDetail = ({ id, careerStore }) => {
   useEffect(() => {
     careerStore.loadById(id);
@@ -69,6 +83,7 @@ const CareerDetail = ({ id, careerStore }) => {
   }, []);
   const { title, content, updatedAt, createdAt } = careerStore.data || {};
   const { month, date, year } = getTimeComponent(updatedAt);
+  const router = useRouter();
 
   console.log({ content });
   return (
@@ -90,7 +105,7 @@ const CareerDetail = ({ id, careerStore }) => {
                       color: GRAY30,
                       textOverflow: "ellipsis",
                       overflow: "hidden",
-                      whiteSpace: "nowrap"
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {`${month} ${date},${year}`}
@@ -101,7 +116,7 @@ const CareerDetail = ({ id, careerStore }) => {
             <ContentContainer>
               <Content>
                 {content &&
-                  content.split(`\\n`).map(paragraph => (
+                  content.split(`\\n`).map((paragraph) => (
                     <Fragment key={paragraph}>
                       {paragraph}
                       <br />
@@ -109,6 +124,17 @@ const CareerDetail = ({ id, careerStore }) => {
                   ))}
               </Content>
             </ContentContainer>
+            <ContentFooter>
+              <Button
+                type="primary"
+                onClick={() => {
+                  router.push(`/contact-us`);
+                }}
+              >
+                to apply for EDmicBio
+                <ButtonArrowIcon style={{ marginLeft: 8 }} />
+              </Button>
+            </ContentFooter>
           </CareerItem>
         </Col>
       </Row>

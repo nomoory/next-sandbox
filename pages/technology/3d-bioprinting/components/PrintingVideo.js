@@ -6,8 +6,10 @@ import { mediaQueriesBiggerThan } from "styles";
 
 const VideoContainer = styled.div`
   background-color: ${GRAY10};
+  margin-bottom: 30px;
 
   ${mediaQueriesBiggerThan("sm")} {
+    margin-bottom: 0px;
   }
 `;
 

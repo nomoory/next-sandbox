@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import styled from "styled-components";
 import { mediaQueriesBiggerThan } from "styles";
 import CareerItem from "./CareerItem";
-import { Pagination } from "antd";
+import Body from "components/typography/Body";
 import { DATA_COUNT_IN_A_PAGE } from "stores/CareerStore";
 import { RED40, GRAY30, GRAY10 } from "styles/colors";
 
@@ -23,54 +23,23 @@ const ComponentContainer = styled.div`
 const ListContainer = styled.div`
   width: 100%;
 `;
-const PaginationContainer = styled.div`
+const TitleContainer = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 90px;
-  border: none;
-  .ant-pagination-item {
-    border: none;
-    a {
-      color: ${GRAY30};
-    }
-  }
-  .ant-pagination-item-link {
-    border: none;
-    background: ${GRAY10};
-  }
-  .ant-pagination-item-active {
-    background-color: ${RED40};
-    border: none;
-    a {
-      color: white;
-    }
-  }
-  .ant-pagination {
-    &-next {
-      margin: 0px 16px;
-    }
-    &-prev {
-      margin: 0px 24px;
-    }
-  }
-`;
+  
+`
 
 const CareerList = ({ careerStore }) => {
   useEffect(() => {
     careerStore.loadAll();
   }, []);
-  const [currentPage, setCurrentPage] = useState(1);
   const { dataArray } = careerStore;
   return (
     <ComponentContainer>
+      <TitleContainer>
+        <Body bold>Currnet Job Opening</Body>
+      </TitleContainer>
       <ListContainer>
         {dataArray
-          .slice(
-            (currentPage - 1) * DATA_COUNT_IN_A_PAGE,
-            currentPage * DATA_COUNT_IN_A_PAGE
-          )
           .map(({ id, title, content, updatedAt, createdAt }) => (
             <CareerItem
               key={id}
@@ -82,18 +51,6 @@ const CareerList = ({ careerStore }) => {
             />
           ))}
       </ListContainer>
-      <PaginationContainer>
-        <Pagination
-          defaultCurrent={1}
-          defaultPageSize={DATA_COUNT_IN_A_PAGE}
-          current={currentPage}
-          total={dataArray.length}
-          pageSize={DATA_COUNT_IN_A_PAGE}
-          onChange={pageNumber => {
-            setCurrentPage(pageNumber);
-          }}
-        />
-      </PaginationContainer>
     </ComponentContainer>
   );
 };

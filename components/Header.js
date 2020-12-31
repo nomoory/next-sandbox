@@ -139,7 +139,7 @@ const Header = ({ home }) => {
     }
   ];
   const pathname = router.pathname || "";
-  const subCategory = pathname.split("/")[2];
+  const [nullString, mainCategory, subCategory] = pathname.split("/");
 
   return (
     <>
@@ -174,6 +174,7 @@ const Header = ({ home }) => {
           <Bottom>
             <Breadcrumb>
               {pathname.split("/").map((key, index) => {
+                if (key == "[id]") return null;
                 if (!key) return null;
                 if (index === 0) return null;
                 return (

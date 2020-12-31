@@ -6,13 +6,11 @@ const CustomHead = () => (
     <link rel="icon" href="/favicon.ico" />
     <meta
       name="description"
-      content="Learn how to build a personal website using Next.js"
+      content="The first penguin of bio-mimicry 3D Organ-on-a-chip"
     />
     <meta
       property="og:image"
-      content={`https://og-image.now.sh/${encodeURI(
-        siteTitle
-      )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+      content={`https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/og_image.png?alt=media&token=ab67ab61-534a-49b1-9e10-d9237a32129a`}
     />
     <meta name="og:title" content={siteTitle} />
     <meta name="twitter:card" content="summary_large_image" />
