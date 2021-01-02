@@ -186,7 +186,7 @@ const ThreeDimensionalBioprinting = () => {
           </RedBoxContainer>
         </Col>
         {VIDEOS.map(({ title, src, type }) => (
-          <Col xs={24} sm={8}>
+          <Col key={title} xs={24} sm={8}>
             <PrintingVideo key={src} title={title} src={src} type={type} />
           </Col>
         ))}

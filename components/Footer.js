@@ -32,7 +32,113 @@ const snsLinks = [
   },
 ];
 
+const Contacts = styled.div``;
+const Contact = styled.div`
+  margin-bottom: 18px;
+
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-bottom: 20px;
+  }
+`;
+const ContactTitle = styled.div`
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 154.9%;
+  ${caption2Bold}
+  ${mediaQueriesBiggerThan("sm")} {
+    ${bodyBold}
+  }
+`;
+const ContactContent = styled.div`
+  font-size: 12px;
+  line-height: 15px;
+  color: #454857;
+  opacity: 0.7;
+  margin-top: 6px;
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-top: 8px;
+  }
+`;
+
+const FooterContainer = styled.div`
+  width: 100%;
+  padding: 0 ${side_padding_mobile}px;
+  background: #ffffff;
+  display: flex;
+  /* box-shadow: 0px -1px 0px rgba(118, 118, 118, 0.25); */
+  /* border-radius: 2px; */
+
+  ${mediaQueriesBiggerThan("sm")} {
+    padding: 0 ${side_padding_desktop}px;
+  }
+`;
+
+const Logo = styled.img.attrs(() => ({
+  src: "/images/common/logo.png",
+}))`
+  width: 124px;
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  ${mediaQueriesBiggerThan("sm")} {
+    width: 163px;
+  }
+`;
+const Copyright = styled.div`
+  margin-top: 24px;
+  ${caption2Bold}
+
+  ${mediaQueriesBiggerThan("sm")} {
+    ${bodyBold}
+  }
+`;
+
+const RightsReserved = styled.div`
+  line-height: 15px;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-top: 16px;
+  }
+`;
+
+const FollowUsContainer = styled.div`
+  ${(props) => (props.desktop ? "display: none;" : "")}
+  margin-top: 56px;
+  ${mediaQueriesBiggerThan("sm")} {
+    ${(props) => (props.mobile ? "display: none;" : "display: inherit")}
+  }
+`;
+const FollowUsTitle = styled.div`
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0em;
+  color: #3b3b3b;
+`;
+const FollowUsIcons = styled.div`
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #c8493f;
+  border-radius: 10px;
+  margin-top: 7px;
+  padding: 9px 19px;
+  width: fit-content;
+`;
+const FollowUsIcon = styled.a`
+  height: 32px;
+  width: 32px;
+  &:not(:first-child) {
+    margin-left: 32px;
+  }
+`;
+
 const { Footer } = Layout;
+
 const CustomFooter = () => (
   <Footer
     style={{
@@ -119,110 +225,5 @@ const CustomFooter = () => (
     </FooterContainer>
   </Footer>
 );
-
-const Contacts = styled.div``;
-const Contact = styled.div`
-  margin-bottom: 18px;
-
-  ${mediaQueriesBiggerThan("sm")} {
-    margin-bottom: 20px;
-  }
-`;
-const ContactTitle = styled.div`
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 154.9%;
-  ${caption2Bold}
-  ${mediaQueriesBiggerThan("sm")} {
-    ${bodyBold}
-  }
-`;
-const ContactContent = styled.div`
-  font-size: 12px;
-  line-height: 15px;
-  color: #454857;
-  opacity: 0.7;
-  margin-top: 6px;
-  ${mediaQueriesBiggerThan("sm")} {
-    margin-top: 8px;
-  }
-`;
-
-const FooterContainer = styled.div`
-  width: 100%;
-  padding: 0 ${side_padding_mobile}px;
-  background: #ffffff;
-  display: flex;
-  /* box-shadow: 0px -1px 0px rgba(118, 118, 118, 0.25); */
-  /* border-radius: 2px; */
-
-  ${mediaQueriesBiggerThan("sm")} {
-    padding: 0 ${side_padding_desktop}px;
-  }
-`;
-
-const Logo = styled.img.attrs(() => ({
-  src: "/images/common/logo.png",
-}))`
-  width: 124px;
-  color: ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  ${mediaQueriesBiggerThan("sm")} {
-    width: 163px;
-  }
-`;
-const Copyright = styled.div`
-  margin-top: 24px;
-  ${caption2Bold}
-
-  ${mediaQueriesBiggerThan("sm")} {
-    ${bodyBold}
-  }
-`;
-
-const RightsReserved = styled.div`
-  line-height: 15px;
-  margin-top: 8px;
-  margin-bottom: 30px;
-  ${mediaQueriesBiggerThan("sm")} {
-    margin-top: 16px;
-  }
-`;
-
-const FollowUsContainer = styled.div`
-  ${(props) => (props.desktop ? "display: none;" : "display: inherit")}
-  margin-top: 56px;
-  ${mediaQueriesBiggerThan("sm")} {
-    ${(props) => (props.mobile ? "display: none;" : "display: inherit")}
-  }
-`;
-const FollowUsTitle = styled.div`
-  font-weight: 600;
-  line-height: 25px;
-  letter-spacing: 0em;
-  color: #3b3b3b;
-`;
-const FollowUsIcons = styled.div`
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: #c8493f;
-  border-radius: 10px;
-  margin-top: 7px;
-  padding: 9px 19px;
-  width: fit-content;
-`;
-const FollowUsIcon = styled.a`
-  height: 32px;
-  width: 32px;
-  &:not(:first-child) {
-    margin-left: 32px;
-  }
-`;
 
 export default CustomFooter;

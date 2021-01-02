@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Body from "components/typography/Body";
 import Caption1 from "components/typography/Caption1";

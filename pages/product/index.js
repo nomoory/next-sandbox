@@ -1,6 +1,7 @@
 import Layout from "components/layout";
 import { inject, observer } from "mobx-react";
 import styled from "styled-components";
+import Product from "./components/Product";
 
 const PageContainer = styled.section`
   background-color: white;
@@ -12,15 +13,17 @@ const PageContainer = styled.section`
   min-height: 200px;
 `;
 
-const Product = ({ templateStore }) => {
+const ProductPage = ({ templateStore }) => {
   return (
     <Layout product>
-      <PageContainer>Product</PageContainer>
+      <PageContainer>
+        <Product />
+      </PageContainer>
     </Layout>
   );
 };
 
-export default inject("templateStore")(observer(Product));
+export default inject("templateStore")(observer(ProductPage));
 
 export async function getStaticProps() {
   return {
