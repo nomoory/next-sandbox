@@ -10,9 +10,9 @@ const EDmicBio = ({ templateStore }) => {
 
   useEffect(() => {
     const subCategoryIds = getSubCategoryIdsByCategoryid("edmicbio");
-    for (let subCategoryId of subCategoryIds) {
-      router.prefetch(`edmicbio/${subCategoryId}`);
-    }
+    // for (let subCategoryId of subCategoryIds) {
+    //   router.prefetch(`edmicbio/${subCategoryId}`);
+    // }
     router.push(`/edmicbio/${subCategoryIds[0]}`);
   }, []);
 

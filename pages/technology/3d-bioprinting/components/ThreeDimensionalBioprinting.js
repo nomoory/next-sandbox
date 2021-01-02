@@ -162,7 +162,7 @@ const ThreeDimensionalBioprinting = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/technology/3Dbioprinting_m2.png" />
+              <SecondImage src="/images/technology/3Dbioprinting_m2.jpg" />
             </Col>
             <Col xs={24} sm={12}>
               <SecondTextContainer>

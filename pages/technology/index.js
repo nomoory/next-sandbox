@@ -10,9 +10,9 @@ const Technology = ({ templateStore }) => {
 
   useEffect(() => {
     const subCategoryIds = getSubCategoryIdsByCategoryid(`${MAIN_CATEGORY_ID}`);
-    for (let subCategoryId of subCategoryIds) {
-      router.prefetch(`${MAIN_CATEGORY_ID}/${subCategoryId}`);
-    }
+    // for (let subCategoryId of subCategoryIds) {
+    //   router.prefetch(`${MAIN_CATEGORY_ID}/${subCategoryId}`);
+    // }
     router.push(`/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
   }, []);
 

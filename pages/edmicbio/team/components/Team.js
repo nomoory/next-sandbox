@@ -59,7 +59,7 @@ const MEMBERS = [
   {
     name: "조동우",
     position: "기술고문",
-    photo: "/images/edmicbio/team/jdw.png",
+    photo: "/images/edmicbio/team/jdw.JPG",
   },
   {
     name: "장진아",
@@ -75,7 +75,7 @@ const MEMBERS = [
     name: "박태준",
     position: "CFO",
     positionSub: "(Chief Financial Officer)",
-    photo: "/images/edmicbio/team/btj.png",
+    photo: "/images/edmicbio/team/btj.JPG",
   },
   {
     name: "이승록",
