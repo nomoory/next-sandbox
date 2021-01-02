@@ -5,27 +5,31 @@ import {
   side_padding_desktop,
   side_padding_mobile,
   mediaQueriesBiggerThan,
-  gutter
+  gutter,
 } from "styles";
 import FacebookIcon from "components/icons/FacebookIcon";
 import YoutubeIcon from "components/icons/YoutubeIcon";
 import InstagramIcon from "components/icons/InstagramIcon";
-import Caption2, { caption2Bold } from "components/typography/Caption2";
+import Caption2, {
+  caption2Bold,
+  caption2Regular,
+} from "components/typography/Caption2";
 import { bodyBold } from "components/typography/Body";
+import { GRAY40 } from "styles/colors";
 
 const snsLinks = [
   {
     IconComponent: FacebookIcon,
-    link: "facebook"
+    link: "facebook",
   },
   {
     IconComponent: YoutubeIcon,
-    link: "youtube"
+    link: "youtube",
   },
   {
     IconComponent: InstagramIcon,
-    link: "insta"
-  }
+    link: "insta",
+  },
 ];
 
 const { Footer } = Layout;
@@ -35,7 +39,7 @@ const CustomFooter = () => (
       backgroundColor: "white",
       boxShadow: "0px -1px 0px rgba(118, 118, 118, 0.25)",
       padding: "24px 0px 32px 0",
-      zIndex: 11 // higher than ant design Anchor
+      zIndex: 11, // higher than ant design Anchor
     }}
   >
     <FooterContainer>
@@ -43,7 +47,7 @@ const CustomFooter = () => (
         style={{ width: "100%", marginLeft: 0, marginRight: 0 }}
         gutter={gutter}
       >
-        <Col span={24} md={{ span: 12 }}>
+        <Col xs={24} sm={{ span: 12 }}>
           <Link href="/">
             <Logo />
           </Link>
@@ -51,14 +55,14 @@ const CustomFooter = () => (
             Investigate your drug with 3D biomimicry 3D organ-on-a-chip
           </Copyright>
           <RightsReserved>
-            <Caption2>
+            <Caption2 style={{ color: GRAY40 }}>
               © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |{" "}
               <Caption2 style={{ wordBreak: "keep-all" }}>
                 Powered by EDmicBio Inc.
               </Caption2>
             </Caption2>
           </RightsReserved>
-          <FollowUsContainer>
+          <FollowUsContainer desktop>
             <FollowUsTitle>Follow us</FollowUsTitle>
             <FollowUsIcons>
               {snsLinks.map(({ IconComponent, link }) => (
@@ -69,25 +73,46 @@ const CustomFooter = () => (
             </FollowUsIcons>
           </FollowUsContainer>
         </Col>
-        <Col span={24} md={{ span: 12 }}>
+        <Col xs={24} sm={{ span: 12 }}>
           <Contacts>
-            <Contact>
-              <ContactTitle>Tel</ContactTitle>
-              <ContactContent>02-1234-5678</ContactContent>
-            </Contact>
-            <Contact>
-              <ContactTitle>Email</ContactTitle>
-              <ContactContent>edmicbio@edmicbio.com</ContactContent>
-            </Contact>
-            <Contact>
-              <ContactTitle>Location</ContactTitle>
-              <ContactContent>
-                Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu,
-                Seoul, Republic of Korea R&D center: 26, Kyungheedae-ro,
-                Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business
-                Incubator)
-              </ContactContent>
-            </Contact>
+            <Row>
+              <Col xs={12} sm={24}>
+                <Contact>
+                  <ContactTitle>Tel</ContactTitle>
+                  <ContactContent>02-1234-5678</ContactContent>
+                </Contact>
+              </Col>
+              <Col xs={12} sm={24}>
+                <Contact>
+                  <ContactTitle>Email</ContactTitle>
+                  <ContactContent>edmicbio@edmicbio.com</ContactContent>
+                </Contact>
+              </Col>
+              <Col xs={24} sm={24}>
+                <Contact>
+                  <ContactTitle>Location</ContactTitle>
+                  <ContactContent>
+                    Office: 305, Community building, 117-3, Hoegi-ro,
+                    Dongdaemun-gu, Seoul, Republic of Korea R&D center: 26,
+                    Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403
+                    (KyungHee Business Incubator)
+                  </ContactContent>
+                </Contact>
+              </Col>
+
+              <Col xs={24} sm={24}>
+                <FollowUsContainer mobile>
+                  <FollowUsTitle>Follow us</FollowUsTitle>
+                  <FollowUsIcons>
+                    {snsLinks.map(({ IconComponent, link }) => (
+                      <FollowUsIcon key={link} href={link}>
+                        {<IconComponent />}
+                      </FollowUsIcon>
+                    ))}
+                  </FollowUsIcons>
+                </FollowUsContainer>
+              </Col>
+            </Row>
           </Contacts>
         </Col>
       </Row>
@@ -96,17 +121,31 @@ const CustomFooter = () => (
 );
 
 const Contacts = styled.div``;
-const Contact = styled.div``;
+const Contact = styled.div`
+  margin-bottom: 18px;
+
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-bottom: 20px;
+  }
+`;
 const ContactTitle = styled.div`
   font-weight: 600;
   font-size: 16px;
   line-height: 154.9%;
+  ${caption2Bold}
+  ${mediaQueriesBiggerThan("sm")} {
+    ${bodyBold}
+  }
 `;
 const ContactContent = styled.div`
   font-size: 12px;
   line-height: 15px;
   color: #454857;
   opacity: 0.7;
+  margin-top: 6px;
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-top: 8px;
+  }
 `;
 
 const FooterContainer = styled.div`
@@ -123,7 +162,7 @@ const FooterContainer = styled.div`
 `;
 
 const Logo = styled.img.attrs(() => ({
-  src: "/images/common/logo.png"
+  src: "/images/common/logo.png",
 }))`
   width: 124px;
   color: ${({ theme }) => theme.colors.primary};
@@ -146,11 +185,20 @@ const Copyright = styled.div`
 `;
 
 const RightsReserved = styled.div`
-  margin-top: 16px;
+  line-height: 15px;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  ${mediaQueriesBiggerThan("sm")} {
+    margin-top: 16px;
+  }
 `;
 
 const FollowUsContainer = styled.div`
+  ${(props) => (props.desktop ? "display: none;" : "display: inherit")}
   margin-top: 56px;
+  ${mediaQueriesBiggerThan("sm")} {
+    ${(props) => (props.mobile ? "display: none;" : "display: inherit")}
+  }
 `;
 const FollowUsTitle = styled.div`
   font-weight: 600;
@@ -166,7 +214,7 @@ const FollowUsIcons = styled.div`
   background: #c8493f;
   border-radius: 10px;
   margin-top: 7px;
-  padding: 5px 9px 7px 9px;
+  padding: 9px 19px;
   width: fit-content;
 `;
 const FollowUsIcon = styled.a`
