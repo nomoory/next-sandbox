@@ -72,7 +72,7 @@ const ProductDescription = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
   }
 `;
-const ProductModal = ({ visible, setVisible, images, title, description }) => {
+const ProductModal = ({ visible, setVisible, images = [], title, description }) => {
   return (
     <Modal
       visible={visible}
@@ -94,7 +94,7 @@ const ProductModal = ({ visible, setVisible, images, title, description }) => {
             </ProductDescription>
           </TextInfo>
           <PhotoContainer>
-            <Photo src={images[0]} />
+            <Photo src={images[0] || ""} />
           </PhotoContainer>
         </ProductInfoContainer>
         <EducationContainer>

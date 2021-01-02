@@ -54,13 +54,13 @@ const MoreButton = styled.button`
   align-items: center;
 `;
 
-const Product = ({ title, description, images }) => {
+const Product = ({ title, description, images = [] }) => {
   const [visible, setVisible] = useState(false);
 
   return (
     <ProductContainer>
       <PhotoContainer>
-        <Photo src={images[0]} />
+        <Photo src={images ? images[0] : ""} />
         <ButtonContainer>
           <MoreButton
             onClick={(e) => {
