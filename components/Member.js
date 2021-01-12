@@ -55,7 +55,15 @@ const MoreButton = styled.button`
   border-radius: 2px;
 `;
 
-const Member = ({ name, position, positionSub, photo }) => {
+const Member = ({
+  name,
+  position,
+  positionSub,
+  photo,
+  education,
+  description,
+  career,
+}) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -76,6 +84,9 @@ const Member = ({ name, position, positionSub, photo }) => {
             name={name}
             position={position}
             photo={photo}
+            education={education}
+            career={career}
+            description={description}
           />
         </ButtonContainer>
       </PhotoContainer>

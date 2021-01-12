@@ -3,6 +3,7 @@ import "styles/global.css";
 import { Provider } from "mobx-react";
 import { ThemeProvider } from "styled-components";
 import { useStore } from "../stores/stores";
+import { appWithTranslation } from "../i18n";
 
 const theme = {
   colors: {
@@ -10,7 +11,7 @@ const theme = {
   },
 };
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialState);
 
   return (
@@ -21,3 +22,5 @@ export default function App({ Component, pageProps }) {
     </Provider>
   );
 }
+
+export default appWithTranslation(App);

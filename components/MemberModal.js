@@ -98,7 +98,16 @@ const DescriptionOut = styled.div`
     display: none;
   }
 `;
-const MemberModal = ({ visible, setVisible, photo, name, position }) => {
+const MemberModal = ({
+  visible,
+  setVisible,
+  photo,
+  name,
+  position,
+  description,
+  education,
+  career,
+}) => {
   return (
     <Modal
       visible={visible}
@@ -120,30 +129,26 @@ const MemberModal = ({ visible, setVisible, photo, name, position }) => {
               <Body style={{ color: RED30 }}>{position}</Body>
             </Position>
             <DescriptionIn>
-              <Caption1>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </Caption1>
+              <Caption1>{description}</Caption1>
             </DescriptionIn>
           </Profile>
         </ProfileContainer>
         <DescriptionOut>
-          <Caption1>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Caption1>
+          <Caption1>{description}</Caption1>
         </DescriptionOut>
         <EducationContainer>
           <Title>
             <Caption2 style={{ color: GRAY30 }}>Education</Caption2>
             <Divider></Divider>
           </Title>
+          <Caption1>{education}</Caption1>
         </EducationContainer>
         <CareerContainer>
           <Title>
             <Caption2 style={{ color: GRAY30 }}>Career</Caption2>
             <Divider></Divider>
           </Title>
+          <Caption1>{career}</Caption1>
         </CareerContainer>
         <FooterContainer>
           <Button

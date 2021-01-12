@@ -1,4 +1,4 @@
-const translations = {
+{
   "edmicbio": "EDmicBio",
   "organ-on-a-chip": "Organ-on-a-chip",
   "medical-device": "Medical Device",
@@ -14,9 +14,5 @@ const translations = {
   "bioink": "Bioink",
   "collaborations": "Collaborations",
   "microfluidics": "Microfluidics",
-  "publications-and-patents": "Publications & Patents",
-};
-
-export const t = (key) => {
-  return translations[key] || key;
+  "publications-and-patents": "Publications & Patents"
 }

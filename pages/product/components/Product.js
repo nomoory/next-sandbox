@@ -1,3 +1,4 @@
+import { inject, observer } from "mobx-react";
 import Headline from "components/typography/Headline";
 import Divider from "components/Divider";
 import styled from "styled-components";
@@ -12,7 +13,7 @@ import {
 import { GRAY20, GRAY80, RED40 } from "styles/colors";
 import Member from "components/Member";
 import ProductDetail from "./ProductDetail";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { subtitleBold } from "@/components/typography/Subtitle";
 import { bodyRegular } from "@/components/typography/Body";
 
@@ -50,7 +51,7 @@ const GroupTitle = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
     text-align: center;
   }
-`
+`;
 const GroupDescription = styled.div`
   ${bodyRegular}
   color: ${GRAY80};
@@ -58,7 +59,7 @@ const GroupDescription = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
     text-align: center;
   }
-`
+`;
 const GroupTitleContentDivider = styled.div`
   border: 1px solid ${GRAY20};
 `;
@@ -84,7 +85,13 @@ const PRODUCT_GROUPS = [
   },
 ];
 
-const Product = () => {
+const Product = ({ productStore }) => {
+  useEffect(() => {
+    productStore.loadAll();
+  }, []);
+
+  const productGroups = productStore.dataArray || [];
+
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -94,21 +101,21 @@ const Product = () => {
             <Divider />
           </Header>
         </Col>
-        {PRODUCT_GROUPS.map((group) => (
+        {productGroups.map((group) => (
           <Col key={group.title} span={24}>
             <GroupTitle>{group.title}</GroupTitle>
             <GroupDescription>{group.description}</GroupDescription>
             <GroupTitleContentDivider />
-            <Row gutter={30} style={{justifyContent: "center"}}>
-            {group.products.map((product) => (
-              <Col xs={12} sm={{span: 8}}>
-              <ProductDetail
-                title={product.title}
-                description={product.description}
-                images={product.images}
-              />
-              </Col>
-            ))}
+            <Row gutter={30} style={{ justifyContent: "center" }}>
+              {group.productList.map((product, index) => (
+                <Col key={product.title + index} xs={12} sm={{ span: 8 }}>
+                  <ProductDetail
+                    title={product.title}
+                    description={product.description}
+                    images={product.images}
+                  />
+                </Col>
+              ))}
             </Row>
           </Col>
         ))}
@@ -117,4 +124,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default inject("productStore")(observer(Product));

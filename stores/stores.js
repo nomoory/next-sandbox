@@ -8,6 +8,8 @@ import AnnouncementStore from "./AnnouncementStore";
 import PublicationStore from "./PublicationStore";
 import PatentStore from "./PatentStore";
 import CareerStore from "./CareerStore";
+import MemberStore from "./MemberStore";
+import ProductStore from "./ProductStore";
 
 const isServer = typeof window === "undefined";
 enableStaticRendering(isServer);
@@ -22,6 +24,8 @@ export class RootStore {
   PublicationStore;
   PatentStore;
   CareerStore;
+  MemberStore;
+  ProductStore;
 
   constructor(initialData = {}) {
     this.templateStore = new TemplateStore(initialData.templateStore);
@@ -32,6 +36,8 @@ export class RootStore {
     this.publicationStore = new PublicationStore(initialData.publicationStore);
     this.patentStore = new PatentStore(initialData.patentStore);
     this.careerStore = new CareerStore(initialData.careerStore);
+    this.memberStore = new MemberStore(initialData.memberStore);
+    this.productStore = new ProductStore(initialData.productStore);
   }
 }
 

@@ -7,10 +7,10 @@ import Link from "next/link";
 import {
   header_height_desktop,
   mediaQueriesBiggerThan,
-  side_padding_desktop
+  side_padding_desktop,
 } from "styles";
 import { GRAY60, GRAY40, RED40 } from "styles/colors";
-import { t } from "utils/translation/i18n";
+import { withTranslation } from "../i18n";
 
 const NavigationContainer = styled.div`
   width: 100%;
@@ -44,7 +44,7 @@ const Divider = styled.div`
   margin-top: 24px;
 `;
 
-export const getSubCategoryIdsByCategoryid = categoryId => {
+export const getSubCategoryIdsByCategoryid = (categoryId) => {
   switch (categoryId) {
     case "edmicbio":
       return [
@@ -55,7 +55,7 @@ export const getSubCategoryIdsByCategoryid = categoryId => {
         "history",
         "news",
         "announcement",
-        "careers"
+        "careers",
       ];
     case "technology":
       return [
@@ -63,14 +63,14 @@ export const getSubCategoryIdsByCategoryid = categoryId => {
         "bioink",
         "microfluidics",
         "collaborations",
-        "publications-and-patents"
+        "publications-and-patents",
       ];
     default:
       return [];
       break;
   }
 };
-const Navigation = () => {
+const Navigation = ({ t }) => {
   const router = useRouter();
   const { pathname } = router;
   const pathes = pathname.split("/");
@@ -85,14 +85,14 @@ const Navigation = () => {
           <Title2 bold>{t(mainCategoryId)}</Title2>
           <Divider />
           <Links>
-            {subCategoryIds.map(id => {
+            {subCategoryIds.map((id) => {
               return (
                 <LinkContainer key={id}>
                   <Link href={`/${mainCategoryId}/${id}`}>
                     <Caption1
                       bold={selectedSubCategoryId === id}
                       style={{
-                        color: selectedSubCategoryId === id ? RED40 : GRAY40
+                        color: selectedSubCategoryId === id ? RED40 : GRAY40,
                       }}
                     >
                       {t(id)}
@@ -108,4 +108,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default withTranslation("common")(Navigation);
