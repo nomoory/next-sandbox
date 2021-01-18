@@ -13,6 +13,7 @@ import {
 } from "styles";
 import { GRAY50, RED40, GRAY20 } from "styles/colors";
 import PrintingVideo from "./PrintingVideo";
+import { withTranslation } from "../../../../i18n";
 
 const VIDEOS = [
   {
@@ -125,7 +126,7 @@ const SecondTextContainer = styled(TextContainer)`
   }
 `;
 
-const ThreeDimensionalBioprinting = () => {
+const ThreeDimensionalBioprinting = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -135,9 +136,9 @@ const ThreeDimensionalBioprinting = () => {
             <Divider />
             <DescriptionContainer>
               <Body>
-                (주) 에드믹바이오의 3D 바이오프린팅 기술은 장비설계 및 제작,
-                조직/장기 프린팅, <BrOnDesktop />
-                3D 장기칩 및 조직/장기 구현을 모두 아우르는 기술입니다
+                {t("3Dbioprinting_1_1")}
+                <BrOnDesktop />
+                {t("3Dbioprinting_1_2")}
                 <BrOnDesktop />
               </Body>
             </DescriptionContainer>
@@ -146,14 +147,12 @@ const ThreeDimensionalBioprinting = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <FirstImage src="/images/technology/3Dbioprinting_m1.png" />
+              <FirstImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2F3Dbioprinting%2F3Dbioprinting-1.jpg?alt=media&token=2d6d4896-8281-462c-b10a-f7319440a0bd" />
             </Col>
             <Col xs={24} sm={12}>
               <TextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  (주) 에드믹바이오는원하는 형태의 3D 장기칩과 조직/장기를
-                  제작하기 위한 3D 바이오프린팅 시스템을 설계 및 제작할 수
-                  있습니다.
+                  {t("3Dbioprinting_2")}
                 </Caption1>
               </TextContainer>
             </Col>
@@ -162,17 +161,14 @@ const ThreeDimensionalBioprinting = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/technology/3Dbioprinting_m2.jpg" />
+              <SecondImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2F3Dbioprinting%2F3Dbioprinting-2.jpg?alt=media&token=b52bee1f-ae67-48a0-b235-14cf5fca2fa8" />
             </Col>
             <Col xs={24} sm={12}>
               <SecondTextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  (주) 에드믹바이오 자체적으로 개발된 3D 바이오프린팅 시스템을
-                  기반으로 3D 형태의 조직/장기를 제작하거나, 3D 장기칩을 개발할
-                  수 있습니다.
+                  {t("3Dbioprinting_3")}
                   <br />
-                  또한, 다양한 형태로 조직/장기 및 의료기기를 제작하는 노하우는
-                  향후 ~한 결과를 도출할 수 있도록 해주는 원동력이 됩니다.
+                  {t("3Dbioprinting_4")}
                 </Caption1>
               </SecondTextContainer>
             </Col>
@@ -195,4 +191,4 @@ const ThreeDimensionalBioprinting = () => {
   );
 };
 
-export default ThreeDimensionalBioprinting;
+export default withTranslation("common")(ThreeDimensionalBioprinting);

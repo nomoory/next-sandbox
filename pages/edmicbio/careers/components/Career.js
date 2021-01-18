@@ -12,6 +12,7 @@ import {
 } from "styles";
 import { GRAY20 } from "styles/colors";
 import CareerList from "./CareerList";
+import { withTranslation } from "../../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -40,7 +41,6 @@ const Header = styled.div`
   }
 `;
 
-
 const DescriptionContainer = styled.div`
   width: 100%;
   padding-top: 20px;
@@ -49,8 +49,7 @@ const DescriptionContainer = styled.div`
   text-align: center;
 `;
 
-
-const Career = () => {
+const Career = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -59,9 +58,7 @@ const Career = () => {
             <Headline bold>Career</Headline>
             <Divider />
             <DescriptionContainer>
-              <Body>
-                구직 관련 소개 내용
-              </Body>
+              <Body>{t("careers_1")}</Body>
             </DescriptionContainer>
           </Header>
         </Col>
@@ -73,4 +70,4 @@ const Career = () => {
   );
 };
 
-export default Career;
+export default withTranslation("common")(Career);

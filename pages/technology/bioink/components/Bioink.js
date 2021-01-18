@@ -12,6 +12,7 @@ import {
   gutter_vertical,
 } from "styles";
 import { GRAY50, GRAY20 } from "styles/colors";
+import { withTranslation } from "../../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -80,7 +81,7 @@ const DescriptionContainer = styled.div`
   }
 `;
 
-const Vision = () => {
+const Bioink = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -89,28 +90,20 @@ const Vision = () => {
             <Headline bold>Bioink</Headline>
             <Divider />
             <DescriptionContainer>
-              <Body>
-                에드믹바이오의 바이오잉크 기술은 개발하고자 하는 조직/장기의
-                생화학적 환경을 모사하여 <BrOnDesktop />
-                보다 고도화된 성능을 보여줍니다.
-              </Body>
+              <Body>{t("bioink_1")}</Body>
             </DescriptionContainer>
           </Header>
         </Col>
         <Col xs={24}>
-          <FirstImage src="/images/technology/bioink.png" />
+          <FirstImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fbioink%2Fbioink.jpg?alt=media&token=ab6d1e7d-a6c4-4d06-a06a-126168ee9139" />
         </Col>
         <Col xs={24}>
           <TextContainer>
             <Caption1 style={{ color: GRAY50 }}>
-              (주) 에드믹바이오는 조직/장기에서부터 직접 바이오잉크를 추출하는
-              기술을 가지고 있습니다. <BrOnDesktop />
-              이를 통하여 개발하고자 하는 조직/장기에 보다 높은 생화학적
-              모사환경을 제공합니다.
+              {t("bioink_2")}
               <br />
               <BrOnMobile />
-              (주) 에드믹바이오는 간, 식도, 지방 외 20여종에 해당하는
-              조직/장기에 대해 바이오잉크를 개발하는 노하우를 보유하고 있습니다.
+              {t("bioink_3")}
             </Caption1>
           </TextContainer>
         </Col>
@@ -119,4 +112,4 @@ const Vision = () => {
   );
 };
 
-export default Vision;
+export default withTranslation("common")(Bioink);

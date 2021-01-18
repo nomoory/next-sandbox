@@ -10,7 +10,7 @@
     "firebase:deploy:staging": "firebase deploy --only hosting:staging",
     "deploy:staging": "npm-run-all build export firebase:deploy:staging",
     "firebase:deploy:production": "firebase deploy --only hosting:production",
-    "deploy:production": "next build & next export & firebase deploy --only hosting:production"
+    "deploy:production": "npm-run-all build export firebase:deploy:production"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",

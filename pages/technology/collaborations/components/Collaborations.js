@@ -8,9 +8,10 @@ import {
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
-  gutter_vertical
+  gutter_vertical,
 } from "styles";
 import { GRAY20 } from "styles/colors";
+import { withTranslation } from "../../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -60,7 +61,7 @@ const DescriptionContainer = styled.div`
   }
 `;
 
-const Collaborations = () => {
+const Collaborations = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -69,7 +70,7 @@ const Collaborations = () => {
             <Headline bold>Collaboration</Headline>
             <Divider />
             <DescriptionContainer>
-              여러 글로벌 파트너들과의 콜라보레이션은 기술적 신뢰도를 높여줍니다
+              {t("collaborations_1")}
             </DescriptionContainer>
           </Header>
         </Col>
@@ -78,7 +79,7 @@ const Collaborations = () => {
             <Body bold>Laboratory & College</Body>
           </Title>
         </Col>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map(index => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
           <Col key={"college_" + index} xs={12} sm={6}>
             <Image src={`/images/technology/College_${index}_m.png`} />
           </Col>
@@ -88,7 +89,7 @@ const Collaborations = () => {
             <Body bold>Hospital</Body>
           </Title>
         </Col>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map(index => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
           <Col key={"hospital_" + index} xs={12} sm={6}>
             <Image src={`/images/technology/Hospital_${index}_m.png`} />
           </Col>
@@ -98,4 +99,4 @@ const Collaborations = () => {
   );
 };
 
-export default Collaborations;
+export default withTranslation("common")(Collaborations);

@@ -11,6 +11,7 @@ import {
   mediaQueriesBiggerThan,
   gutter,
 } from "styles";
+import { withTranslation } from "../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -53,7 +54,7 @@ const SloganContent = styled.div`
   }
 `;
 
-const Slogan = () => (
+const Slogan = ({ t }) => (
   <ComponentContainer>
     <Row style={{ width: "100%" }} gutter={gutter}>
       <Col span={24}>
@@ -63,7 +64,7 @@ const Slogan = () => (
         </SloganHeader>
       </Col>
       <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10, offset: 2 }}>
-        <SloganImage src="/images/landing/slogan/slogan.png" />
+        <SloganImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmain%2Fslogan.png?alt=media&token=48838793-43f1-4e2e-ae15-48b87089f51f" />
       </Col>
       <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10 }}>
         <SloganContent>
@@ -71,9 +72,7 @@ const Slogan = () => (
             EDmicBio Inc.
           </Body>
           <Caption1 style={{ marginTop: 24, color: GRAY40 }}>
-            We develop 3D Organ-on-a-chip and medical devices that mimic the
-            tissues and organs of the human body using in house developed
-            technologies to improve the quality of the human life
+            {t("slogan")}
           </Caption1>
         </SloganContent>
       </Col>
@@ -81,4 +80,4 @@ const Slogan = () => (
   </ComponentContainer>
 );
 
-export default Slogan;
+export default withTranslation("common")(Slogan);

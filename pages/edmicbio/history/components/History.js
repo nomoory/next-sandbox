@@ -75,8 +75,8 @@ const History = () => {
           </HistoryHeader>
         </Col>
         <Col span={24}>
-          <HistoryImage mobile src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/history_mobile.png?alt=media&token=7854da55-b668-4205-8818-ace8e683088e" />
-          <HistoryImage desktop src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/history_desktop.png?alt=media&token=29a58a17-f9f1-48ec-9bf3-34cf7d3d284d" />
+          <HistoryImage mobile src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory-m-01.png?alt=media&token=27022700-facd-4b1f-96c5-175b7bd6938c" />
+          <HistoryImage desktop src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory.png?alt=media&token=acb51b8b-70c4-42a5-8994-fad59468e0ac" />
         </Col>
       </Row>
     </ComponentContainer>

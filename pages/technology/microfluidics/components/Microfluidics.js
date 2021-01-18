@@ -12,6 +12,7 @@ import {
   gutter_vertical,
 } from "styles";
 import { GRAY50, GRAY20 } from "styles/colors";
+import { withTranslation } from "../../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -85,7 +86,7 @@ const SecondTextContainer = styled(TextContainer)`
   }
 `;
 
-const Microfluidics = () => {
+const Microfluidics = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -98,14 +99,12 @@ const Microfluidics = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <FirstImage src="/images/technology/Microfluidics_m1.png" />
+              <FirstImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmicrofluidics%2Fchip_1.png?alt=media&token=0038ef3a-6586-4173-9760-0510e61ac86a" />
             </Col>
             <Col xs={24} sm={12}>
               <TextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  (주) 에드믹바이오는원하는 형태의 3D 장기칩과 조직/장기를
-                  제작하기 위한 3D 바이오프린팅 시스템을 설계 및 제작할 수
-                  있습니다.
+                  {t("microfluidics_1")}
                 </Caption1>
               </TextContainer>
             </Col>
@@ -114,7 +113,7 @@ const Microfluidics = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/technology/Microfluidics_m2.png" />
+              <SecondImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmicrofluidics%2Fchip_2.png?alt=media&token=1492a206-05c9-4a1e-ad7d-8473ff681030" />
             </Col>
             <Col xs={24} sm={12}></Col>
           </Row>
@@ -122,17 +121,11 @@ const Microfluidics = () => {
         <Col>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/technology/Microfluidics_m3.png" />
+              <SecondImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmicrofluidics%2Fchip_3.png?alt=media&token=18096c83-2cea-4b5d-b360-8a29d60bc35b" />
             </Col>
             <Col xs={24} sm={12}>
               <SecondTextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  (주) 에드믹바이오 자체적으로 개발된 3D 바이오프린팅 시스템을
-                  기반으로 3D 형태의 조직/장기를 제작하거나, 3D 장기칩을 개발할
-                  수 있습니다.
-                  <br />
-                  또한, 다양한 형태로 조직/장기 및 의료기기를 제작하는 노하우는
-                  향후 ~한 결과를 도출할 수 있도록 해주는 원동력이 됩니다.
                 </Caption1>
               </SecondTextContainer>
             </Col>
@@ -143,4 +136,4 @@ const Microfluidics = () => {
   );
 };
 
-export default Microfluidics;
+export default withTranslation("common")(Microfluidics);

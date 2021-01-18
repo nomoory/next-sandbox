@@ -12,6 +12,7 @@ import {
   gutter_vertical,
 } from "styles";
 import { GRAY50, RED40, GRAY20 } from "styles/colors";
+import { withTranslation } from "../../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -99,7 +100,7 @@ const SecondTextContainer = styled(TextContainer)`
   }
 `;
 
-const MedicalDevice = () => {
+const MedicalDevice = ({ t }) => {
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -109,9 +110,8 @@ const MedicalDevice = () => {
             <Divider />
             <DescriptionContainer>
               <Body>
-                (주) 에드믹바이오는 3D 바이오프린팅 기술을 기반으로{" "}
-                <BrOnDesktop />
-                의료기기를 개발합니다.
+                {t("medical_device_0_1")} <BrOnDesktop />
+                {t("medical_device_0_2")}
               </Body>
             </DescriptionContainer>
           </Header>
@@ -119,24 +119,23 @@ const MedicalDevice = () => {
         <Col xs={24}>
           <RedBoxContainer>
             <RedBox>
-              <Body bold>스탠드</Body>
+              <Body bold>스탠트</Body>
             </RedBox>
           </RedBoxContainer>
         </Col>
         <Col style={{ marginTop: 50 }}>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <FirstImage src="/images/edmicbio/medical_device_1_m.png" />
+              <FirstImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmedicaldevice%2Fstent_image.jpg?alt=media&token=8699c5cf-5221-492e-8fc2-7617f4d2a65a" />
             </Col>
             <Col xs={24} sm={12}>
               <TextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  스텐트는 동맥경화로 인하여 막힌 혈관을 뚫어준 뒤 재협착을
-                  방지하기 위해 삽입해주는 의료기기입니다. 보통 스텐트는
-                  금속으로 많이 제작되는데, 삽입된 이후 평생토록 몸속에 남아서
-                  혈관이 다시 막히는 문제가 발생합니다. <br />
-                  (주) 에드믹바이오는 체내에서 녹는 물질을 이용하여 스텐트를
-                  개발함으로써 이러한 문제를 해결합니다.
+                  {t("medical_device_1_1")}
+                  <br />
+                  {t("medical_device_1_2")}
+                  <br />
+                  {t("medical_device_1_3")}
                 </Caption1>
               </TextContainer>
             </Col>
@@ -145,13 +144,12 @@ const MedicalDevice = () => {
         <Col style={{ marginTop: 50 }}>
           <Row gutter={gutter}>
             <Col xs={24} sm={12}>
-              <SecondImage src="/images/edmicbio/medical_device_2_m.png" />
+              <SecondImage src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fmedicaldevice%2Fvar_stent.png?alt=media&token=196eb5bb-7863-46fb-b026-a5f11b06578c" />
             </Col>
             <Col xs={24} sm={12}>
               <SecondTextContainer>
                 <Caption1 style={{ color: GRAY50 }}>
-                  다리혈관 스텐트를 메인으로 하여 다른 도관형 조직에도 적용할 수
-                  있는 스텐트를 개발하고 있습니다.
+                  {t("medical_device_2")}
                 </Caption1>
               </SecondTextContainer>
             </Col>
@@ -162,4 +160,4 @@ const MedicalDevice = () => {
   );
 };
 
-export default MedicalDevice;
+export default withTranslation("common")(MedicalDevice);
