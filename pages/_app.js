@@ -1,9 +1,11 @@
 import "antd/dist/antd.css";
 import "styles/global.css";
 import { Provider } from "mobx-react";
+import { useRouter } from "next/router";
 import { ThemeProvider } from "styled-components";
 import { useStore } from "../stores/stores";
-import { appWithTranslation } from "../i18n";
+import { useEffect } from "react";
+import { appWithTranslation, i18n } from "../i18n";
 
 const theme = {
   colors: {
@@ -11,9 +13,15 @@ const theme = {
   },
 };
 
-function App({ Component, pageProps }) {
+function App({ Component, pageProps, ...props }) {
   const store = useStore(pageProps.initialState);
+  const router = useRouter();
+  const { locale } = router;
 
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+    store.languageStore.setLanguage(locale || "ko");
+  }, [locale]);
   return (
     <Provider {...store}>
       <ThemeProvider theme={theme}>

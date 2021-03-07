@@ -5,13 +5,15 @@ import Divider from "components/Divider";
 import DividerRed from "components/DividerRed";
 import styled from "styled-components";
 import { Col, Row } from "antd";
+import { useState, useEffect } from "react";
 import {
   side_padding_mobile,
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
-  gutter_vertical
+  gutter_vertical,
 } from "styles";
+import db from "../../../../db";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -65,6 +67,27 @@ const DividerRedOnMobileOnly = styled(DividerRed)`
 `;
 
 const History = () => {
+  const [mobileUngSrc, setMobileImgSrc] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory_mobile.png?alt=media&token=5b9c466b-eff8-4c91-b96f-ee574d3bcba6"
+  );
+  const [desktopImgSrc, setDesktopImgSrc] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory_desktop.png?alt=media&token=79fcb3cf-ba2b-49b0-a15d-f3d0dd896af4"
+  );
+  useEffect(() => {
+    db.collection("histories")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const { src } = doc.data();
+          if (doc.id === "mobile") {
+            setMobileImgSrc(src);
+          }
+          if (doc.id === "desktop") {
+            setDesktopImgSrc(src);
+          }
+        });
+      });
+  }, []);
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -75,8 +98,8 @@ const History = () => {
           </HistoryHeader>
         </Col>
         <Col span={24}>
-          <HistoryImage mobile src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory-m-01.png?alt=media&token=27022700-facd-4b1f-96c5-175b7bd6938c" />
-          <HistoryImage desktop src="https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/edmicbio%2Fhistory%2Fhistory.png?alt=media&token=acb51b8b-70c4-42a5-8994-fad59468e0ac" />
+          <HistoryImage mobile src={mobileUngSrc} />
+          <HistoryImage desktop src={desktopImgSrc} />
         </Col>
       </Row>
     </ComponentContainer>

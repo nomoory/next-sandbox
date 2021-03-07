@@ -22,8 +22,7 @@ const VideoTitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  min-height: 60px;
 `;
 
 const PrintingVideoModal = ({ src, type, title }) => {
@@ -57,7 +56,9 @@ const PrintingVideoModal = ({ src, type, title }) => {
         Your browser does not support the video tag.
       </Video>
       <VideoTitle>
-        <Body bold style={{color: GRAY90 }}>{title}</Body>
+        <Body bold style={{ color: GRAY90, textAlign: "center" }}>
+          {title}
+        </Body>
       </VideoTitle>
     </VideoContainer>
   );

@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import Layout from "components/layout";
-import { getSortedPostsData } from "../lib/posts";
+// import { getSortedPostsData } from "../lib/posts";
 import { inject, observer } from "mobx-react";
 import BrandVideo from "./components/BrandVideo";
 import Slogan from "./components/Slogan";
 import NewsAndAnnouncement from "./components/NewsAndAnnouncement";
+import { withTranslation } from "../i18n";
 
 const Home = ({ allPostsData, templateStore }) => {
   return (
@@ -25,13 +26,4 @@ const PageContainer = styled.section`
   align-items: center;
 `;
 
-export default inject("templateStore")(observer(Home));
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData
-    }
-  };
-}
+export default withTranslation("common")(Home);

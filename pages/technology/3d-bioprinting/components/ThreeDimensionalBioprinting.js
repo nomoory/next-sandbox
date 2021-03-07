@@ -3,6 +3,8 @@ import Body from "components/typography/Body";
 import Caption1 from "components/typography/Caption1";
 import Divider from "components/Divider";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { inject, observer } from "mobx-react";
 import { Col, Row } from "antd";
 import {
   side_padding_mobile,
@@ -14,27 +16,6 @@ import {
 import { GRAY50, RED40, GRAY20 } from "styles/colors";
 import PrintingVideo from "./PrintingVideo";
 import { withTranslation } from "../../../../i18n";
-
-const VIDEOS = [
-  {
-    type: "video/mp4",
-    src:
-      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/stent_printing.mp4?alt=media&token=9392cff9-deef-45ac-a90a-099e753e5f0e",
-    title: "스텐트 프린팅",
-  },
-  {
-    type: "video/mp4",
-    src:
-      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/blood_vessel_model_printing.mp4?alt=media&token=c779746e-5f57-40b6-bc4b-f0af2722efa2",
-    title: "혈관 모델 프린팅",
-  },
-  {
-    type: "video/mp4",
-    src:
-      "https://firebasestorage.googleapis.com/v0/b/edmicbio.appspot.com/o/scaffold_printing.mp4?alt=media&token=3ea6f1ed-083d-49eb-8143-af2061b637d1",
-    title: "Scaffold 프린팅",
-  },
-];
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -79,7 +60,7 @@ const TextContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
   }
 `;
 
@@ -121,12 +102,15 @@ const SecondTextContainer = styled(TextContainer)`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     padding-bottom: 10px;
   }
 `;
 
-const ThreeDimensionalBioprinting = ({ t }) => {
+const ThreeDimensionalBioprinting = ({ t, bioprintingVideoStore }) => {
+  useEffect(() => {
+    bioprintingVideoStore.loadAll();
+  }, []);
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -181,14 +165,18 @@ const ThreeDimensionalBioprinting = ({ t }) => {
             </RedBox>
           </RedBoxContainer>
         </Col>
-        {VIDEOS.map(({ title, src, type }) => (
-          <Col key={title} xs={24} sm={8}>
-            <PrintingVideo key={src} title={title} src={src} type={type} />
-          </Col>
-        ))}
+        {bioprintingVideoStore.formattedDataArray.map(
+          ({ title, src, type }) => (
+            <Col key={title} xs={24} sm={8}>
+              <PrintingVideo key={src} title={title} src={src} type={type} />
+            </Col>
+          )
+        )}
       </Row>
     </ComponentContainer>
   );
 };
 
-export default withTranslation("common")(ThreeDimensionalBioprinting);
+export default withTranslation("common")(
+  inject("bioprintingVideoStore")(observer(ThreeDimensionalBioprinting))
+);

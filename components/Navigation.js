@@ -10,7 +10,7 @@ import {
   side_padding_desktop,
 } from "styles";
 import { GRAY60, GRAY40, RED40 } from "styles/colors";
-import { withTranslation } from "../i18n";
+import { withTranslation, i18n } from "../i18n";
 
 const NavigationContainer = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ const LinkContainer = styled.div`
     margin-top: 24px;
   }
   &:not(:first-child) {
-    margin-top: 41px;
+    margin-top: 38px;
   }
 `;
 const Links = styled.div``;
@@ -43,7 +43,6 @@ const Divider = styled.div`
   background: ${GRAY60};
   margin-top: 24px;
 `;
-
 export const getSubCategoryIdsByCategoryid = (categoryId) => {
   switch (categoryId) {
     case "edmicbio":
@@ -88,7 +87,7 @@ const Navigation = ({ t }) => {
             {subCategoryIds.map((id) => {
               return (
                 <LinkContainer key={id}>
-                  <Link href={`/${mainCategoryId}/${id}`}>
+                  <Link href={`/${i18n.language}/${mainCategoryId}/${id}`} locale={i18n.language}>
                     <Caption1
                       bold={selectedSubCategoryId === id}
                       style={{

@@ -9,7 +9,7 @@ import {
   side_padding_mobile,
   side_padding_desktop,
   mediaQueriesBiggerThan,
-  gutter
+  gutter,
 } from "styles";
 import Divider from "components/Divider";
 import Button from "components/Button";
@@ -123,7 +123,7 @@ const NewsAndAnnouncement = ({ announcementStore, newsStore }) => {
               <Divider />
             </ListHeader>
             <ListBody>
-              {newsStore.dataArray
+              {newsStore.formattedDataArray
                 .slice(0, 3)
                 .map(({ id, title, updatedAt }, index) => {
                   return (
@@ -159,7 +159,7 @@ const NewsAndAnnouncement = ({ announcementStore, newsStore }) => {
               <Divider />
             </ListHeader>
             <ListBody>
-              {announcementStore.dataArray
+              {announcementStore.formattedDataArray
                 .slice(0, 3)
                 .map(({ id, title, updatedAt }, index) => {
                   return (

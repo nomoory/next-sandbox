@@ -6,7 +6,7 @@ export const TARGET_COLLECTION = "patents";
 export const INITIAL_DATA = {
   isLoading: false,
   data: {},
-  dataArray: []
+  dataArray: [],
 };
 export const DATA_COUNT_IN_A_PAGE = 5;
 
@@ -19,13 +19,24 @@ class PatentStore {
     return Math.round(this.dataArray.length / DATA_COUNT_IN_A_PAGE);
   }
 
-  constructor() {
+  constructor(initialState, { languageStore }) {
     makeObservable(this);
+    this.languageStore = languageStore;
   }
 
   @computed
   get formattedDataArray() {
-    return dataArray;
+    return this.dataArray.map((item) => {
+      let formmattedItem = { ...item };
+      if (this.languageStore.lang === "en") {
+        for (let key in item) {
+          if (key.includes("_en")) {
+            formmattedItem[key.split("_")[0]] = item[key];
+          }
+        }
+      }
+      return formmattedItem;
+    });
   }
 
   @action
@@ -46,16 +57,16 @@ class PatentStore {
       .orderBy("updatedAt", "desc")
       .get()
       .then(
-        action(querySnapshot => {
+        action((querySnapshot) => {
           const dataArray = [];
-          querySnapshot.forEach(doc => {
+          querySnapshot.forEach((doc) => {
             console.log(doc.id, " => ", doc.data());
             dataArray.push({ id: doc.id, ...(doc.data() || {}) });
           });
           this.dataArray = dataArray;
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log("Error getting documents: ", error);
         return null;
       })
@@ -75,7 +86,7 @@ class PatentStore {
       .doc(id)
       .get()
       .then(
-        action(dataRef => {
+        action((dataRef) => {
           console.log(TARGET_COLLECTION, { exists: dataRef.exists });
           if (dataRef.exists) {
             const data = dataRef.data();
@@ -86,7 +97,7 @@ class PatentStore {
           }
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log("Error getting documents: ", error);
         return null;
       })
@@ -103,14 +114,14 @@ class PatentStore {
       .collection(TARGET_COLLECTION)
       .where(key, condition, value)
       .get()
-      .then(querySnapshot => {
+      .then((querySnapshot) => {
         if (!querySnapshot.empty) {
           const data = querySnapshot.docs[0].data();
           return data;
         }
         return null;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Error getting documents: ", error);
         return null;
       })
@@ -131,12 +142,12 @@ class PatentStore {
       .add({
         ...data,
         createdAt: now,
-        updatedAt: now
+        updatedAt: now,
       })
-      .then(docRef => {
+      .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error adding document: ", error);
       })
       .then(
@@ -157,12 +168,12 @@ class PatentStore {
       .set({
         ...data,
         updatedAt: now,
-        createdAt: now
+        createdAt: now,
       })
-      .then(docRef => {
+      .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error adding document: ", error);
       })
       .then(
@@ -181,12 +192,12 @@ class PatentStore {
       .doc(docId)
       .set({
         ...data,
-        updatedAt: now
+        updatedAt: now,
       })
-      .then(docRef => {
+      .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error adding document: ", error);
       })
       .then(

@@ -90,7 +90,7 @@ const Product = ({ productStore }) => {
     productStore.loadAll();
   }, []);
 
-  const productGroups = productStore.dataArray || [];
+  const productGroups = productStore.formattedDataArray || [];
 
   return (
     <ComponentContainer>
@@ -102,7 +102,12 @@ const Product = ({ productStore }) => {
           </Header>
         </Col>
         {productGroups.map((group) => (
-          <Col key={group.title} span={24}>
+          <Col
+            key={group.title}
+            xs={{ span: 24, offset: 0 }}
+            sm={{ span: 18, offset: 3 }}
+            xl={{ span: 14, offset: 4 }}
+          >
             <GroupTitle>{group.title}</GroupTitle>
             <GroupDescription>{group.description}</GroupDescription>
             <GroupTitleContentDivider />

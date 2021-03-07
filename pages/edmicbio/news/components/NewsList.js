@@ -62,11 +62,10 @@ const NewsList = ({ newsStore }) => {
     newsStore.loadAll();
   }, []);
   const [currentPage, setCurrentPage] = useState(1);
-  const { dataArray } = newsStore;
   return (
     <ComponentContainer>
       <ListContainer>
-        {dataArray
+        {newsStore.formattedDataArray
           .slice(
             (currentPage - 1) * DATA_COUNT_IN_A_PAGE,
             currentPage * DATA_COUNT_IN_A_PAGE
@@ -89,7 +88,7 @@ const NewsList = ({ newsStore }) => {
           defaultCurrent={1}
           defaultPageSize={DATA_COUNT_IN_A_PAGE}
           current={currentPage}
-          total={dataArray.length}
+          total={newsStore.formattedDataArray.length}
           pageSize={DATA_COUNT_IN_A_PAGE}
           onChange={pageNumber => {
             setCurrentPage(pageNumber);

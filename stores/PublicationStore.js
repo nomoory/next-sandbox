@@ -43,7 +43,7 @@ class PublicationStore {
     this.isLoading = true;
     return db
       .collection(TARGET_COLLECTION)
-      .orderBy("updatedAt", "desc")
+      .orderBy("publishedAt", "desc")
       .get()
       .then(
         action(querySnapshot => {

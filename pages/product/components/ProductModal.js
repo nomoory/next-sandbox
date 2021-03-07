@@ -67,6 +67,7 @@ const TextInfo = styled.div`
 `;
 const ProductTitle = styled.div``;
 const ProductDescription = styled.div`
+  text-align: center;
   width: 100%;
   margin-top: 35px;
   ${mediaQueriesBiggerThan("sm")} {

@@ -2,7 +2,7 @@ import { observable, action, computed, makeObservable } from "mobx";
 
 import db from "../db";
 
-export const TARGET_COLLECTION = "news";
+export const TARGET_COLLECTION = "bioprintingVideos";
 export const INITIAL_DATA = {
   isLoading: false,
   data: {},
@@ -10,7 +10,7 @@ export const INITIAL_DATA = {
 };
 export const DATA_COUNT_IN_A_PAGE = 5;
 
-class NewsStore {
+class PatentStore {
   @observable isLoading = INITIAL_DATA.isLoading;
   @observable data = INITIAL_DATA.data;
   @observable dataArray = INITIAL_DATA.dataArray;
@@ -28,7 +28,6 @@ class NewsStore {
   get formattedDataArray() {
     return this.dataArray.map((item) => {
       let formmattedItem = { ...item };
-      console.log({ formmattedItem });
       if (this.languageStore.lang === "en") {
         for (let key in item) {
           if (key.includes("_en")) {
@@ -39,6 +38,7 @@ class NewsStore {
       return formmattedItem;
     });
   }
+
   @action
   setData(data) {
     this.data = data;
@@ -54,7 +54,7 @@ class NewsStore {
     this.isLoading = true;
     return db
       .collection(TARGET_COLLECTION)
-      .orderBy("updatedAt", "desc")
+      .orderBy("title", "asc")
       .get()
       .then(
         action((querySnapshot) => {
@@ -208,4 +208,4 @@ class NewsStore {
   }
 }
 
-export default NewsStore;
+export default PatentStore;

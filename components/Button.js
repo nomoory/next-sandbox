@@ -2,7 +2,7 @@ import { Button } from "antd";
 import styled from "styled-components";
 import { RED40, RED70, GRAY80, GRAY90 } from "styles/colors";
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   button {
     border-radius: 2px;
     padding: 12px 24px;

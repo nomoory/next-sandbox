@@ -12,14 +12,14 @@ const PItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 13px;
+  padding-bottom: 13px;
   border-bottom: 1px solid ${GRAY20};
   cursor: pointer;
 
   ${mediaQueriesBiggerThan("sm")} {
-    padding-top: 29px;
-    padding-bottom: 27px;
+    padding-top: 13px;
+    padding-bottom: 13px;
   }
 `;
 const NewsInfoContainer = styled.div`
@@ -60,7 +60,7 @@ const PItem = ({
   updatedAt,
   createdAt,
   content = "",
-  link
+  link,
 }) => {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
@@ -82,8 +82,8 @@ const PItem = ({
     >
       <NewsInfoContainer>
         <Title style={{ color: GRAY90 }}>
-          {title.slice(0, 60)}
-          {title.length > 60 ? "..." : ""}
+          {title.slice(0, 1000)}
+          {title.length > 1000 ? "..." : ""}
         </Title>
         {content && (
           <Content>

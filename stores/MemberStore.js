@@ -1,5 +1,4 @@
 import { observable, action, computed, makeObservable } from "mobx";
-
 import db from "../db";
 
 export const TARGET_COLLECTION = "members";
@@ -13,13 +12,24 @@ class MebmberStore {
   @observable isLoading = INITIAL_DATA.isLoading;
   @observable dataArray = INITIAL_DATA.dataArray;
 
-  constructor() {
+  constructor(initialData, stores) {
     makeObservable(this);
+    this.languageStore = stores.languageStore;
   }
 
   @computed
   get formattedDataArray() {
-    return dataArray;
+    return this.dataArray.map((item) => {
+      let formmattedItem = {...item};
+      if (this.languageStore.lang === "en") {
+        for (let key in item) {
+          if (key.includes("_en")) {
+            formmattedItem[key.split("_")[0]] = item[key];
+          }
+        }
+      }
+      return formmattedItem;
+    });
   }
   
   @action

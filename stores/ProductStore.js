@@ -6,22 +6,45 @@ export const TARGET_COLLECTION = "products";
 export const INITIAL_DATA = {
   isLoading: false,
   data: {},
-  dataArray: []
+  dataArray: [],
 };
 
 class ProductStore {
   @observable isLoading = INITIAL_DATA.isLoading;
   @observable dataArray = INITIAL_DATA.dataArray;
 
-  constructor() {
+  constructor(initialState, { languageStore }) {
     makeObservable(this);
+    this.languageStore = languageStore;
   }
 
   @computed
   get formattedDataArray() {
-    return dataArray;
+    return this.dataArray.map((item) => {
+      let formmattedItem = { ...item };
+      if (this.languageStore.lang === "en") {
+        for (let key in item) {
+          if (key.includes("_en")) {
+            let originKey = key.split("_")[0];
+            formmattedItem[originKey] = item[key] || item[originKey];
+          }
+        }
+        formmattedItem.productList = formmattedItem.productList.map(product => {
+          const formattedProduct = {...product};
+          for (let key in product) {
+            if (key.includes("_en")) {
+              let originKey = key.split("_")[0];
+              formattedProduct[originKey] = product[key] || product[originKey];
+            }
+          }
+          console.log({formattedProduct})
+          return formattedProduct;
+        })
+      }
+      return formmattedItem;
+    });
   }
-  
+
   @action
   loadAll() {
     this.isLoading = true;
@@ -30,16 +53,16 @@ class ProductStore {
       .orderBy("orderNumber", "asc")
       .get()
       .then(
-        action(querySnapshot => {
+        action((querySnapshot) => {
           const dataArray = [];
-          querySnapshot.forEach(doc => {
+          querySnapshot.forEach((doc) => {
             console.log(doc.id, " => ", doc.data());
             dataArray.push({ id: doc.id, ...(doc.data() || {}) });
           });
           this.dataArray = dataArray;
         })
       )
-      .catch(error => {
+      .catch((error) => {
         console.log("Error getting documents: ", error);
         return null;
       })
@@ -49,7 +72,6 @@ class ProductStore {
         })
       );
   }
-
 }
 
 export default ProductStore;

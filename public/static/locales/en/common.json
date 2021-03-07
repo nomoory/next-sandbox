@@ -8,35 +8,29 @@
   "announcement": "Announcement",
   "careers": "Careers",
   "vision": "Vision",
-
   "technology": "Technology",
   "3d-bioprinting": "3D Bioprinting",
   "bioink": "Bioink",
   "collaborations": "Collaborations",
   "microfluidics": "Microfluidics",
   "publications-and-patents": "Publications & Patents",
-  
-  "slogan_1": "We develop 3D Organ-on-a-chip and medical devices that mimic the\ntissues and organs of the human body using in house developed\ntechnologies to improve the quality of the human life",
-  
+  "slogan": "We develop 3D Organ-on-a-chip and medical devices that mimic the\ntissues and organs of the human body using in house developed\ntechnologies to improve the quality of the human life",
   "vision_1": "EDmicBio Inc. is research-based spin-off start-up from POSTECH. We develop 3D Organ-on-a-chip and medical devices that mimic the tissues and dorgans of the human body using in house developed technologies to improve the quality of human life",
-
   "organ_on_a_chip_1": "3D Organ-on-a-chip is an in-vitro platform that mimic the organs in human body. Various experiments for tissue/organ such as drug toxicity assesment, new drug development, patient-specific drug prescription, etc. can be carried out using 3D Organ-on-a-chip.",
-  "organ_on_a_chip_2_1": "Many experiments are performed by non-clinical animal testing. ", 
-  "organ_on_a_chip_2_2": "However, these animal testing is very inaccurate because animal it is different from real human environment.", 
-  "organ_on_a_chip_2_3": "The fact that only 8% of the new drug candidates which passed non-clinical trials in the new drug development were actually effective in the human body, means animal testing results in numerous time-financial waste.", 
-  "organ_on_a_chip_3_1": "And, there is desperate need for a way to prepare ethical problems with animal testing worldwide, ",
-  "organ_on_a_chip_3_2": "and the high possibility of banning future animal testing.",
+  "organ_on_a_chip_2_1": "Many experiments are performed by non-clinical animal testing. ",
+  "organ_on_a_chip_2_2": "However, these animal testing is very inaccurate because animal it is different from real human environment.",
+  "organ_on_a_chip_2_3": "The fact that only 8% of the new drug candidates which passed non-clinical trials in the new drug development were actually effective in the human body, means animal testing results in numerous time-financial waste.",
+  "organ_on_a_chip_3_1": "And, there is desperate need for a way to prepare ethical problems with animal testing worldwide, and the high possibility of banning future animal testing.",
   "organ_on_a_chip_3_3": "",
   "organ_on_a_chip_4_1": "EDmicBio Inc. wants to solve uncertainty about the future ",
   "organ_on_a_chip_4_2": "with 3D Organ-on-a-chip",
-
-  "medical_device_0_1": "(주) 에드믹바이오는 3D 바이오프린팅 기술을 기반으로",
-  "medical_device_0_2": "의료기기를 개발합니다.",
+  "medical_device_0_0": "Stent",
+  "medical_device_0_1": "EDmicBio Inc. develops medical devices ",
+  "medical_device_0_2": "based on 3D bioprinting technology.",
   "medical_device_1_1": "Stent is a medical device that is inserted to prevent restenosis after piercing blocked blood vessel due to arteriosclerosis.",
   "medical_device_1_2": "Stents are usually made of metal, and after being inserted, they remain in the body for the rest of their lives, causing the blood vessels to be blocked again.",
   "medical_device_1_3": "EDmicBio inc. solves this problem by developing stents using substances that dissolve in the body",
   "medical_device_2": "We are developing stents that can be applied to other tubular tissues with leg vessel stents as the mainstay.",
-
   "careers_1": "EDmicBio is looking for creative, innovative and passionate partners.",
   "3Dbioprinting_1_1": "EDmicBio Inc.'s 3D bioprinting technology eoncompasses equipment design and establishment, tissue/organ printing, 3D Organ-on-a-chip and tissue/organ fabrication.",
   "3Dbioprinting_1_2": "tissue/organ printing, 3D Organ-on-a-chip and tissue/organ fabrication.",
@@ -47,5 +41,11 @@
   "bioink_2": "EDmicBio Inc. has the technology to extract bioink directly from tissue/organ. This provides a more accurate biochemical mimic environment for the tissue/organ to be developed.",
   "bioink_3": "EDmicBio Inc. has the know-how to develop bioink for more than 20 types of tissue/organ including liver, esophagus and fat.",
   "microfluidics_1": "Microfluidics helps to implement effective and efficient experiments by mimicking blood flow-like functions and microfluidic environments inside the organs on the fabricated 3D Organ-on-a-chip",
-  "collaborations_1": "Collaboration with multiple global partners increases technical reliability."
+  "collaborations_1": "Collaboration with multiple global partners increases technical reliability.",
+  "send": "SEND",
+  "write_email": "SEND",
+  "footer_email_title": "Email",
+  "footer_location_title": "Location",
+  "footer_location_content_1": "Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu, Seoul, Republic of Korea",
+  "footer_location_content_2": "R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business Incubator)"
 }

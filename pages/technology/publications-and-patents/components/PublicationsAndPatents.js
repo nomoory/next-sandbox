@@ -62,7 +62,7 @@ const PublicationsAndPatents = ({ publicationStore, patentStore }) => {
         </Col>
 
         <Col xs={24}>
-          <PList title={"Patents"} dataArray={patentStore.dataArray} />
+          <PList title={"Patents"} dataArray={patentStore.formattedDataArray} />
         </Col>
       </Row>
     </ComponentContainer>

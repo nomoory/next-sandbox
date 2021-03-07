@@ -10,6 +10,8 @@ import PatentStore from "./PatentStore";
 import CareerStore from "./CareerStore";
 import MemberStore from "./MemberStore";
 import ProductStore from "./ProductStore";
+import LanguageStore from "./LanguageStore";
+import BioprintingVideoStore from "./BioprintingVideoStore";
 
 const isServer = typeof window === "undefined";
 enableStaticRendering(isServer);
@@ -18,26 +20,36 @@ let store = null;
 
 export class RootStore {
   // store간 데이터 연결이 필요할 때, RootStore에 작성함으로 Circular structure가 생기지 않도록합니다.
-  templateStore;
-  announcementStore;
-  newsStore;
-  PublicationStore;
-  PatentStore;
-  CareerStore;
-  MemberStore;
-  ProductStore;
 
   constructor(initialData = {}) {
+    this.languageStore = new LanguageStore(initialData, this.languageStore);
     this.templateStore = new TemplateStore(initialData.templateStore);
     this.announcementStore = new AnnouncementStore(
-      initialData.announcementStore
+      initialData.announcementStore,
+      {
+        languageStore: this.languageStore,
+      }
     );
-    this.newsStore = new NewsStore(initialData.newsStore);
+    this.newsStore = new NewsStore(initialData.newsStore, {
+      languageStore: this.languageStore,
+    });
     this.publicationStore = new PublicationStore(initialData.publicationStore);
-    this.patentStore = new PatentStore(initialData.patentStore);
+    this.patentStore = new PatentStore(initialData.patentStore, {
+      languageStore: this.languageStore,
+    });
     this.careerStore = new CareerStore(initialData.careerStore);
-    this.memberStore = new MemberStore(initialData.memberStore);
-    this.productStore = new ProductStore(initialData.productStore);
+    this.memberStore = new MemberStore(initialData.memberStore, {
+      languageStore: this.languageStore,
+    });
+    this.productStore = new ProductStore(initialData.productStore, {
+      languageStore: this.languageStore,
+    });
+    this.bioprintingVideoStore = new BioprintingVideoStore(
+      initialData.bioprintingVideoStore,
+      {
+        languageStore: this.languageStore,
+      }
+    );
   }
 }
 

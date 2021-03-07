@@ -141,14 +141,22 @@ const MemberModal = ({
             <Caption2 style={{ color: GRAY30 }}>Education</Caption2>
             <Divider></Divider>
           </Title>
-          <Caption1>{education}</Caption1>
+          <Caption1
+            dangerouslySetInnerHTML={{
+              __html: education.split("\\n").join("<br/>"),
+            }}
+          />
         </EducationContainer>
         <CareerContainer>
           <Title>
             <Caption2 style={{ color: GRAY30 }}>Career</Caption2>
             <Divider></Divider>
           </Title>
-          <Caption1>{career}</Caption1>
+          <Caption1
+            dangerouslySetInnerHTML={{
+              __html: career.split("\\n").join("<br/>"),
+            }}
+          />
         </CareerContainer>
         <FooterContainer>
           <Button

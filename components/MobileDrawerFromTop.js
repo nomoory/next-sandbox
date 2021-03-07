@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { header_height_mobile } from "styles";
 import ArrowRightIcon from "components/icons/ArrowRightIcon";
 import { getSubCategoryIdsByCategoryid } from "components/Navigation";
+import { i18n } from "../i18n";
+
 const DrawerContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,15 +26,16 @@ const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
   const router = useRouter();
   const pathname = router.pathname;
   const [nothing, mainPath, subPath] = pathname.split("/");
-  const buttons = getSubCategoryIdsByCategoryid(mainPath).map(key => ({
+  const buttons = getSubCategoryIdsByCategoryid(mainPath).map((key) => ({
     name: key
       .split("")
       .map((char, j) => (j === 0 ? char.toLocaleUpperCase() : char))
       .join("")
       .split("-")
       .join(" "),
-    href: `/${mainPath}/${key}`
+    href: `/${mainPath}/${key}`,
   }));
+
   return (
     <Drawer
       placement="top"
@@ -48,7 +51,7 @@ const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
         <BoxContainer></BoxContainer>
 
         {buttons.map(({ name, href }) => (
-          <Link key={href} href={href}>
+          <Link key={href} href={`/${i18n.language}${href}`}>
             <BoxContainer>
               <Body bold={subPath && href.includes(`/${subPath}`)}>{name}</Body>
             </BoxContainer>

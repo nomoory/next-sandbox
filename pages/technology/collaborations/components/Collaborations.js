@@ -3,6 +3,7 @@ import Body from "components/typography/Body";
 import Divider from "components/Divider";
 import styled from "styled-components";
 import { Col, Row } from "antd";
+import { useState, useEffect } from "react";
 import {
   side_padding_mobile,
   side_padding_desktop,
@@ -12,6 +13,7 @@ import {
 } from "styles";
 import { GRAY20 } from "styles/colors";
 import { withTranslation } from "../../../../i18n";
+import db from "../../../../db";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -62,6 +64,23 @@ const DescriptionContainer = styled.div`
 `;
 
 const Collaborations = ({ t }) => {
+  const [colleges, setColleges] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
+  useEffect(() => {
+    db.collection("collaborations")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          const { images } = doc.data();
+          if (doc.id === "college") {
+            setColleges(images);
+          }
+          if (doc.id === "hospital") {
+            setHospitals(images);
+          }
+        });
+      });
+  }, []);
   return (
     <ComponentContainer>
       <Row style={{ width: "100%" }} gutter={[gutter, gutter_vertical]}>
@@ -69,9 +88,7 @@ const Collaborations = ({ t }) => {
           <Header>
             <Headline bold>Collaboration</Headline>
             <Divider />
-            <DescriptionContainer>
-              {t("collaborations_1")}
-            </DescriptionContainer>
+            <DescriptionContainer>{t("collaborations_1")}</DescriptionContainer>
           </Header>
         </Col>
         <Col xs={24}>
@@ -79,9 +96,9 @@ const Collaborations = ({ t }) => {
             <Body bold>Laboratory & College</Body>
           </Title>
         </Col>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-          <Col key={"college_" + index} xs={12} sm={6}>
-            <Image src={`/images/technology/College_${index}_m.png`} />
+        {colleges.map((src) => (
+          <Col key={"college_" + src} xs={12} sm={6}>
+            <Image src={src} />
           </Col>
         ))}
         <Col xs={24}>
@@ -89,9 +106,9 @@ const Collaborations = ({ t }) => {
             <Body bold>Hospital</Body>
           </Title>
         </Col>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
-          <Col key={"hospital_" + index} xs={12} sm={6}>
-            <Image src={`/images/technology/Hospital_${index}_m.png`} />
+        {hospitals.map((src) => (
+          <Col key={"hospital_" + src} xs={12} sm={6}>
+            <Image src={src} />
           </Col>
         ))}
       </Row>

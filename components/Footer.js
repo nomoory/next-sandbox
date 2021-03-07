@@ -16,19 +16,21 @@ import Caption2, {
 } from "components/typography/Caption2";
 import { bodyBold } from "components/typography/Body";
 import { GRAY40 } from "styles/colors";
+import { withTranslation, i18n } from "../i18n";
 
 const snsLinks = [
   {
     IconComponent: FacebookIcon,
-    link: "facebook",
+    link:
+      "https://www.facebook.com/%EC%97%90%EB%93%9C%EB%AF%B9%EB%B0%94%EC%9D%B4%EC%98%A4-EDmicBio-103930075043609/?view_public_for=103930075043609",
   },
   {
     IconComponent: YoutubeIcon,
-    link: "youtube",
+    link: "https://www.youtube.com/channel/UC6ELpIsoquJSdH6x32i-kTg",
   },
   {
     IconComponent: InstagramIcon,
-    link: "insta",
+    link: "https://www.instagram.com/edmicbio/",
   },
 ];
 
@@ -139,91 +141,101 @@ const FollowUsIcon = styled.a`
 
 const { Footer } = Layout;
 
-const CustomFooter = () => (
-  <Footer
-    style={{
-      backgroundColor: "white",
-      boxShadow: "0px -1px 0px rgba(118, 118, 118, 0.25)",
-      padding: "24px 0px 32px 0",
-      zIndex: 11, // higher than ant design Anchor
-    }}
-  >
-    <FooterContainer>
-      <Row
-        style={{ width: "100%", marginLeft: 0, marginRight: 0 }}
-        gutter={gutter}
-      >
-        <Col xs={24} sm={{ span: 12 }}>
-          <Link href="/">
-            <Logo />
-          </Link>
-          <Copyright>
-            Investigate your drug with 3D biomimicry 3D organ-on-a-chip
-          </Copyright>
-          <RightsReserved>
-            <Caption2 style={{ color: GRAY40 }}>
-              © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |{" "}
-              <Caption2 style={{ wordBreak: "keep-all" }}>
-                Powered by EDmicBio Inc.
+const CustomFooter = ({ t }) => {
+  return (
+    <Footer
+      style={{
+        backgroundColor: "white",
+        boxShadow: "0px -1px 0px rgba(118, 118, 118, 0.25)",
+        padding: "24px 0px 32px 0",
+        zIndex: 11, // higher than ant design Anchor
+      }}
+    >
+      <FooterContainer>
+        <Row
+          style={{ width: "100%", marginLeft: 0, marginRight: 0 }}
+          gutter={gutter}
+        >
+          <Col xs={24} sm={{ span: 12 }}>
+            <Link href={`/${i18n.language}`}>
+              <Logo />
+            </Link>
+            <Copyright>
+              Investigate your drug with 3D biomimicry 3D organ-on-a-chip
+            </Copyright>
+            <RightsReserved>
+              <Caption2 style={{ color: GRAY40 }}>
+                © 2020 EDMICBIO. © Copyright 2019~ | All Rights Reserved |{" "}
+                <Caption2 style={{ wordBreak: "keep-all" }}>
+                  Powered by EDmicBio Inc.
+                </Caption2>
               </Caption2>
-            </Caption2>
-          </RightsReserved>
-          <FollowUsContainer desktop>
-            <FollowUsTitle>Follow us</FollowUsTitle>
-            <FollowUsIcons>
-              {snsLinks.map(({ IconComponent, link }) => (
-                <FollowUsIcon key={link} href={link}>
-                  {<IconComponent />}
-                </FollowUsIcon>
-              ))}
-            </FollowUsIcons>
-          </FollowUsContainer>
-        </Col>
-        <Col xs={24} sm={{ span: 12 }}>
-          <Contacts>
-            <Row>
-              <Col xs={12} sm={24}>
+            </RightsReserved>
+            <FollowUsContainer desktop>
+              <FollowUsTitle>Follow us</FollowUsTitle>
+              <FollowUsIcons>
+                {snsLinks.map(({ IconComponent, link }) => (
+                  <FollowUsIcon
+                    key={link}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {<IconComponent />}
+                  </FollowUsIcon>
+                ))}
+              </FollowUsIcons>
+            </FollowUsContainer>
+          </Col>
+          <Col xs={24} sm={{ span: 12 }}>
+            <Contacts>
+              <Row>
+                {/* <Col xs={12} sm={24}>
                 <Contact>
                   <ContactTitle>Tel</ContactTitle>
                   <ContactContent>02-1234-5678</ContactContent>
                 </Contact>
-              </Col>
-              <Col xs={12} sm={24}>
-                <Contact>
-                  <ContactTitle>Email</ContactTitle>
-                  <ContactContent>edmicbio@edmicbio.com</ContactContent>
-                </Contact>
-              </Col>
-              <Col xs={24} sm={24}>
-                <Contact>
-                  <ContactTitle>Location</ContactTitle>
-                  <ContactContent>
-                    Office: 305, Community building, 117-3, Hoegi-ro,
-                    Dongdaemun-gu, Seoul, Republic of Korea R&D center: 26,
-                    Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403
-                    (KyungHee Business Incubator)
-                  </ContactContent>
-                </Contact>
-              </Col>
+              </Col> */}
+                <Col xs={12} sm={24}>
+                  <Contact>
+                    <ContactTitle>{t("footer_email_title")}</ContactTitle>
+                    <ContactContent>edmicbio@edmicbio.com</ContactContent>
+                  </Contact>
+                </Col>
+                <Col xs={24} sm={24}>
+                  <Contact>
+                    <ContactTitle>{t("footer_location_title")}</ContactTitle>
+                    <ContactContent>
+                      {t("footer_location_content_1")} <br />
+                      {t("footer_location_content_2")}
+                    </ContactContent>
+                  </Contact>
+                </Col>
 
-              <Col xs={24} sm={24}>
-                <FollowUsContainer mobile>
-                  <FollowUsTitle>Follow us</FollowUsTitle>
-                  <FollowUsIcons>
-                    {snsLinks.map(({ IconComponent, link }) => (
-                      <FollowUsIcon key={link} href={link}>
-                        {<IconComponent />}
-                      </FollowUsIcon>
-                    ))}
-                  </FollowUsIcons>
-                </FollowUsContainer>
-              </Col>
-            </Row>
-          </Contacts>
-        </Col>
-      </Row>
-    </FooterContainer>
-  </Footer>
-);
+                <Col xs={24} sm={24}>
+                  <FollowUsContainer mobile>
+                    <FollowUsTitle>Follow us</FollowUsTitle>
+                    <FollowUsIcons>
+                      {snsLinks.map(({ IconComponent, link }) => (
+                        <FollowUsIcon
+                          key={link}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {<IconComponent />}
+                        </FollowUsIcon>
+                      ))}
+                    </FollowUsIcons>
+                  </FollowUsContainer>
+                </Col>
+              </Row>
+            </Contacts>
+          </Col>
+        </Row>
+      </FooterContainer>
+    </Footer>
+  );
+};
 
-export default CustomFooter;
+export default withTranslation("common")(CustomFooter);

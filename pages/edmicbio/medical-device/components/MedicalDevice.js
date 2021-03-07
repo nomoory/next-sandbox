@@ -119,7 +119,7 @@ const MedicalDevice = ({ t }) => {
         <Col xs={24}>
           <RedBoxContainer>
             <RedBox>
-              <Body bold>스탠트</Body>
+              <Body bold>{t("medical_device_0_0")}</Body>
             </RedBox>
           </RedBoxContainer>
         </Col>

@@ -4,16 +4,16 @@ import Caption1 from "components/typography/Caption1";
 import Divider from "components/Divider";
 import styled from "styled-components";
 import { Col, Row } from "antd";
-import Button from "components/Button";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   side_padding_mobile,
   side_padding_desktop,
   mediaQueriesBiggerThan,
   gutter,
-  gutter_vertical
+  gutter_vertical,
 } from "styles";
 import { GRAY50, GRAY20, RED40 } from "styles/colors";
+import { withTranslation } from "../../../i18n";
 
 const ComponentContainer = styled.div`
   width: 100%;
@@ -86,9 +86,24 @@ const Textarea = styled.textarea`
   margin-top: 12px;
 `;
 
+const Button = styled.button`
+  background: #c63f34;
+  border-radius: 2px;
+  padding: 12px 23px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+`;
+
 const InputBox = ({ defaultValue, label, type, placeholder, onChange }) => {
   const [value, setValue] = useState(defaultValue || "");
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
   return (
@@ -104,7 +119,7 @@ const InputBox = ({ defaultValue, label, type, placeholder, onChange }) => {
             name={label}
             value={value}
             defaultValue={defaultValue}
-            onChange={e => {
+            onChange={(e) => {
               handleChange(e);
               if (onChange) {
                 onChange(e);
@@ -117,7 +132,7 @@ const InputBox = ({ defaultValue, label, type, placeholder, onChange }) => {
             name={label}
             value={value}
             defaultValue={defaultValue}
-            onChange={e => {
+            onChange={(e) => {
               handleChange(e);
               if (onChange) {
                 onChange(e);
@@ -129,7 +144,7 @@ const InputBox = ({ defaultValue, label, type, placeholder, onChange }) => {
     </InputContainer>
   );
 };
-const ContactUs = () => {
+const ContactUs = ({ t }) => {
   const formElement = useRef(null);
   return (
     <ComponentContainer>
@@ -143,7 +158,7 @@ const ContactUs = () => {
         <Col xs={{ span: 24, offset: 0 }} sm={{ span: 16, offset: 4 }}>
           <Form
             ref={formElement}
-            action="mailto:nomoory@naver.com"
+            action="mailto:edmicbio@edmicbio.com"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -155,17 +170,17 @@ const ContactUs = () => {
                   ...gutter_vertical,
                   sm: 12,
                   md: 12,
-                  lg: 12
-                }
+                  lg: 12,
+                },
               ]}
             >
-              <Col xs={24} sm={12}>
-                <InputBox label="Name" placeholder="홍길동" />
+              {/* <Col xs={24} sm={12}>
+                <InputBox label="Name" />
+              </Col> */}
+              <Col xs={24} sm={24}>
+                <InputBox label="Email" />
               </Col>
-              <Col xs={24} sm={12}>
-                <InputBox label="Email" placeholder="홍길동" />
-              </Col>
-              <Col xs={24} sm={12}>
+              {/* <Col xs={24} sm={12}>
                 <InputBox label="Company" placeholder="Your company" />
               </Col>
               <Col xs={24} sm={12}>
@@ -180,31 +195,18 @@ const ContactUs = () => {
                   type="textarea"
                   placeholder="Please enter your details"
                 />
-              </Col>
+              </Col> */}
               <Col
                 xs={24}
                 sm={24}
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
-                  marginTop: 12
+                  marginTop: 12,
                 }}
               >
-                <Button
-                  type="primary"
-                  onClick={e => {
-                    console.log({ formElement });
-                    const { elements } = formElement.current;
-                    if (elements["Name"]) {
-                      console.log({ value: elements["Name"].value });
-                    }
-
-                    if (elements["Email"]) {
-                      console.log({ value: elements["Email"].value });
-                    }
-                  }}
-                >
-                  보내기
+                <Button type="submit">
+                  {t("write_email")}
                   <ButtonArrowIcon style={{ marginLeft: 8 }} />
                 </Button>
               </Col>
@@ -216,4 +218,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default withTranslation("common")(ContactUs);

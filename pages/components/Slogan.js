@@ -1,5 +1,7 @@
 import Headline from "components/typography/Headline";
-import Body from "components/typography/Body";
+import { bodyBold } from "components/typography/Body";
+import { titleBold } from "components/typography/Title2";
+import { caption1Regular } from "components/typography/Caption1";
 import Caption1 from "components/typography/Caption1";
 import Divider from "components/Divider";
 import styled from "styled-components";
@@ -47,10 +49,28 @@ const SloganContent = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
   ${mediaQueriesBiggerThan("sm")} {
     padding-left: 24px;
     align-items: flex-start;
+    justify-content: center;
     text-align: start;
+  }
+`;
+
+const Title = styled.div`
+  ${bodyBold}
+  ${mediaQueriesBiggerThan("sm")} {
+    ${titleBold}
+  }
+`;
+
+const Content = styled.div`
+  ${caption1Regular}
+  font-size: 14px;
+  ${mediaQueriesBiggerThan("sm")} {
+    font-size: 20px;
+    line-height: 30.98px;
   }
 `;
 
@@ -59,7 +79,7 @@ const Slogan = ({ t }) => (
     <Row style={{ width: "100%" }} gutter={gutter}>
       <Col span={24}>
         <SloganHeader>
-          <Headline bold>Slogan</Headline>
+          <Headline bold>Sloga</Headline>
           <Divider />
         </SloganHeader>
       </Col>
@@ -68,12 +88,12 @@ const Slogan = ({ t }) => (
       </Col>
       <Col xs={{ span: 24, offset: 0 }} sm={{ span: 10 }}>
         <SloganContent>
-          <Body bold style={{ marginTop: 25 }}>
+          <Title bold style={{ marginTop: 25 }}>
             EDmicBio Inc.
-          </Body>
-          <Caption1 style={{ marginTop: 24, color: GRAY40 }}>
+          </Title>
+          <Content style={{ marginTop: 24, color: GRAY40 }}>
             {t("slogan")}
-          </Caption1>
+          </Content>
         </SloganContent>
       </Col>
     </Row>

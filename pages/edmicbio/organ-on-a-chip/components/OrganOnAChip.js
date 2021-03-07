@@ -110,7 +110,7 @@ const OrganOnAChip = ({ t }) => {
         <Col xs={24}>
           <RedBoxContainer>
             <RedBox>
-              <Body bold>About OOC</Body>
+              <Body bold>About Organ-on-a-chip</Body>
             </RedBox>
           </RedBoxContainer>
         </Col>
@@ -137,10 +137,6 @@ const OrganOnAChip = ({ t }) => {
           <RightAlignedOnDesktopTextContainer>
             <Caption1 style={{ color: GRAY50, textAlign: "inherit" }}>
               {t("organ_on_a_chip_3_1")}
-              <BrOnDesktop />
-              {t("organ_on_a_chip_3_2")}
-              <BrOnDesktop />
-              {t("organ_on_a_chip_3_3")}
               <br />
               <br />
               {t("organ_on_a_chip_4_1")}{" "}

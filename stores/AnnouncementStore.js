@@ -1,4 +1,5 @@
 import { observable, action, computed, makeObservable } from "mobx";
+import { i18n } from "../i18n";
 
 import db from "../db";
 
@@ -19,13 +20,24 @@ class AnnouncementStore {
     return Math.round(this.dataArray.length / DATA_COUNT_IN_A_PAGE);
   }
 
-  constructor() {
+  constructor(initialState, {languageStore}) {
     makeObservable(this);
+    this.languageStore = languageStore;
   }
 
   @computed
   get formattedDataArray() {
-    return dataArray;
+    return this.dataArray.map((item) => {
+      let formmattedItem = {...item};
+      if (this.languageStore.lang === "en") {
+        for (let key in item) {
+          if (key.includes("_en")) {
+            formmattedItem[key.split("_")[0]] = item[key];
+          }
+        }
+      }
+      return formmattedItem;
+    });
   }
 
   @action

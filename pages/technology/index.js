@@ -2,6 +2,7 @@ import { inject, observer } from "mobx-react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { getSubCategoryIdsByCategoryid } from "components/Navigation";
+import { i18n } from "../../i18n";
 
 const MAIN_CATEGORY_ID = "technology";
 
@@ -13,7 +14,7 @@ const Technology = ({ templateStore }) => {
     // for (let subCategoryId of subCategoryIds) {
     //   router.prefetch(`${MAIN_CATEGORY_ID}/${subCategoryId}`);
     // }
-    router.push(`/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
+    router.push(`${i18n.language}/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
   }, []);
 
   return <></>;
