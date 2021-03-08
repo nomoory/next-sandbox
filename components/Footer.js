@@ -157,7 +157,7 @@ const CustomFooter = ({ t }) => {
           gutter={gutter}
         >
           <Col xs={24} sm={{ span: 12 }}>
-            <Link href={`/${i18n.language}`}>
+            <Link href={`/`} locale={i18n.language}>
               <Logo />
             </Link>
             <Copyright>

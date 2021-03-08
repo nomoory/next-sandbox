@@ -20,9 +20,3 @@ const EDmicBio = ({ templateStore }) => {
 };
 
 export default inject("templateStore")(observer(EDmicBio));
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}

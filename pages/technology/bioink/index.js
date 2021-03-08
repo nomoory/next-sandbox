@@ -15,8 +15,4 @@ const BioinkPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(BioinkPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

@@ -10,17 +10,17 @@ export const INITIAL_DATA = {
 export const DATA_COUNT_IN_A_PAGE = 5;
 
 class LangaugeStore {
-  @observable lang = i18n.language || "ko";
+  @observable lang = "ko";
 
   constructor(initialState) {
     makeObservable(this);
-    this.lang = i18n.language;
+    this.lang = "ko";
+    i18n.changeLanguage(this.lang);
   }
 
   @action
   setLanguage(lang = "ko") {
     this.lang = lang;
-    console.log({lang})
   }
 
   @action

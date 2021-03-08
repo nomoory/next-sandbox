@@ -15,8 +15,4 @@ const TeamPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(TeamPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

@@ -95,7 +95,7 @@ const MobileDrawer = ({ visible, closeDrawer, languageStore }) => {
           </CloseDrawerButton>
         </BoxContainer>
         {BUTTONS.map(({ name, href }) => (
-          <Link key={href} href={`/${i18n.language}${href}`}>
+          <Link key={href} href={`${href}`} locale={i18n.language}>
             <BoxContainer>
               <Body bold={`/${mainPath}` === href}>{name}</Body>
             </BoxContainer>

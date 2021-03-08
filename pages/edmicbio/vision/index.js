@@ -14,9 +14,3 @@ const VisionPage = ({ templateStore }) => {
 };
 
 export default inject("templateStore")(observer(VisionPage));
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}

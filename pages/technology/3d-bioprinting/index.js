@@ -15,8 +15,4 @@ const ThreeDimensionalBioprintingPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(ThreeDimensionalBioprintingPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

@@ -15,8 +15,4 @@ const OrganOnAChipPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(OrganOnAChipPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

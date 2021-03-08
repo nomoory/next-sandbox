@@ -14,7 +14,7 @@ const Technology = ({ templateStore }) => {
     // for (let subCategoryId of subCategoryIds) {
     //   router.prefetch(`${MAIN_CATEGORY_ID}/${subCategoryId}`);
     // }
-    router.push(`${i18n.language}/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
+    router.push(`/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
   }, []);
 
   return <></>;
@@ -22,8 +22,4 @@ const Technology = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(Technology));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

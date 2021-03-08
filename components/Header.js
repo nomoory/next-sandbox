@@ -58,12 +58,13 @@ const DesktopNavigationContainer = styled.nav`
   }
 `;
 
-const NavigationItem = styled.a`
+const NavigationItem = styled.div`
   margin-left: 60px;
   font-weight: 600;
   line-height: 25px;
   letter-spacing: 0em;
   ${(props) => (props.active ? "color: #C63F34" : "")}
+  cursor: pointer;
 `;
 
 const MobileDrawerIconContainer = styled.div`
@@ -137,6 +138,9 @@ const LanguageDivider = styled.div`
 `;
 
 const Header = ({ home, languageStore }) => {
+  useEffect(() => {
+    setTimeout(() => languageStore.setLanguage(i18n.language), 1000);
+  }, [])
   const router = useRouter();
   const [mobileDrawalVisible, setMobileDrawalVisible] = useState(false);
   const [mobileTopDrawalVisible, setMobileTopDrawalVisible] = useState(false);
@@ -165,22 +169,21 @@ const Header = ({ home, languageStore }) => {
   const pathname = router.pathname || "";
   const [nullString, mainCategory, subCategory] = pathname.split("/");
 
+
   return (
     <>
       <HeaderContainer>
         <Upper>
-          <Link href={`${i18n.language}/`} locale={i18n.language}>
+          <Link href={`/`} locale={i18n.language}>
             <Logo />
           </Link>
           <DesktopNavigationContainer>
             {navigationItems.map((item) => (
-              <NavigationItem
-                key={item.id}
-                href={`/${i18n.language}${item.link}`}
-                active={pathname.includes(item.link)}
-              >
-                {item.title}
-              </NavigationItem>
+              <Link key={item.id} href={`${item.link}`} locale={i18n.language}>
+                <NavigationItem active={pathname.includes(item.link)}>
+                  {item.title}
+                </NavigationItem>
+              </Link>
             ))}
             <LanguageToggleButton
               onClick={() => {
@@ -189,9 +192,9 @@ const Header = ({ home, languageStore }) => {
                 languageStore.setLanguage(nextLang);
               }}
             >
-              <Language active={i18n.language === "ko"}>KO</Language>
+              <Language active={languageStore.lang === "ko"}>KO</Language>
               <LanguageDivider />
-              <Language active={i18n.language === "en"}>EN</Language>
+              <Language active={languageStore.lang === "en"}>EN</Language>
             </LanguageToggleButton>
           </DesktopNavigationContainer>
           <MobileDrawerIconContainer>

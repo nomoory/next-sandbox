@@ -51,7 +51,7 @@ const MobileDrawerFromTop = ({ visible, closeDrawer }) => {
         <BoxContainer></BoxContainer>
 
         {buttons.map(({ name, href }) => (
-          <Link key={href} href={`/${i18n.language}${href}`}>
+          <Link key={href} href={`${href}`} locale={i18n.language}>
             <BoxContainer>
               <Body bold={subPath && href.includes(`/${subPath}`)}>{name}</Body>
             </BoxContainer>

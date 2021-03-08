@@ -15,8 +15,4 @@ const CollaborationsPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(CollaborationsPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

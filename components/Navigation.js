@@ -87,7 +87,7 @@ const Navigation = ({ t }) => {
             {subCategoryIds.map((id) => {
               return (
                 <LinkContainer key={id}>
-                  <Link href={`/${i18n.language}/${mainCategoryId}/${id}`} locale={i18n.language}>
+                  <Link href={`/${mainCategoryId}/${id}`} locale={i18n.language}>
                     <Caption1
                       bold={selectedSubCategoryId === id}
                       style={{

@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { useStore } from "../stores/stores";
 import { useEffect } from "react";
 import { appWithTranslation, i18n } from "../i18n";
+import { ServerStyleSheet } from "styled-components";
 
 const theme = {
   colors: {
@@ -31,4 +32,5 @@ function App({ Component, pageProps, ...props }) {
   );
 }
 
-export default appWithTranslation(App);
+
+export default appWithTranslation(App, i18n);

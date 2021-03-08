@@ -15,8 +15,4 @@ const MicrofluidicsPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(MicrofluidicsPage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

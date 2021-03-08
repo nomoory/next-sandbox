@@ -15,8 +15,4 @@ const MedicalDevicePage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(MedicalDevicePage));
 
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+

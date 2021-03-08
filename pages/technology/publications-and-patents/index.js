@@ -15,8 +15,4 @@ const PublicationsAndPatentsPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(PublicationsAndPatentsPage));
 
-export async function getStaticProps() {
-  return {
-    props: {}
-  };
-}
+

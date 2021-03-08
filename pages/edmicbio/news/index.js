@@ -15,8 +15,4 @@ const NewsPage = ({ templateStore }) => {
 
 export default inject("templateStore")(observer(NewsPage));
 
-export async function getStaticProps() {
-  return {
-    props: {}
-  };
-}
+

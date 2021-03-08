@@ -24,9 +24,3 @@ const ContactUsPage = ({ templateStore }) => {
 };
 
 export default inject("templateStore")(observer(ContactUsPage));
-
-export async function getStaticProps() {
-  return {
-    props: {}
-  };
-}
