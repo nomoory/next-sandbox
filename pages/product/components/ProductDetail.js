@@ -18,6 +18,7 @@ const Photo = styled.img`
 `;
 const PhotoContainer = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 const NameContainer = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
@@ -59,26 +60,26 @@ const Product = ({ title, description, images = [] }) => {
 
   return (
     <ProductContainer>
-      <PhotoContainer>
+      <PhotoContainer
+        onClick={(e) => {
+          setVisible(true);
+        }}
+      >
         <Photo src={images ? images[0] : ""} />
         <ButtonContainer>
-          <MoreButton
-            onClick={(e) => {
-              setVisible(true);
-            }}
-          >
+          <MoreButton>
             <Subtitle style={{ color: GRAY10 }}>{title}</Subtitle>
             <CartIcon style={{ marginTop: 20 }} />
           </MoreButton>
-          <ProductModal
-            visible={visible}
-            setVisible={setVisible}
-            title={title}
-            description={description}
-            images={images}
-          />
         </ButtonContainer>
       </PhotoContainer>
+      <ProductModal
+        visible={visible}
+        setVisible={setVisible}
+        title={title}
+        description={description}
+        images={images}
+      />
     </ProductContainer>
   );
 };

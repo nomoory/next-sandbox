@@ -201,6 +201,10 @@ const CustomFooter = ({ t }) => {
                     <ContactTitle>{t("footer_email_title")}</ContactTitle>
                     <ContactContent>edmicbio@edmicbio.com</ContactContent>
                   </Contact>
+                  <Contact>
+                    <ContactTitle>{t("phone_number")}</ContactTitle>
+                    <ContactContent>02-960-6333</ContactContent>
+                  </Contact>
                 </Col>
                 <Col xs={24} sm={24}>
                   <Contact>

@@ -64,27 +64,6 @@ const GroupTitleContentDivider = styled.div`
   border: 1px solid ${GRAY20};
 `;
 
-const PRODUCT_GROUPS = [
-  {
-    title: "Organ on a chip",
-    description: "Description of organ-on-a-chip",
-    products: [
-      {
-        title: "OrganPrint - C",
-        description:
-          "3D 바이오프린팅, 바이오잉크, 그리고 미세유체 기술은 에드믹바이오 자체적으로 보유하고 있는 기술입니다. 이러한 기술들을 모두가 가질 수는 없지만 연구자들이 원하는 장기칩을 만들 수 있도록 키트의 형태로 제공합니다. 연구자들은 본인이 원하는 세포는 키운 뒤, OrganPrint-C 장기칩 제작 키트를 사용하여 원하는 장기칩을 제작할 수 있습니다.",
-        images: ["/images/product/product_sample_image.png"],
-      },
-      {
-        title: "OrganPrint - C",
-        description:
-          "3D 바이오프린팅, 바이오잉크, 그리고 미세유체 기술은 에드믹바이오 자체적으로 보유하고 있는 기술입니다. 이러한 기술들을 모두가 가질 수는 없지만 연구자들이 원하는 장기칩을 만들 수 있도록 키트의 형태로 제공합니다. 연구자들은 본인이 원하는 세포는 키운 뒤, OrganPrint-C 장기칩 제작 키트를 사용하여 원하는 장기칩을 제작할 수 있습니다.",
-        images: ["/images/product/product_sample_image.png"],
-      },
-    ],
-  },
-];
-
 const Product = ({ productStore }) => {
   useEffect(() => {
     productStore.loadAll();
@@ -101,12 +80,13 @@ const Product = ({ productStore }) => {
             <Divider />
           </Header>
         </Col>
-        {productGroups.map((group) => (
+        {productGroups.map((group) => group.productList.length !== 0 && (
           <Col
             key={group.title}
             xs={{ span: 24, offset: 0 }}
             sm={{ span: 18, offset: 3 }}
-            xl={{ span: 14, offset: 4 }}
+            xl={{ span: 14, offset: 5 }}
+            style={{ marginBottom: 80 }}
           >
             <GroupTitle>{group.title}</GroupTitle>
             <GroupDescription>{group.description}</GroupDescription>

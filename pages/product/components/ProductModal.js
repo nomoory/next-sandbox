@@ -7,6 +7,7 @@ import { Modal } from "antd";
 import { GRAY10, GRAY20, GRAY30, RED30, RED40 } from "styles/colors";
 import Button from "components/Button";
 import { mediaQueriesBiggerThan, gutter, gutter_vertical } from "styles";
+import { Fragment } from "react";
 
 const ProductModalContainer = styled.div`
   display: flex;
@@ -73,7 +74,13 @@ const ProductDescription = styled.div`
   ${mediaQueriesBiggerThan("sm")} {
   }
 `;
-const ProductModal = ({ visible, setVisible, images = [], title, description }) => {
+const ProductModal = ({
+  visible,
+  setVisible,
+  images = [],
+  title,
+  description,
+}) => {
   return (
     <Modal
       visible={visible}
@@ -91,7 +98,15 @@ const ProductModal = ({ visible, setVisible, images = [], title, description }) 
               </Subtitle>
             </ProductTitle>
             <ProductDescription>
-              <Body>{description}</Body>
+              <Body>
+                {description &&
+                  description.split("\\n").map((p) => (
+                    <Fragment key={p}>
+                      <>{p}</>
+                      <br />
+                    </Fragment>
+                  ))}
+              </Body>
             </ProductDescription>
           </TextInfo>
           <PhotoContainer>

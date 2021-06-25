@@ -51,8 +51,8 @@
   "send": "보내기",
   "write_email": "메일 작성하기",
   "footer_email_title": "이메일",
-  "footer_location_title": "사무실",
-  "footer_location_content_1": "서울특별시 동대문구 회기로 117-3 지역열린동 305호",
-  "footer_location_content_2": "R&D 센터: 서울특별시 동대문구 경희대로 26 403호(창업보육센터 이과대학 동관)"
-
+  "footer_location_title": "위치",
+  "footer_location_content_1": "사무실: 서울특별시 동대문구 회기로 117-3 지역열린동 305호",
+  "footer_location_content_2": "R&D 센터: 서울특별시 동대문구 경희대로 26 403호(창업보육센터 이과대학 동관)",
+  "phone_number": "전화번호"
 }

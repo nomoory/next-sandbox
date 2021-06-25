@@ -14,7 +14,7 @@ const Technology = ({ templateStore }) => {
     // for (let subCategoryId of subCategoryIds) {
     //   router.prefetch(`${MAIN_CATEGORY_ID}/${subCategoryId}`);
     // }
-    router.push(`/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
+    router.replace(`/${MAIN_CATEGORY_ID}/${subCategoryIds[0]}`);
   }, []);
 
   return <></>;

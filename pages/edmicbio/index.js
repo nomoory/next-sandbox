@@ -13,7 +13,7 @@ const EDmicBio = ({ templateStore }) => {
     // for (let subCategoryId of subCategoryIds) {
     //   router.prefetch(`edmicbio/${subCategoryId}`);
     // }
-    router.push(`/edmicbio/${subCategoryIds[0]}`);
+    router.replace(`/edmicbio/${subCategoryIds[0]}`);
   }, []);
 
   return <></>;

@@ -14,6 +14,7 @@ const CustomHead = () => (
     />
     <meta name="og:title" content={siteTitle} />
     <meta name="twitter:card" content="summary_large_image" />
+    <title>EDmicBio</title>
   </Head>
 );
 

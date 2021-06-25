@@ -32,7 +32,7 @@
   "medical_device_1_3": "EDmicBio inc. solves this problem by developing stents using substances that dissolve in the body",
   "medical_device_2": "We are developing stents that can be applied to other tubular tissues with leg vessel stents as the mainstay.",
   "careers_1": "EDmicBio is looking for creative, innovative and passionate partners.",
-  "3Dbioprinting_1_1": "EDmicBio Inc.'s 3D bioprinting technology eoncompasses equipment design and establishment, tissue/organ printing, 3D Organ-on-a-chip and tissue/organ fabrication.",
+  "3Dbioprinting_1_1": "EDmicBio Inc.'s 3D bioprinting technology eoncompasses equipment design and establishment,",
   "3Dbioprinting_1_2": "tissue/organ printing, 3D Organ-on-a-chip and tissue/organ fabrication.",
   "3Dbioprinting_2": "EDmicBio Inc. can design and establish 3D bioprinting systems for fabrication of 3D Organ-on-a-chip and tissue/organ in the desired form.",
   "3Dbioprinting_3": "Based on the 3D bioprinting system developed by EDmicBio Inc., 3D tissue/organ fabrication and 3D Organ-on-a-chip development are possible.",
@@ -47,5 +47,6 @@
   "footer_email_title": "Email",
   "footer_location_title": "Location",
   "footer_location_content_1": "Office: 305, Community building, 117-3, Hoegi-ro, Dongdaemun-gu, Seoul, Republic of Korea",
-  "footer_location_content_2": "R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business Incubator)"
+  "footer_location_content_2": "R&D center: 26, Kyungheedae-ro, Dongdaemun-gu, Seoul, Republic of Korea, 403 (KyungHee Business Incubator)",
+  "phone_number": "Tel"
 }

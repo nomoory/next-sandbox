@@ -79,7 +79,7 @@ const Slogan = ({ t }) => (
     <Row style={{ width: "100%" }} gutter={gutter}>
       <Col span={24}>
         <SloganHeader>
-          <Headline bold>Sloga</Headline>
+          <Headline bold>Slogan</Headline>
           <Divider />
         </SloganHeader>
       </Col>
