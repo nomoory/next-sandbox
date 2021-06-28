@@ -55,7 +55,7 @@ const MoreButton = styled.button`
   align-items: center;
 `;
 
-const Product = ({ title, description, images = [] }) => {
+const ProductDetail = ({ title, description, images = [] }) => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -84,4 +84,4 @@ const Product = ({ title, description, images = [] }) => {
   );
 };
 
-export default Product;
+export default ProductDetail;

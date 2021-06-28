@@ -80,30 +80,36 @@ const Product = ({ productStore }) => {
             <Divider />
           </Header>
         </Col>
-        {productGroups.map((group) => group.productList.length !== 0 && (
-          <Col
-            key={group.title}
-            xs={{ span: 24, offset: 0 }}
-            sm={{ span: 18, offset: 3 }}
-            xl={{ span: 14, offset: 5 }}
-            style={{ marginBottom: 80 }}
-          >
-            <GroupTitle>{group.title}</GroupTitle>
-            <GroupDescription>{group.description}</GroupDescription>
-            <GroupTitleContentDivider />
-            <Row gutter={30} style={{ justifyContent: "center" }}>
-              {group.productList.map((product, index) => (
-                <Col key={product.title + index} xs={12} sm={{ span: 8 }}>
-                  <ProductDetail
-                    title={product.title}
-                    description={product.description}
-                    images={product.images}
-                  />
+        {productGroups.map(
+          (group) =>
+            group.productList.length !== 0 && (
+              <>
+                <div id={group.title.split(" ").join("_")} />
+                <Col
+                  key={group.title}
+                  xs={{ span: 24, offset: 0 }}
+                  sm={{ span: 18, offset: 3 }}
+                  xl={{ span: 14, offset: 5 }}
+                  style={{ marginBottom: 80 }}
+                >
+                  <GroupTitle>{group.title}</GroupTitle>
+                  <GroupDescription>{group.description}</GroupDescription>
+                  <GroupTitleContentDivider />
+                  <Row gutter={30} style={{ justifyContent: "center" }}>
+                    {group.productList.map((product, index) => (
+                      <Col key={product.title + index} xs={12} sm={{ span: 8 }}>
+                        <ProductDetail
+                          title={product.title}
+                          description={product.description}
+                          images={product.images}
+                        />
+                      </Col>
+                    ))}
+                  </Row>
                 </Col>
-              ))}
-            </Row>
-          </Col>
-        ))}
+              </>
+            )
+        )}
       </Row>
     </ComponentContainer>
   );
